@@ -1,13 +1,14 @@
 import React from 'react';
+import PageComponent from "../components/index/index"
+// import Header from "../components/Header/Header"
 
-const HomePage = () => {
-  // ページのコンテンツやロジックをここに書く
-
+const Index = () => {
   return (
-    <div>
-      indexページ
-    </div>
+    <>
+      {/*<Header isEditMenu={false} />*/}
+      <PageComponent />
+    </>
   );
 };
 
-export default HomePage;
+export default Index;
