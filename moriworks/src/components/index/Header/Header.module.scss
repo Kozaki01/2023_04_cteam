@@ -1,13 +1,13 @@
 .header_div {
   display: flex;
   flex-direction: row;
-  max-width: 1440px;
-  justify-content: space-between;
+  max-width: 100%;
+  justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.3199999928474426);
-  padding-top: 24px;
+  box-shadow: 0px 4px 8px 0px #00000052;
+  padding-top: 12px;
   padding-right: 64px;
-  padding-bottom: 24px;
+  padding-bottom: 12px;
   padding-left: 32px;
   background-color: rgba(255, 255, 255, 1);
 }
@@ -40,8 +40,8 @@
 .div_4 {
   max-width: 349px;
   color: rgba(0, 0, 0, 1);
-  font-size: 64px;
+  font-size: 84px;
   letter-spacing: 8%;
-  text-align: left;
-  font-family: 'Righteous', sans-serif;
+  text-align: center;
+  font-family: 'Righteous', cursive;
 }
