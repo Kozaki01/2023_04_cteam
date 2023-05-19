@@ -1,12 +1,12 @@
 import React from 'react';
-import PageComponent from "../components/index/index"
-// import Header from "../components/Header/Header"
+// import PageComponent from "../components/index/index"
+import Header from '../components/Header/Header';
 
 const Index = () => {
   return (
     <>
-      {/*<Header isEditMenu={false} />*/}
-      <PageComponent />
+      <Header type />
+      {/* <PageComponent /> */}
     </>
   );
 };

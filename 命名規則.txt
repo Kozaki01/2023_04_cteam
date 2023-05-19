@@ -1,0 +1,6 @@
+ファイル名		snake_case
+クラス名		  PascalCase
+変数名		    camelCase
+関数名		    camelCase
+テーブル名		snake_case
+カラム		    snake_case
