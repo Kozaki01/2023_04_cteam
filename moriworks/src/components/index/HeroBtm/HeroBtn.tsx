@@ -12,10 +12,10 @@ const HeroBtn:React.FC<props> = ({type}) => {
   // router.push{"/reset-password"}
   // router.push{"/login"}
   const RedirectToCreateAccountHandler = () => {
-    router.push("/create-account").then(_ => {})
+    router.push("/signin").then(_ => {})
   }
   const RedirectToLoginHandler = () => {
-    router.push("/login").then(_ => {})
+    router.push("/signup_users").then(_ => {})
   }
   return (
     <>
@@ -23,7 +23,7 @@ const HeroBtn:React.FC<props> = ({type}) => {
         <div className={styles.HeroBtn_root} onClick={RedirectToCreateAccountHandler}>
           <h2 className={styles.HeroBtn_title} data-el={"h2_small"}>Create Account</h2>
           <Image
-            src={"/HeroBtn/Charco Send Email.png"} alt={""} className={styles.HeroBtn_img}
+            src={"/Charco Hi.png"} alt={""} className={styles.HeroBtn_img}
             width={280} height={430}
           />
         </div>
@@ -31,7 +31,7 @@ const HeroBtn:React.FC<props> = ({type}) => {
         <div className={styles.HeroBtn_root} onClick={RedirectToLoginHandler}>
           <h2 className={styles.HeroBtn_title}>Login</h2>
           <Image
-            src={"/HeroBtn/Charco Launch.png"} alt={""} className={styles.HeroBtn_img}
+            src={"/Charco High Five.png"} alt={""} className={styles.HeroBtn_img}
             width={280} height={430}
           />
         </div>

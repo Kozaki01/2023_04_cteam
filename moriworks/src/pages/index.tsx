@@ -1,13 +1,14 @@
 import React from 'react';
+import PageComponent from "../components/index/index"
+import Header from '../components/index/Header/Header';
 
-const HomePage = () => {
-  // ページのコンテンツやロジックをここに書く
-
+const Index = () => {
   return (
-    <div>
-      indexページ
-    </div>
+    <>
+      <Header type />
+      <PageComponent />
+    </>
   );
 };
 
-export default HomePage;
+export default Index;

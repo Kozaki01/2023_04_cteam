@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from "../utility/Layout";
+// import Layout from "../utility/Layout";
 import HeroBtn from "./HeroBtm/HeroBtn";
 import styles from "./index.module.scss"
 
