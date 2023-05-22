@@ -12,10 +12,10 @@ const HeroBtn:React.FC<props> = ({type}) => {
   // router.push{"/reset-password"}
   // router.push{"/login"}
   const RedirectToCreateAccountHandler = () => {
-    router.push("/create-account").then(_ => {})
+    router.push("/signin").then(_ => {})
   }
   const RedirectToLoginHandler = () => {
-    router.push("/login").then(_ => {})
+    router.push("/signup_users").then(_ => {})
   }
   return (
     <>
