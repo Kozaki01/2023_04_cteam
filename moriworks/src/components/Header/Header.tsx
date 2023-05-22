@@ -16,8 +16,8 @@ const Header: React.FC<props> = ({ type }) => {
         // ログインしていないとき
         <div className={styles.header_div}>
           <div className={styles.div_2}>
-            <div className={`${styles.builder_columns} ${styles.div_3}`}>
-              <div className={`${styles.builder_column} ${styles.column}`}>
+            <div className={styles.div_3}>
+              <div className={styles.column}>
                 <div className={styles.div_4}>moriworks</div>
               </div>
             </div>
@@ -25,13 +25,13 @@ const Header: React.FC<props> = ({ type }) => {
         </div>
       ) : (
         // ログイン済み表示
-        <div className={styles.header_div}>
-          <div className={styles.div_2}>
-            <div className={`${styles.builder_columns} ${styles.div_3}`}>
-              <div className={`${styles.builder_column} ${styles.column}`}>
-                <div className={styles.div_4}>moriworks</div>
-              </div>
-            </div>
+        <div className={styles.header_div2}>
+          <div className={styles.div_4}>moriworks</div>
+          <div className={styles.top}>
+            <button>トップ</button>
+          </div>
+          <div className={styles.logout}>
+            <button>ログアウト</button>
           </div>
         </div>
       )}
