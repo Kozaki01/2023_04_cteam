@@ -1,47 +1,44 @@
-import * as React from "react";
+import React, {ReactNode} from 'react';
+import styles from "./HeroBtn.module.scss"
+import Image from "next/image"
+import {useRouter} from "next/router"
 
-export default function MyComponent(props: any) {
+interface props{
+  type:boolean
+}
+const HeroBtn:React.FC<props> = ({type}) => {
+  const router = useRouter()
+  // router.push{"/create-account"}
+  // router.push{"/reset-password"}
+  // router.push{"/login"}
+  const RedirectToCreateAccountHandler = () => {
+    router.push("/create-account").then(_ => {})
+  }
+  const RedirectToLoginHandler = () => {
+    router.push("/login").then(_ => {})
+  }
   return (
     <>
-      <div className="div">
-        <picture>
-          <source
-            srcSet="https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=100 100w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=200 200w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=400 400w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=800 800w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?format=webp&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a"
-            type="image/webp"
+      {type ? (
+        <div className={styles.HeroBtn_root} onClick={RedirectToCreateAccountHandler}>
+          <h2 className={styles.HeroBtn_title} data-el={"h2_small"}>Create Account</h2>
+          <Image
+            src={"/Charco Hi.png"} alt={""} className={styles.HeroBtn_img}
+            width={280} height={430}
           />
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a"
-            srcSet="https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=100 100w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=200 200w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=400 400w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=800 800w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=1200 1200w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=1600 1600w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a?width=2000 2000w, https://cdn.builder.io/api/v1/image/assets%2FTEMP%2Fd957b11abdab4e238d3e759e5ea83a3a"
-            className="image"
+        </div>
+      ) : (
+        <div className={styles.HeroBtn_root} onClick={RedirectToLoginHandler}>
+          <h2 className={styles.HeroBtn_title}>Login</h2>
+          <Image
+            src={"/Charco High Five.png"} alt={""} className={styles.HeroBtn_img}
+            width={280} height={430}
           />
-        </picture>
-        <div className="builder-image-sizer image-sizer" />
-      </div>
-      <style jsx>{`
-        .div {
-          display: flex;
-          position: relative;
-          min-width: 20px;
-          min-height: 20px;
-          max-width: 400px;
-        }
-        .image {
-          object-fit: contain;
-          object-position: center;
-          position: absolute;
-          height: 100%;
-          width: 100%;
-          top: 0;
-          left: 0;
-        }
-        .image-sizer {
-          width: 100%;
-          padding-top: 113.75%;
-          pointer-events: none;
-          font-size: 0;
-        }
-      `}</style>
+        </div>
+      )}
     </>
+
   );
-}
+};
+
+export default HeroBtn;
