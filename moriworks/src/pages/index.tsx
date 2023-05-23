@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 const Index = () => {
   return (
     <>
-      <Header type={false} />
+      <Header type={true} />
       <PageComponent />
     </>
   );
