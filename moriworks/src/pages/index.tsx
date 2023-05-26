@@ -7,7 +7,6 @@ const Index = () => {
     <>
       <Header type={false} />
       <PageComponent />
-      <Title text={'My Profile'} />
     </>
   );
 };
