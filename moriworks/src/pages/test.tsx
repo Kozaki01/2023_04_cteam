@@ -1,5 +1,5 @@
 import React from 'react';
-import PageComponent from '../components/index/index';
+import PageComponent from '../components/index/test';
 import Header from '../components/Header/Header';
 
 const Index = () => {
@@ -7,7 +7,6 @@ const Index = () => {
     <>
       <Header type={false} />
       <PageComponent />
-      <Title text={'My Profile'} />
     </>
   );
 };
