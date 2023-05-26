@@ -16,14 +16,13 @@ const TopHeader:React.FC = () => {
   const RedirectToCreateAccountHandler = () => {
     router.push("/create-account").then(_ => {})
   }
-
   return (
     <>
     <div className={styles.HeroBtn_root} onClick={RedirectToCreateAccountHandler}>
       <Image
-        src={house} alt={""} className={styles.HeroBtn_img}
+        src={"/public/house.png"} alt={""} className={styles.HeroBtn_img}
         width={280} height={430}  
-        />      
+        />     
         <h2 className={styles.HeroBtn_title} data-el={"h2_small"}>Top</h2>
         </div>
     </>
