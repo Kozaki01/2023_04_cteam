@@ -1,0 +1,78 @@
+.div{
+    display: flex;
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 136px;
+}
+
+.img{
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    top: 0;
+    left: 0;
+    display:block;
+}
+
+.Imagesizer{
+    width: 100%;
+    padding-top: 52.20588235294118%;
+    pointer-events: none;
+    font-size: 0;
+}
+
+.Btn_root {
+    width: 100pt;
+    height: 40pt;
+    padding: 10px;
+    border: solid 4px #1E1E1E;
+    border-radius: 16px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 5px 5px gray;
+
+}
+
+.HeroBtn_img{
+    display: inline-block;
+    position:  relative;
+    overflow: hidden;
+    width:55%;
+    height:130%
+
+}
+
+.HeroBtn_img {
+    transform: translate3d(0, -24px, 0) scale(1.0);
+    transition: .4s cubic-bezier(0.54, 1.5, 0.45, 1.2);
+}
+
+.Btn_title[data-el="h2_small"]  {
+    font-size: 25px;
+    display: flex;
+    position:  relative;
+}
+
+
+// //Kosugi Maru
+// .Btn_title {
+//     font-family: '', ;
+//     font-weight: bold;
+//     font-size: 40px;
+//     text-align: center;
+//     width: fit-content;
+//     line-height: 50px;
+//     letter-spacing: 0.04rem;
+//     color: black;
+//   }
+  
+
+
+@keyframes easeInOutImage {
+
+}
