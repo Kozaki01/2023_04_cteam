@@ -1,0 +1,22 @@
+.title_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  position: relative;
+  width: 184px;
+  height: 32px;
+  filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.5));
+}
+.title_h1 {
+  width: 184px;
+  height: 32px;
+  font-family: 'Kosugi Maru';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 0.08em;
+  color: #000000;
+}
