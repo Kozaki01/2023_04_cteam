@@ -5,12 +5,13 @@ import styles from './index.module.scss';
 import Table from '../Table';
 
 interface props {}
+const num = [1, 2, 3];
 const Index: React.FC<props> = () => {
   return (
     <>
       ここはテストページです
       {/*  ここに処理を追加してください*/}
-      <Table id={1} isCompany={false} />
+      <Table id={num} isCompany={false} />
     </>
   );
 };

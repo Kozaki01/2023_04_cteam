@@ -2,15 +2,19 @@ import React, { ReactNode } from 'react';
 import styles from './Table.module.scss';
 import { useRouter } from 'next/router';
 
-interface props {
-  id: number;
+interface Tableprops {
+  id: number[];
   isCompany: boolean;
 }
 
-const Title: React.FC<props> = ({ id, isCompany }) => {
+const Table: React.FC<Tableprops> = (props) => {
+  if (props.id.length == 0) {
+    return null;
+  }
+
   return (
     <>
-      {isCompany ? (
+      {props.isCompany ? (
         <div className={styles.div1}>
           <table className={styles.table1}>
             <thead className={styles.thead1}>
@@ -22,18 +26,28 @@ const Title: React.FC<props> = ({ id, isCompany }) => {
               </tr>
             </thead>
             <tbody>
-              <tr className={styles.tr1}>
-                <td className={`${styles.td1} ${styles.name_col}`}>山田太郎</td>
-                <td className={`${styles.td1} ${styles.birth_col}`}>
-                  2002年5月18日
-                </td>
-                <td className={`${styles.td1} ${styles.area_col}`}>
-                  ・関東&ensp;・東北&ensp;・北海道
-                </td>
-                <td className={`${styles.td1} ${styles.job_col}`}>
-                  ・営業&ensp;・IT&ensp;・製造業&ensp;・小売業
-                </td>
-              </tr>
+              {props.id.map((item) => {
+                return (
+                  <tr className={styles.tr1} key={item}>
+                    <td className={`${styles.td1} ${styles.name_col}`}>
+                      {/* 名前 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.birth_col}`}>
+                      {/* 生年月日 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.area_col}`}>
+                      {/* 希望地域 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.job_col}`}>
+                      {/* 希望職種 */}
+                      {item}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -54,23 +68,34 @@ const Title: React.FC<props> = ({ id, isCompany }) => {
               </tr>
             </thead>
             <tbody>
-              <tr className={styles.tr1}>
-                <td className={`${styles.td1} ${styles.name_col1}`}>
-                  富士テクノソリューションズ
-                </td>
-                <td className={`${styles.td1} ${styles.area_col1}`}>東京都</td>
-                <td className={`${styles.td1} ${styles.job_col1}`}>
-                  ・営業&ensp;・IT&ensp;・製造業&ensp;・小売業
-                </td>
-                <td className={`${styles.td1} ${styles.mail_col1}`}>
-                  test@test.com
-                </td>
-                <td className={`${styles.td1} ${styles.link_col1}`}>
-                  <a href="https://www.fjtsc.co.jp/" className={styles.a1}>
-                    https://www.fjtsc.co.jp/
-                  </a>
-                </td>
-              </tr>
+              {props.id.map((item) => {
+                return (
+                  <tr className={styles.tr1}>
+                    <td className={`${styles.td1} ${styles.name_col1}`}>
+                      {/* 企業名 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.area_col1}`}>
+                      {/* 地域 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.job_col1}`}>
+                      {/* 職種 */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.mail_col1}`}>
+                      {/* メールアドレス */}
+                      {item}
+                    </td>
+                    <td className={`${styles.td1} ${styles.link_col1}`}>
+                      <a href="" className={styles.a1}>
+                        {/* リンク */}
+                        {item}
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -79,4 +104,4 @@ const Title: React.FC<props> = ({ id, isCompany }) => {
   );
 };
 
-export default Title;
+export default Table;
