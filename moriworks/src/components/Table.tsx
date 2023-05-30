@@ -4,17 +4,42 @@ import { useRouter } from 'next/router';
 
 interface Tableprops {
   id: number[];
-  isCompany: boolean;
+  searchUser: boolean;
+  isAdmin: boolean;
 }
 
 const Table: React.FC<Tableprops> = (props) => {
+  // データがない時
   if (props.id.length == 0) {
     return null;
   }
 
+  const router = useRouter();
+
+  // 詳細ページに遷移
+  const DetailProfile = (num: number) => {
+    if (props.searchUser) {
+      if (props.isAdmin) {
+        // ユーザプロフィール（管理者側）
+        router.push(`/user_profile_admin/${num}`);
+      } else {
+        // ユーザプロフィール（企業側）
+        router.push(`/user_profile_company/${num}`);
+      }
+    } else {
+      if (props.isAdmin) {
+        // 企業プロフィール（管理者側）
+        router.push(`company_profile_admin/${num}`);
+      } else {
+        // 企業プロフィール（利用者側）
+        router.push(`company_profile_users/${num}`);
+      }
+    }
+  };
+
   return (
     <>
-      {props.isCompany ? (
+      {props.searchUser ? (
         <div className={styles.div1}>
           <table className={styles.table1}>
             <thead className={styles.thead1}>
@@ -31,7 +56,7 @@ const Table: React.FC<Tableprops> = (props) => {
                   <tr className={styles.tr1} key={item}>
                     <td className={`${styles.td1} ${styles.name_col}`}>
                       {/* 名前 */}
-                      {item}
+                      <div onClick={() => DetailProfile(item)}>{item}</div>
                     </td>
                     <td className={`${styles.td1} ${styles.birth_col}`}>
                       {/* 生年月日 */}
@@ -73,7 +98,7 @@ const Table: React.FC<Tableprops> = (props) => {
                   <tr className={styles.tr1}>
                     <td className={`${styles.td1} ${styles.name_col1}`}>
                       {/* 企業名 */}
-                      {item}
+                      <div onClick={() => DetailProfile(item)}>{item}</div>
                     </td>
                     <td className={`${styles.td1} ${styles.area_col1}`}>
                       {/* 地域 */}
@@ -88,7 +113,7 @@ const Table: React.FC<Tableprops> = (props) => {
                       {item}
                     </td>
                     <td className={`${styles.td1} ${styles.link_col1}`}>
-                      <a href="" className={styles.a1}>
+                      <a href="" /* リンク */ className={styles.a1}>
                         {/* リンク */}
                         {item}
                       </a>

@@ -11,7 +11,7 @@ const Index: React.FC<props> = () => {
     <>
       ここはテストページです
       {/*  ここに処理を追加してください*/}
-      <Table id={num} isCompany={false} />
+      <Table id={num} searchUser={false} isAdmin={false} />
     </>
   );
 };
