@@ -2,7 +2,7 @@ import React from 'react';
 // import Layout from "../utility/Layout";
 import HeroBtn from './HeroBtm/HeroBtn';
 import styles from './index.module.scss';
-import Table from '../Table';
+import Table from '../Table/Table';
 
 interface props {}
 const num = [1, 2, 3];
