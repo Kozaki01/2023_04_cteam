@@ -1,0 +1,41 @@
+.HeroBtn_root {
+  width: fit-content;
+  height: fit-content;
+  padding: 40px 72px;
+  border: solid 4px #1E1E1E;
+  border-radius: 16px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 74, 74, 0.71) 0%, rgba(236, 92, 92, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.HeroBtn_title {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  width: fit-content;
+  line-height: 50px;
+  letter-spacing: 0.04rem;
+  color: black;
+}
+
+.HeroBtn_title[data-el="h2_small"]  {
+  font-size: 32px;
+}
+
+.HeroBtn_img {
+  transform: translate3d(0, -24px, 0) scale(1.0);
+  transition: .4s cubic-bezier(0.54, 1.5, 0.45, 1.2);
+}
+
+.HeroBtn_root:hover .HeroBtn_img {
+  transform: translate3d(0, -24px, 0) scale(1.11);
+  transition: .4s cubic-bezier(0.54, 1.5, 0.45, 1.2);
+}
+
+@keyframes easeInOutImage {
+
+}
