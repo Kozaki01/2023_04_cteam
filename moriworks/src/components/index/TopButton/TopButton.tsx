@@ -9,6 +9,8 @@ export interface BtnProps {
   height: number;
   bgcolor: string;
   color: string;
+  border: string;
+  shadow: string;
 }
 
 const TopHeader: React.FC<BtnProps> = ({
@@ -18,6 +20,8 @@ const TopHeader: React.FC<BtnProps> = ({
   height,
   bgcolor,
   color,
+  border,
+  shadow,
 }) => {
   return (
     <>
@@ -28,12 +32,16 @@ const TopHeader: React.FC<BtnProps> = ({
         data-font={font}
         data-wide={wide}
         data-height={height}
+        data-border={border}
+        data-shadow={shadow}
         style={{
           background: bgcolor,
           fontFamily: font,
           width: wide,
           height: height,
           color: color,
+          border: border,
+          boxShadow: shadow,
         }}
       >
         <div
