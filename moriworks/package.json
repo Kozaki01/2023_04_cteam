@@ -14,10 +14,18 @@
     "@types/node": "^20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
-    "next": "13.4.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "^13.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.62.1",
     "typescript": "5.0.4"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
