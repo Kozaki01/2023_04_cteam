@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Btn from '../index/TopButton/TopButton';
 import { useEffect, useState } from 'react';
 // supabase
-import { supabase } from '../utils/supabase';
+// import { supabase } from '../utils/supabase';
 
 type btnItem = {
   title: string;

@@ -1,6 +1,8 @@
 import React from 'react';
 import PageComponent from '../components/index/index';
 import Header from '../components/Header/Header';
+import Signin from '../components/SignIn/Signin';
+
 
 const Index = () => {
   return (
@@ -9,7 +11,7 @@ const Index = () => {
       {/* <PageComponent /> */}
 
       {/* 追加分 */}
-      <>
+      <Signin type={false} />
     </>
   );
 };
