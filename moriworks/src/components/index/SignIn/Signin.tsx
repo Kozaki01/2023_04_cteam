@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import styles from './Signin.module.scss';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Btn from '../index/TopButton/TopButton';
+import Btn from '../TopButton/TopButton';
 import { useEffect, useState } from 'react';
 // supabase
-// import { supabase } from '../utils/supabase';
+import {} from "../../../../client/supabase";
 
 type btnItem = {
   title: string;
@@ -25,8 +25,6 @@ interface props {
   const doLogin =  async () => {
     // supabaseで用意されているログインの関数
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-    if (error) throw new Error(error.message)
-    console.log(data)
   }
 
 const SignIn: React.FC<props> = ({ type }) => {
