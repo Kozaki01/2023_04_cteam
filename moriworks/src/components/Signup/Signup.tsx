@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from 'react';
 import styles from './Signup.module.scss';
 import { useRouter } from 'next/router';
-import Btn from './index/TopButton/TopButton';
-import { createAccount } from './Function/DBAccount';
+import Btn from './../index/TopButton/TopButton';
+import { createAccount } from './..//Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -16,10 +16,10 @@ type btnItem = {
 };
 
 interface props {
-  isUser: boolean;
+  select_user: number;
 }
 
-const Signup: React.FC<props> = ({ isUser }) => {
+const Signup: React.FC<props> = ({ select_user }) => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +53,7 @@ const Signup: React.FC<props> = ({ isUser }) => {
   // signup押下時　アカウント作成呼び出し
   const doAction = () => {
     if (email != '' && password != '' && repassword != '') {
-      if (isUser) {
+      if (select_user) {
         // 利用者の時 user_flg = 1
         createAccount(email, password, repassword, 1);
       } else {
