@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './Signup.module.scss';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Btn from './index/TopButton/TopButton';
+import { createAccount } from './Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -21,6 +21,9 @@ interface props {
 
 const Signup: React.FC<props> = ({ isUser }) => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repassword, setRepassword] = useState('');
   const btns: btnItem[] = [
     {
       title: 'Sign Up',
@@ -36,12 +39,30 @@ const Signup: React.FC<props> = ({ isUser }) => {
   const btn1Props: btnItem = {
     ...btns[0],
   };
-  const RedirectToCreateAccountHandler = () => {
-    router.push('/signin').then((_) => {});
+
+  // 値の変更 メール、パスワード 、確認用パスワード
+  const onChangeEmail = (e: any) => {
+    setEmail(e.target.value);
   };
-  const RedirectToLoginHandler = () => {
-    router.push('/signup_users').then((_) => {});
+  const ChangePass = (e: any) => {
+    setPassword(e.target.value);
   };
+  const ChangeRepass = (e: any) => {
+    setRepassword(e.target.value);
+  };
+  // signup押下時　アカウント作成呼び出し
+  const doAction = () => {
+    if (email != '' && password != '' && repassword != '') {
+      if (isUser) {
+        // 利用者の時 user_flg = 1
+        createAccount(email, password, repassword, 1);
+      } else {
+        // 管理者の時 user_flg = 2
+        createAccount(email, password, repassword, 2);
+      }
+    }
+  };
+
   return (
     <>
       <div className={styles.div1}>
@@ -52,6 +73,8 @@ const Signup: React.FC<props> = ({ isUser }) => {
           id="email"
           placeholder="Email"
           className={styles.input}
+          onChange={onChangeEmail}
+          required
         />
         <input
           type="password"
@@ -59,6 +82,8 @@ const Signup: React.FC<props> = ({ isUser }) => {
           id="password"
           placeholder="Password"
           className={styles.input}
+          onChange={ChangePass}
+          required
         />
         <input
           type="password"
@@ -66,19 +91,14 @@ const Signup: React.FC<props> = ({ isUser }) => {
           id="rePassword"
           placeholder="rePassword"
           className={styles.input}
+          onChange={ChangeRepass}
+          required
         />
         {/* Sign up */}
-        {isUser ? (
-          // user側の処理 遷移先の変更
-          <div className={styles.btn}>
-            <Btn {...btn1Props} />
-          </div>
-        ) : (
-          // company側の処理 遷移先の変更
-          <div className={styles.btn}>
-            <Btn {...btn1Props} />
-          </div>
-        )}
+        <div className={styles.btn} onClick={doAction}>
+          <Btn {...btn1Props} />
+        </div>
+        {/* - or - */}
         <div className={styles.or}>
           <div className={styles.line}></div>
           <p>OR</p>
