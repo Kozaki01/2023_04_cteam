@@ -6,7 +6,10 @@ const Index = () => {
   return (
     <>
       <Header type={false} />
-      <PageComponent />
+      {/* <PageComponent /> */}
+
+      {/* 追加分 */}
+      <>
     </>
   );
 };

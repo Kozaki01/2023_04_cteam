@@ -12,6 +12,8 @@ type btnItem = {
   wide:number;
   height:number;
   color:string;
+  border:string;
+  shadow:string;
 }
 
 interface props {
@@ -31,15 +33,15 @@ const Header: React.FC<props> = ({isEditMenu, cancelHandler, submitHandler}) => 
     //font使用可能 MS Gpthic ,serif,MS PGothic
     //https://fromkato.com/webdev/css/properties/font-family 他に気になるならこのサイトで探す
   
-    {title: texts[0],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black"},//トップ
-    {title: texts[1],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black"},//ログアウト
-    {title: texts[2],   bgcolor: "",font:"MS Gothic",wide:160,height:50,color:"black"},//破棄して終了
-    {title: texts[3],   bgcolor: "",font:"MS Gothic",wide:160,height:50,color:"black"},//保存して終了
-    {title: texts[4],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black"},//戻る
-    {title: texts[5],   bgcolor: "#EA5050",font:"MS Gothic",wide:130,height:50,color:"#FFFFFF"},//削除
-    {title: texts[6],   bgcolor: "#D9EBFF",font:"MS PGothic",wide:130,height:50,color:"#007AFF"},//Go Search
-    {title: texts[7],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black"},//エントリー
-    {title: texts[8],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black"},//スカウト
+    {title: texts[0],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black",border:"",shadow:"1px solid transparent"},//トップ
+    {title: texts[1],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black",border:"",shadow:"1px solid transparent"},//ログアウト
+    {title: texts[2],   bgcolor: "",font:"MS Gothic",wide:160,height:50,color:"black",border:"",shadow:"1px solid transparent"},//破棄して終了
+    {title: texts[3],   bgcolor: "",font:"MS Gothic",wide:160,height:50,color:"black",border:"",shadow:"1px solid transparent"},//保存して終了
+    {title: texts[4],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black",border:"",shadow:"1px solid transparent"},//戻る
+    {title: texts[5],   bgcolor: "#EA5050",font:"MS Gothic",wide:130,height:50,color:"#FFFFFF",border:"",shadow:"1px solid transparent"},//削除
+    {title: texts[6],   bgcolor: "#D9EBFF",font:"MS PGothic",wide:130,height:50,color:"#007AFF",border:"",shadow:"1px solid transparent"},//Go Search
+    {title: texts[7],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black",border:"",shadow:"1px solid transparent"},//エントリー
+    {title: texts[8],   bgcolor: "",font:"MS Gothic",wide:130,height:50,color:"black",border:"",shadow:"1px solid transparent"},//スカウト
 
   ];
 
@@ -152,7 +154,7 @@ const Header: React.FC<props> = ({isEditMenu, cancelHandler, submitHandler}) => 
 
          {/* エントリー */}
 
-         <div>
+        <div>
           {/* 遷移先 */}
           <div onClick={cancelHandler}>
             {/* {}の中をボタンの種類に変更する */}
