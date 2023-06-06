@@ -23,7 +23,7 @@ export const signupAccount = async (
       throw new Error('値が入っていません。');
 
     // メールのvalidation
-    const email_validate = /.+@.+/;
+    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]]+/;
     if (email.match(email_validate) == null)
       throw new Error('メールの形式が一致していません。');
     // メールのUniqueかどうか調べる
@@ -103,7 +103,7 @@ export const loginAccount = async (
   }
 };
 
-//
+// Uniqueなメールアドレスか調べる unique:true
 export const uniqueEmail = async (email: string) => {
   try {
     // メールが一致するデータ取得
@@ -124,3 +124,15 @@ export const uniqueEmail = async (email: string) => {
     return { error };
   }
 };
+
+// 実装内容
+// - [x] signupの見た目
+// - [x] pages/signupの作成
+// - [x] DB処理作成
+
+// 確認内容
+// - [ ] メールのvalidation（英数＠英数）
+// - [ ] パスワードのvalidation（英数８～２４文字）
+// - [ ] メールが一意かどうか
+// - [ ] passとrepassが一致するか
+// - [ ] signupの見た目
