@@ -124,15 +124,3 @@ export const uniqueEmail = async (email: string) => {
     return { error };
   }
 };
-
-// 実装内容
-// - [x] signupの見た目
-// - [x] pages/signupの作成
-// - [x] DB処理作成
-
-// 確認内容
-// - [ ] メールのvalidation（英数＠英数）
-// - [ ] パスワードのvalidation（英数８～２４文字）
-// - [ ] メールが一意かどうか
-// - [ ] passとrepassが一致するか
-// - [ ] signupの見た目
