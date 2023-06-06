@@ -7,7 +7,6 @@ const sigunup = () => {
   var user_flg = 1;
   // if (isUser) user_flg = 1;
   // else if (isCompany) user_flg = 2;
-  // else if (isAdmin) user_flg = 3;
   return (
     <>
       <Header type={false} />

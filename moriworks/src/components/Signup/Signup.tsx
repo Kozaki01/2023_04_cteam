@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import styles from './Signup.module.scss';
 import { useRouter } from 'next/router';
 import Btn from './../index/TopButton/TopButton';
-import { createAccount } from './..//Function/DBAccount';
+import { signupAccount } from './..//Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -53,13 +53,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
   // signup押下時　アカウント作成呼び出し
   const doAction = () => {
     if (email != '' && password != '' && repassword != '') {
-      if (select_user) {
-        // 利用者の時 user_flg = 1
-        createAccount(email, password, repassword, 1);
-      } else {
-        // 管理者の時 user_flg = 2
-        createAccount(email, password, repassword, 2);
-      }
+      signupAccount(email, password, repassword, select_user);
     }
   };
 
