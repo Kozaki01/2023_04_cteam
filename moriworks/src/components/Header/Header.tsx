@@ -9,23 +9,28 @@ interface props {
 
 type btnItem = {
   title: string;
-  bgcolor: string;
-  font: string;
-  wide: number;
-  height: number;
-  color: string;
+  bgcolor:string;
+  font:string;
+  wide:number;
+  height:number;
+  color:string;
+  border:string;
+  shadow:string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
   const router = useRouter();
   const btns: btnItem[] = [
+    //サーバーサイド
     {
       title: 'トップ',
       bgcolor: '',
       font: 'MS Gothic',
       wide: 130,
       height: 70,
-      color: 'black',
+      color: 'red',
+      border:'',
+      shadow:'',
     }, //トップ
     {
       title: 'ログアウト',
@@ -34,6 +39,8 @@ const Header: React.FC<props> = ({ type }) => {
       wide: 170,
       height: 70,
       color: 'black',
+      border:'',
+      shadow:'',
     }, //ログアウト
   ];
   const btn1Props: btnItem = {

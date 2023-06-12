@@ -1,11 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './Signin.module.scss';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Btn from '../TopButton/TopButton';
-import { useEffect, useState } from 'react';
-// supabase
-import {} from "../../../../client/supabase";
+import Btn from '../../index/TopButton/TopButton';
+import { loginAccount } from '../..//Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -19,22 +16,16 @@ type btnItem = {
 };
 
 interface props {
-  type: boolean;
+  select_user: number;
 }
-  // ログインの関数
-  const doLogin =  async () => {
-    // supabaseで用意されているログインの関数
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
-  }
 
-const SignIn: React.FC<props> = ({ type }) => {
+const Signin: React.FC<props> = ({ select_user }) => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
   const btns: btnItem[] = [
     {
-      title: 'Sign In',
+      title: 'Sign in',
       bgcolor: '#0095F6',
       font: 'Roboto',
       wide: 484.51,
@@ -48,10 +39,25 @@ const SignIn: React.FC<props> = ({ type }) => {
     ...btns[0],
   };
 
-  const RedirectToLoginHandler = () => {
-    router.push('/top_users').then((_) => {});
+  // 値の変更 メール、パスワード 、確認用パスワード
+  const onChangeEmail = (e: any) => {
+    setEmail(e.target.value);
+  }
+  const ChangePass = (e: any) => {
+    setPassword(e.target.value);
   };
-  
+
+  // signup押下時　アカウント作成呼び出し
+  const doAction = () => {
+    if (email != '' && password != '') {
+      //loginAccountでエラー
+      loginAccount(email, password,  select_user);
+      console.log(email,password,select_user);
+      
+    }
+
+  };
+
   return (
     <>
       <div className={styles.div1}>
@@ -62,7 +68,8 @@ const SignIn: React.FC<props> = ({ type }) => {
           id="email"
           placeholder="Email"
           className={styles.input}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={onChangeEmail}
+          required
         />
         <input
           type="password"
@@ -70,17 +77,16 @@ const SignIn: React.FC<props> = ({ type }) => {
           id="password"
           placeholder="Password"
           className={styles.input}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={ChangePass}
+          required
         />
-        <div className={styles.btn} onClick={()=>{doLogin();}}>
-            <Btn {...btn1Props} />
+        {/* Sign up */}
+        <div className={styles.btn} onClick={doAction}>
+          <Btn {...btn1Props} />
         </div>
-
-
       </div>
     </>
   );
-
 };
 
-export default SignIn;
+export default Signin;

@@ -12,9 +12,10 @@ export interface BtnProps {
   bgcolor:string;
   color:string;
   border:string;
+  shadow:string;
 }
 
-const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,border}) => {
+const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,border,shadow}) => {
 
   return (
     <>
@@ -26,6 +27,7 @@ const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,bord
         data-wide={wide}
         data-height={height}
         data-border={border}
+        data-shadow={shadow}
         style={{
           background: bgcolor,
           fontFamily: font,
@@ -33,6 +35,7 @@ const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,bord
           height: height,
           color: color,
           border:border,
+          boxShadow:shadow,
         }}
       >
         <div

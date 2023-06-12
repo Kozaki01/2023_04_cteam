@@ -9,9 +9,6 @@ const Index = () => {
     <>
       <Header type={false} />
       {/* <PageComponent /> */}
-
-      {/* 追加分 */}
-      <Signin type={false} />
     </>
   );
 };
