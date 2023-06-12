@@ -6,17 +6,25 @@ import Image from "next/image";
 
 export interface BtnProps {
   title: string;
-  font:string;
-  wide:number;
-  height:number;
-  bgcolor:string;
-  color:string;
-  border:string;
-  shadow:string;
+  font: string;
+  wide: number;
+  height: number;
+  bgcolor: string;
+  color: string;
+  border: string;
+  shadow: string;
 }
 
-const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,border,shadow}) => {
-
+const TopHeader: React.FC<BtnProps> = ({
+  title,
+  font,
+  wide,
+  height,
+  bgcolor,
+  color,
+  border,
+  shadow,
+}) => {
   return (
     <>
 
@@ -37,6 +45,7 @@ const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,bord
           color: color,
           border:border,
           boxShadow:shadow,
+
         }}
       >
         <div
