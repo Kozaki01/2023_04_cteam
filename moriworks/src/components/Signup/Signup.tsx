@@ -100,7 +100,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
         </div>
         <p className={styles.login}>
           Have an account?{' '}
-          <a href="/login" className={styles.a1}>
+          <a href="/signin" className={styles.a1}>
             Log in
           </a>
         </p>

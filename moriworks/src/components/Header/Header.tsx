@@ -28,7 +28,7 @@ const Header: React.FC<props> = ({ type }) => {
       font: 'MS Gothic',
       wide: 130,
       height: 70,
-      color: 'red',
+      color: 'black',
       border:'',
       shadow:'',
     }, //トップ
