@@ -1,5 +1,5 @@
 import React from 'react';
-import PageComponent from './../components/index/index';
+import PageComponent from './../components/Signup/Signup';
 import Header from './../components/Header/Header';
 import Signup from '@/components/Signup/Signup';
 
@@ -10,8 +10,7 @@ const sigunup = () => {
   return (
     <>
       <Header type={false} />
-      <PageComponent />
-      <Signup select_user={user_flg} />
+      <PageComponent select_user={user_flg} />
     </>
   );
 };
