@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from 'react';
-import styles from './Signup.module.scss';
+import styles from './Signin.module.scss';
 import { useRouter } from 'next/router';
-import Btn from './../index/TopButton/TopButton';
-import { signupAccount } from './..//Function/DBAccount';
+import Btn from '../../index/TopButton/TopButton';
+import { loginAccount } from '../..//Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -19,14 +19,13 @@ interface props {
   select_user: number;
 }
 
-const Signup: React.FC<props> = ({ select_user }) => {
+const Signin: React.FC<props> = ({ select_user }) => {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repassword, setRepassword] = useState('');
   const btns: btnItem[] = [
     {
-      title: 'Sign Up',
+      title: 'Sign in',
       bgcolor: '#0095F6',
       font: 'Roboto',
       wide: 484.51,
@@ -43,18 +42,20 @@ const Signup: React.FC<props> = ({ select_user }) => {
   // 値の変更 メール、パスワード 、確認用パスワード
   const onChangeEmail = (e: any) => {
     setEmail(e.target.value);
-  };
+  }
   const ChangePass = (e: any) => {
     setPassword(e.target.value);
   };
-  const ChangeRepass = (e: any) => {
-    setRepassword(e.target.value);
-  };
+
   // signup押下時　アカウント作成呼び出し
   const doAction = () => {
-    if (email != '' && password != '' && repassword != '') {
-      signupAccount(email, password, repassword, select_user);
+    if (email != '' && password != '') {
+      //loginAccountでエラー
+      loginAccount(email, password,  select_user);
+      console.log(email,password,select_user);
+      
     }
+
   };
 
   return (
@@ -79,34 +80,13 @@ const Signup: React.FC<props> = ({ select_user }) => {
           onChange={ChangePass}
           required
         />
-        <input
-          type="password"
-          name="rePassword"
-          id="rePassword"
-          placeholder="rePassword"
-          className={styles.input}
-          onChange={ChangeRepass}
-          required
-        />
         {/* Sign up */}
         <div className={styles.btn} onClick={doAction}>
           <Btn {...btn1Props} />
         </div>
-        {/* - or - */}
-        <div className={styles.or}>
-          <div className={styles.line}></div>
-          <p>OR</p>
-          <div className={styles.line}></div>
-        </div>
-        <p className={styles.login}>
-          Have an account?{' '}
-          <a href="/signin" className={styles.a1}>
-            Log in
-          </a>
-        </p>
       </div>
     </>
   );
 };
 
-export default Signup;
+export default Signin;

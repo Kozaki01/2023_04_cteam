@@ -23,7 +23,7 @@ export const signupAccount = async (
       throw new Error('値が入っていません。');
 
     // メールのvalidation
-    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]]+/;
+    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]+/;
     if (email.match(email_validate) == null)
       throw new Error('メールの形式が一致していません。');
     // メールのUniqueかどうか調べる
@@ -69,6 +69,18 @@ export const loginAccount = async (
   select_user: number
 ) => {
   try {
+    // 値がすべてnullの時
+    if (email == '' && password == '') throw new Error('値が入っていません。');
+
+    //パスワードバリデーションチェック
+    const pass_validate = /^[a-zA-Z0-9]{8,24}$/;
+    if (password.match(pass_validate) == null)
+      throw new Error('パスワードの形式が一致していません');
+    //メールのバリデーション✔
+    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]+/;
+    if (email.match(email_validate) == null)
+      throw new Error('メールの形式が一致していません。');
+
     // email,select_userの一致したデータのsalt, hashed_password取得
     const { data, error } = await supabase
       .from('account')
@@ -77,6 +89,7 @@ export const loginAccount = async (
       .eq('email', email);
 
     // パスワードの一致
+
     if (data != null) {
       const crypto = require('crypto');
       const salt = data[0].salt;
