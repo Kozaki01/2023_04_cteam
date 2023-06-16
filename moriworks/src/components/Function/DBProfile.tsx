@@ -10,7 +10,7 @@ export const checkProfileExistence = async (account_id: number) => {
     if (error) {
       throw error;
     }
-    
+
     console.log(data)
     return data.length > 0;
   } catch (error) {
