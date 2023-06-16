@@ -56,6 +56,8 @@ const Signup: React.FC<props> = ({ id }) => {
         <div className={styles.div2}>
           <Title text={'My Profile'} />
           <p>名前：</p>
+          <Btn {...btns[0]} />
+          <Btn {...btns[1]} />
         </div>
       </div>
     </>
