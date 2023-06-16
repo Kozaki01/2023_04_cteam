@@ -1,5 +1,5 @@
 import React from "react";
-import { createAccount } from "../components/Function/DBAccount";
+import { createAccount } from "./Function/DBAccount";
 
 interface Props {
   // propsの型を指定する必要があります

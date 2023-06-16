@@ -4,14 +4,13 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 
 interface Props {
-  type: boolean;
   buttonName: string;
   imageSrc: string;
   redirectPath: string;
   background?: string;
 }
 
-const HeroBtn: React.FC<Props> = ({ type, buttonName, imageSrc, redirectPath, background }) => {
+const HeroBtn: React.FC<Props> = ({ buttonName, imageSrc, redirectPath, background }) => {
   const router = useRouter();
 
   const redirectToHandler = () => {
