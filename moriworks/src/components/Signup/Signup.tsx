@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import styles from './Signup.module.scss';
 import { useRouter } from 'next/router';
 import Btn from './../index/TopButton/TopButton';
-import { signupAccount, fetch_id } from './..//Function/DBAccount';
+import { signupAccount, fetch_id } from '../Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -71,6 +71,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
         console.error(result.error);
       }
     }
+    router.push("/top_users").then(_ => {});
   };
 
   return (

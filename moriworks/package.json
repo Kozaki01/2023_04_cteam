@@ -24,7 +24,7 @@
   "main": "next.config.js",
   "devDependencies": {
     "@types/next-auth": "^3.15.0",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
     "@types/styled-components": "^5.1.26",
     "supabase": "^1.64.8"
   },

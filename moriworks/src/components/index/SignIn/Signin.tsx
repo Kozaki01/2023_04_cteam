@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import styles from './Signin.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../../index/TopButton/TopButton';
-import { loginAccount } from '../..//Function/DBAccount';
+import { loginAccount } from '../../Function/DBAccount';
 
 type btnItem = {
   title: string;
