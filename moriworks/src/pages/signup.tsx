@@ -1,5 +1,5 @@
 import React from 'react';
-import PageComponent from './../components/Signup/Signup';
+import PageComponent from './../components/index/Signup/Signup';
 import Header from './../components/Header/Header';
 import Signup from '@/components/Signup/Signup';
 

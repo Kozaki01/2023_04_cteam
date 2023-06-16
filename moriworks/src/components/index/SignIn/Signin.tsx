@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from 'react';
 import styles from './Signin.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../../index/TopButton/TopButton';
-import { loginAccount } from '../../Function/DBAccount';
+import {fetch_id, loginAccount} from '../../Function/DBAccount';
 
 type btnItem = {
   title: string;
@@ -48,12 +48,23 @@ const Signin: React.FC<props> = ({ select_user }) => {
   };
 
   // signup押下時　アカウント作成呼び出し
-  const doAction = () => {
+  const doAction = async () => {
     if (email != '' && password != '') {
       //loginAccountでエラー
       loginAccount(email, password,  select_user);
       console.log(email,password,select_user);
-      
+      const accountIdResult = await fetch_id(email);
+      if (!accountIdResult.error) {
+        const account_id = accountIdResult.account_id;
+        // sessionにaccount_idを登録する処理
+        // ここでは仮にlocalStorageに登録していますが、必要に応じて適切な処理を使用してください。
+        localStorage.removeItem('account_id');
+        localStorage.setItem('account_id', account_id);
+      } else {
+        // fetch_idエラー処理
+        console.error(accountIdResult.error);
+      }
+      router.push("/top_users").then(_ => {});
     }
 
   };
