@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import styles from './Signup.module.scss';
 import { useRouter } from 'next/router';
-import Btn from './../index/TopButton/TopButton';
+import Btn from '../index/TopButton/TopButton';
 import { signupAccount } from './..//Function/DBAccount';
 
 type btnItem = {
@@ -34,7 +34,11 @@ const Signup: React.FC<props> = ({ select_user }) => {
       color: 'white',
       border: '1px solid transparent',
       shadow: '',
+
+      
+      
     }, //トップ
+    
   ];
   const btn1Props: btnItem = {
     ...btns[0],
@@ -56,6 +60,8 @@ const Signup: React.FC<props> = ({ select_user }) => {
       signupAccount(email, password, repassword, select_user);
     }
   };
+
+  
 
   return (
     <>
@@ -89,7 +95,14 @@ const Signup: React.FC<props> = ({ select_user }) => {
           required
         />
         {/* Sign up */}
-        <div className={styles.btn} onClick={doAction}>
+        <div className={styles.btn} onClick={doAction}       
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "red";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "";
+        }}> 
+          
           <Btn {...btn1Props} />
         </div>
         {/* - or - */}

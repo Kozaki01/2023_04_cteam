@@ -11,7 +11,11 @@ export interface BtnProps {
   color: string;
   border: string;
   shadow: string;
+  hovercolor:string
+  hover:string;
 }
+
+
 
 const TopHeader: React.FC<BtnProps> = ({
   title,
@@ -22,6 +26,8 @@ const TopHeader: React.FC<BtnProps> = ({
   color,
   border,
   shadow,
+  hovercolor,
+  hover
 }) => {
   return (
     <>
@@ -34,7 +40,10 @@ const TopHeader: React.FC<BtnProps> = ({
         data-height={height}
         data-border={border}
         data-shadow={shadow}
+        data-hover={hover}
+        hover-color={hovercolor}
         style={{
+          //backgroundを付けるとホバーがつかない
           background: bgcolor,
           fontFamily: font,
           width: wide,
@@ -43,9 +52,20 @@ const TopHeader: React.FC<BtnProps> = ({
           border: border,
           boxShadow: shadow,
         }}
+        
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'black';
+          console.log(e.currentTarget);
+          
+        }}
+
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = bgcolor;
+        }}
+        
       >
         <div
-          data-bgcolor={bgcolor}
+          // data-bgcolor={bgcolor}
           className={styles.Btn_title}
           data-el={'h2_small'}
           data-en={title === 'Submit'}

@@ -124,3 +124,25 @@ export const uniqueEmail = async (email: string) => {
     return { error };
   }
 };
+
+//データベースを表示
+
+export const displayAccount = async (
+  email: string,
+  password: string,
+  select_user: number
+) => {
+  try {
+    // email,select_userの一致したデータのsalt, hashed_password取得
+    const { data, error } = await supabase.from('account').select('*');
+
+    if (error) {
+      throw error;
+    }
+    return { error: null };
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
+    return { error };
+  }
+};

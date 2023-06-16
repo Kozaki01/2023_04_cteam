@@ -11,7 +11,7 @@ const Btn: React.FC<Props> = () => {
   };
 
   return (
-    <button onClick={create}>
+    <button onClick={create} >
       ここをクリックするとデータベースが追加されます
     </button>
   );

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './Header.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../index/TopButton/TopButton';
@@ -14,6 +14,9 @@ type btnItem = {
   wide: number;
   height: number;
   color: string;
+  border: string;
+  shadow: string;
+  hover:string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
@@ -21,26 +24,46 @@ const Header: React.FC<props> = ({ type }) => {
   const btns: btnItem[] = [
     {
       title: 'トップ',
-      bgcolor: '',
+      bgcolor: 'white',
       font: 'MS Gothic',
       wide: 130,
       height: 70,
       color: 'black',
+      border: 'solid',
+      shadow: '10px 5px 5px black;',
+      hover:''
     }, //トップ
     {
       title: 'ログアウト',
-      bgcolor: '',
+      bgcolor: 'white',
       font: 'MS Gothic',
       wide: 170,
       height: 70,
       color: 'black',
+      border: 'solid',
+      shadow: '10px 5px 5px black',
+      hover:''
+
     }, //ログアウト
   ];
+  const [hovered,setHovered]=useState(false);
+
+  const handleMouseEnter=()=>{
+    setHovered(true);
+  };
+  
+  const handleMouseLeave=()=>{
+    setHovered(false);
+  };
+  
+
   const btn1Props: btnItem = {
     ...btns[0],
+
   };
   const btn2Props: btnItem = {
     ...btns[1],
+
   };
 
   return (
@@ -63,7 +86,7 @@ const Header: React.FC<props> = ({ type }) => {
           <div className={styles.top}>
             <Btn {...btn1Props} />
           </div>
-          <div className={styles.logout}>
+          <div className={styles.logout} >
             <Btn {...btn2Props} />
           </div>
         </div>

@@ -1,9 +1,7 @@
 import React from 'react';
 import PageComponent from './../components/index/index';
-import Hover from '../components/hover/hover';
-
 import Header from './../components/Header/Header';
-import Signup from '@/components/Signup/Signup';
+import Pagination from '@/components/Pagination/Pagination';
 
 const sigunup = () => {
   var user_flg = 1;
@@ -13,7 +11,7 @@ const sigunup = () => {
     <>
       <Header type={false} />
       <PageComponent />
-      <Signup select_user={user_flg} />
+      <Pagination  />
     </>
   );
 };
