@@ -1,11 +1,49 @@
 .div1 {
   width: 100%;
-  margin: 0;
+  margin-top: 5px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  padding-left: 170px;
+  padding-right: 170px;
   background: #5ed8f2;
 }
 .div2 {
-  margin-top: 30px;
   margin-left: 173px;
   margin-right: 173px;
+  padding-left: 95px;
+  padding-top: 120px;
+  padding-right: 95px;
+  padding-bottom: 55px;
   background: #ffffff;
+  border: solid 4px #000000;
+  border-radius: 25px;
+}
+
+.table1 {
+  margin-top: 65px;
+  border-collapse: separate;
+  border-spacing: 0px 95px;
+}
+.td1 {
+  width: 300px;
+  font-family: 'Kosugi Maru';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  text-align: center;
+}
+.colon {
+  font-size: 32px;
+}
+
+.flex_btn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.space {
+  width: 150px;
 }
