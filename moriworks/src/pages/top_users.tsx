@@ -1,19 +1,29 @@
 import React from 'react';
 import PageComponent from '../components/top/top';
 import Header from '../components/Header/Header';
-// import checkProfileExistence from '../components/Function/DBProfile';
-// import selectAccount from '../components/Function/DBAccount';
 import Btn from "../components/Btn";
+import { useRouter } from 'next/router';
 
 const Index = () => {
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const  checkLocalStorage =async () => {
+      const accountId = localStorage.getItem('account_id');
+      if (!accountId || accountId.trim() === '') {
+        await router.push("/");
+      }
+    };
+
+    checkLocalStorage();
+  }, []);
 
   return (
     <>
       <Header type={false} />
       <PageComponent />
-      {/*<PageComponent type={checkProfileExistence(selectAccount())}/>*/}
-  </>
-);
+    </>
+  );
 };
 
 export default Index;
