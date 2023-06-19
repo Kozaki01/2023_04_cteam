@@ -1,0 +1,55 @@
+.div1 {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 606px;
+  height: 592px;
+  background: #ffffff;
+  border: 1.8px solid #dbdbdb;
+  border-radius: 1.8px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.h1 {
+  color: rgba(0, 0, 0, 1);
+  font-size: 85.84609985351562px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  font-family: 'Righteous', sans-serif;
+
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+.input {
+  box-sizing: border-box;
+  padding: 2px 16px 2px 16px;
+
+  position: relative;
+  width: 485.46px;
+  height: 68.83px;
+
+  /* 箱の設定 */
+  background: #fafafa;
+  border: 1.8px solid #dbdbdb;
+  border-radius: 5.4px;
+
+  /* place holder 設定 */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21.7371px;
+  line-height: 65px;
+
+  margin-top: 15px;
+}
+.input:focus {
+  border: 2px solid #3eb2ff;
+  background-color: #f6fdff;
+  outline: 0;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}

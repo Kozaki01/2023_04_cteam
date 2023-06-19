@@ -1,10 +1,9 @@
 import React from 'react';
 // import Layout from "../utility/Layout";
-import HeroBtn from "./HeroBtm/HeroBtn";
-import styles from "./index.module.scss"
+import HeroBtn from './HeroBtm/HeroBtn';
+import styles from './index.module.scss';
 
-interface props{
-  type:void;
+interface props {
 }
 
 const Index: React.FC<props> = () => {

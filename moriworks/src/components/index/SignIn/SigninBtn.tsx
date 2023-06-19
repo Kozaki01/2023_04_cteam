@@ -1,33 +1,24 @@
 import React, {ReactNode} from 'react';
-import styles from "./TopButton.module.scss";
+import styles from "../TopButton/TopButton.module.scss";
 import Image from "next/image";
 
 
 
 export interface BtnProps {
   title: string;
-  font: string;
-  wide: number;
-  height: number;
-  bgcolor: string;
-  color: string;
-  border: string;
-  shadow: string;
+  font:string;
+  wide:number;
+  height:number;
+  bgcolor:string;
+  color:string;
+  border:string;
+  shadow:string;
 }
 
-const TopHeader: React.FC<BtnProps> = ({
-  title,
-  font,
-  wide,
-  height,
-  bgcolor,
-  color,
-  border,
-  shadow,
-}) => {
+const TopHeader:React.FC<BtnProps> = ({title,font,wide,height,bgcolor,color,border,shadow}) => {
+
   return (
     <>
-
       <div
         data-cy={'Header-Btn-root'}
         className={styles.Btn_root}
@@ -45,7 +36,6 @@ const TopHeader: React.FC<BtnProps> = ({
           color: color,
           border:border,
           boxShadow:shadow,
-
         }}
       >
         <div
