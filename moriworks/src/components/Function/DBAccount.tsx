@@ -54,6 +54,8 @@ export const signupAccount = async (
     });
     if (error) {
       throw error;
+    }else{
+      return {error:false}
     }
     return { error: null };
   } catch (error) {
@@ -63,6 +65,25 @@ export const signupAccount = async (
   }
 };
 
+export const fetch_id = async (email: string) => {
+  try {
+    const { data, error } = await supabase
+      .from('account')
+      .select('account_id')
+      .eq('email', email);
+
+    if (data && data.length > 0) {
+      const account_id = data[0].account_id;
+      return { account_id, error: null };
+    } else {
+      throw new Error('アカウントが見つかりません。');
+    }
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
+    return { error };
+  }
+};
 export const loginAccount = async (
   email: string,
   password: string,
@@ -137,3 +158,4 @@ export const uniqueEmail = async (email: string) => {
     return { error };
   }
 };
+
