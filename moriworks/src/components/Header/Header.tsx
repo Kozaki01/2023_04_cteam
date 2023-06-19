@@ -39,6 +39,12 @@ const Header: React.FC<props> = ({ type }) => {
   const moveTop = async () => {
     router.push('/').then((_) => {});
   };
+  // ログアウトを押したとき
+  const moveLogout = async () => {
+    // ログイン状態の破棄
+    localStorage.removeItem('account_id');
+    router.push('/').then((_) => {});
+  };
 
   return (
     <>
@@ -61,7 +67,7 @@ const Header: React.FC<props> = ({ type }) => {
           <div className={styles.div_4} onClick={moveTop}>
             moriworks
           </div>
-          <div className={styles.logout}>
+          <div className={styles.logout} onClick={moveLogout}>
             <Btn {...btn1Props} />
           </div>
         </div>
