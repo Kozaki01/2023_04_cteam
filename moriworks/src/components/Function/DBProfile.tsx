@@ -24,10 +24,7 @@ export const checkProfileExistence = async (account_id: number) => {
 export const getProfile = async (account_id: number) => {
   try {
     // IDが一致するデータを取得
-    const { data, error } = await supabase
-      .from('profile')
-      .select('profile_id')
-      .eq('account_id', account_id);
+    const { data, error } = await supabase.from('profile').select().eq('account_id', account_id);
 
     if (error) {
       throw error;

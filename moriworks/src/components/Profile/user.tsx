@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './user.module.scss';
 import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from './../index/TopButton/TopButton';
+import { getProfile } from '../Function/DBProfile';
 
 type btnItem = {
   title: string;
