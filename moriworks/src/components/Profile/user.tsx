@@ -3,7 +3,7 @@ import styles from './user.module.scss';
 import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from './../index/TopButton/TopButton';
-import { getProfile } from '../Function/DBProfile';
+import { getProfile, checkProfileExistence } from '../Function/DBProfile';
 
 type btnItem = {
   title: string;
@@ -22,6 +22,35 @@ interface props {
 
 const user: React.FC<props> = ({ account_id }) => {
   const router = useRouter();
+  const [UserProfile, setProfile] = useState(Object);
+  // リダイレクトの処理
+  React.useEffect(() => {
+    const checkProfile = async () => {
+      const account_id = localStorage.getItem('account_id');
+      console.log('account_id: ' + account_id);
+      if (account_id) {
+        // プロフィールが作成されているか調べる
+        const profileExists = await checkProfileExistence(Number(account_id));
+        console.log('profileExists： ' + profileExists);
+        // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
+        // if (!profileExists) {
+        //   router.push('/profile_create_users');
+        // }
+      }
+    };
+    const Profile = async () => {
+      const data = getProfile(account_id);
+      // useStateでプロフィールを入れる
+      setProfile(data);
+    };
+    checkProfile();
+    Profile();
+  }, []);
+
+  // data取得
+  console.log('UserProfile');
+  console.log(UserProfile);
+
   const btns: btnItem[] = [
     {
       title: '戻る',
