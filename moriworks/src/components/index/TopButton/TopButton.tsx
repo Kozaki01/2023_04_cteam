@@ -27,7 +27,6 @@ const TopHeader: React.FC<BtnProps> = ({
 }) => {
   return (
     <>
-
       <div
         data-cy={'Header-Btn-root'}
         className={styles.Btn_root}
