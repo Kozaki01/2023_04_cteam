@@ -12,7 +12,7 @@ type btnItem = {
   height: number;
   color: string;
   border: string;
-  shadow: string;
+  hovercolor:string;
 };
 
 interface props {
@@ -33,10 +33,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      shadow: '',
-
-      
-      
+      hovercolor:"red"
     }, //トップ
     
   ];
@@ -95,13 +92,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
           required
         />
         {/* Sign up */}
-        <div className={styles.btn} onClick={doAction}       
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "red";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "";
-        }}> 
+        <div className={styles.btn} onClick={doAction} > 
           
           <Btn {...btn1Props} />
         </div>

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode ,useState} from 'react';
 import styles from './TopButton.module.scss';
 import Image from 'next/image';
 
@@ -29,6 +29,14 @@ const TopHeader: React.FC<BtnProps> = ({
   hovercolor,
   hover
 }) => {
+  const [isHovered,setIsHoverd]=useState(false);
+
+  const handleMouseEnter=()=>{
+    setIsHoverd(true);
+  }
+  const handleMouseLeave=()=>{
+    setIsHoverd(false);
+  }
   return (
     <>
       <div
@@ -42,9 +50,11 @@ const TopHeader: React.FC<BtnProps> = ({
         data-shadow={shadow}
         data-hover={hover}
         hover-color={hovercolor}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         style={{
           //backgroundを付けるとホバーがつかない
-          background: bgcolor,
+          background: isHovered?hovercolor : bgcolor,
           fontFamily: font,
           width: wide,
           height: height,
@@ -53,15 +63,7 @@ const TopHeader: React.FC<BtnProps> = ({
           boxShadow: shadow,
         }}
         
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'black';
-          console.log(e.currentTarget);
-          
-        }}
-
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = bgcolor;
-        }}
+  
         
       >
         <div

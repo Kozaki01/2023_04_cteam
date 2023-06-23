@@ -16,7 +16,7 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
-  hover:string;
+  hovercolor:string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
@@ -31,7 +31,7 @@ const Header: React.FC<props> = ({ type }) => {
       color: 'black',
       border: 'solid',
       shadow: '10px 5px 5px black;',
-      hover:''
+      hovercolor:'red'
     }, //トップ
     {
       title: 'ログアウト',
@@ -42,20 +42,11 @@ const Header: React.FC<props> = ({ type }) => {
       color: 'black',
       border: 'solid',
       shadow: '10px 5px 5px black',
-      hover:''
+      hovercolor:'blue'
 
     }, //ログアウト
   ];
-  const [hovered,setHovered]=useState(false);
 
-  const handleMouseEnter=()=>{
-    setHovered(true);
-  };
-  
-  const handleMouseLeave=()=>{
-    setHovered(false);
-  };
-  
 
   const btn1Props: btnItem = {
     ...btns[0],
