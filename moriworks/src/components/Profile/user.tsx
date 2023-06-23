@@ -17,10 +17,10 @@ type btnItem = {
 };
 
 interface props {
-  id: number;
+  account_id: number;
 }
 
-const user: React.FC<props> = ({ id }) => {
+const user: React.FC<props> = ({ account_id }) => {
   const router = useRouter();
   const btns: btnItem[] = [
     {
