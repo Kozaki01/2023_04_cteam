@@ -43,18 +43,15 @@ const Header: React.FC<props> = ({ type }) => {
       border: 'solid',
       shadow: '10px 5px 5px black',
       hovercolor:'blue'
-
     }, //ログアウト
   ];
 
-
   const btn1Props: btnItem = {
     ...btns[0],
-
   };
+
   const btn2Props: btnItem = {
     ...btns[1],
-
   };
 
   return (
@@ -85,5 +82,4 @@ const Header: React.FC<props> = ({ type }) => {
     </>
   );
 };
-
 export default Header;

@@ -15,8 +15,6 @@ export interface BtnProps {
   hover:string;
 }
 
-
-
 const TopHeader: React.FC<BtnProps> = ({
   title,
   font,
@@ -62,8 +60,6 @@ const TopHeader: React.FC<BtnProps> = ({
           border: border,
           boxShadow: shadow,
         }}
-        
-  
         
       >
         <div

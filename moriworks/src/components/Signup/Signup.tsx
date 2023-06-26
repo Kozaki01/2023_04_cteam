@@ -35,7 +35,6 @@ const Signup: React.FC<props> = ({ select_user }) => {
       border: '1px solid transparent',
       hovercolor:"red"
     }, //トップ
-    
   ];
   const btn1Props: btnItem = {
     ...btns[0],
@@ -57,8 +56,6 @@ const Signup: React.FC<props> = ({ select_user }) => {
       signupAccount(email, password, repassword, select_user);
     }
   };
-
-  
 
   return (
     <>
@@ -93,7 +90,6 @@ const Signup: React.FC<props> = ({ select_user }) => {
         />
         {/* Sign up */}
         <div className={styles.btn} onClick={doAction} > 
-          
           <Btn {...btn1Props} />
         </div>
         {/* - or - */}
@@ -112,5 +108,4 @@ const Signup: React.FC<props> = ({ select_user }) => {
     </>
   );
 };
-
 export default Signup;

@@ -6,7 +6,6 @@ const Index = () => {
   return (
     <>
       <Header type={false} />
-
       <PageComponent />
     </>
   );
