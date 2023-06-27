@@ -24,7 +24,7 @@ const Header: React.FC<props> = ({ type }) => {
     {
       title: 'ログアウト',
       bgcolor: '',
-      font: 'MS Gothic',
+      font: 'Kosugi Maru',
       wide: 170,
       height: 70,
       color: 'black',
