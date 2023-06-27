@@ -103,15 +103,18 @@ export const desired_job_type = async (
   profile_id: number
 ) => {
   try {
-    const { data, error } = await supabase.from('desired_area').insert({
-      area_id: job_type_id,
-      profile_id: profile_id,
-    });
-    if (error) {
-      throw error;
-    } else {
-      return { error: false };
+    // 希望業種にデータを複数行追加
+    for (const element of job_type_id) {
+      const { data, error } = await supabase.from('desired_area').insert({
+        area_id: job_type_id,
+        profile_id: profile_id,
+      });
+      // エラー時
+      if (error) {
+        throw error;
+      }
     }
+    return { error: false };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
