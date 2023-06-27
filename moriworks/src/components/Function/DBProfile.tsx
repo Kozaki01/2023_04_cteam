@@ -79,15 +79,17 @@ export const createDesiredArea = async (
 ) => {
   try {
     // 希望地域にデータを登録
-    const { error } = await supabase.from('desired_area').insert({
-      area_id: area_id,
-      profile_id: profile_id,
-    });
-    if (error) {
-      throw error;
-    } else {
-      return { error: false };
+    for (const element of area_id) {
+      const { error } = await supabase.from('desired_area').insert({
+        area_id: element,
+        profile_id: profile_id,
+      });
+      // エラー時
+      if (error) {
+        throw error;
+      }
     }
+    return { error: false };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
