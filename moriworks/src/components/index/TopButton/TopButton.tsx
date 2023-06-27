@@ -60,7 +60,6 @@ const TopHeader: React.FC<BtnProps> = ({
           border: border,
           boxShadow: shadow,
         }}
-        
       >
         <div
           // data-bgcolor={bgcolor}

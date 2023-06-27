@@ -67,7 +67,6 @@ const Signin: React.FC<props> = ({ select_user }) => {
       }
       router.push("/top_users").then(_ => {});
     }
-
   };
 
   return (
