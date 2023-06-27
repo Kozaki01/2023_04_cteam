@@ -74,7 +74,7 @@ export const fetch_id = async (account_id: number) => {
 
 // 希望地域の登録
 export const createDesiredArea = async (
-  area_id: number,
+  area_id: Array<number>,
   profile_id: number
 ) => {
   try {
@@ -97,7 +97,7 @@ export const createDesiredArea = async (
 
 // 希望業種の登録
 export const desired_job_type = async (
-  job_type_id: number,
+  job_type_id: Array<number>,
   profile_id: number
 ) => {
   try {
