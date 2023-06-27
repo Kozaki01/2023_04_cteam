@@ -12,7 +12,7 @@ type btnItem = {
   height: number;
   color: string;
   border: string;
-  shadow: string;
+  hovercolor:string;
 };
 
 interface props {
@@ -33,7 +33,7 @@ const Signup: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      shadow: '',
+      hovercolor:"#256f9f"
     }, //トップ
   ];
   const btn1Props: btnItem = {

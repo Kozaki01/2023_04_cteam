@@ -13,7 +13,7 @@ type btnItem = {
   height: number;
   color: string;
   border: string;
-  shadow: string;
+  hovercolor:string;
 };
 
 interface props {
@@ -33,7 +33,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      shadow: '',
+      hovercolor:"#256f9f"
     }, //トップ
   ];
   const btn1Props: btnItem = {
@@ -67,7 +67,6 @@ const Signin: React.FC<props> = ({ select_user }) => {
       }
       router.push("/top_users").then(_ => {});
     }
-
   };
 
   return (
@@ -99,7 +98,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
           required
         />
         {/* Sign up */}
-        <div className={styles.btn} onClick={doAction}>
+        <div className={styles.btn} onClick={doAction} > 
           <Btn {...btn1Props} />
         </div>
       </div>
