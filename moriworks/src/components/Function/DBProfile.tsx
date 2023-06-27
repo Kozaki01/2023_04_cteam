@@ -1,6 +1,6 @@
 import { supabase } from '../../../client/supabase';
 
-// チェック機能
+// プロフィールがあるかどうかの確認
 export const checkProfileExistence = async (account_id: number) => {
   try {
     const { data, error } = await supabase
