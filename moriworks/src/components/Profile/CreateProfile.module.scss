@@ -35,6 +35,29 @@
   color: #000000;
   text-align: center;
 }
+.td2{
+  width: 367px;
+  font-family: 'Kosugi Maru';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  text-align: center;
+}
+.td3{
+  width: 345px;
+  font-family: 'Kosugi Maru';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  text-align: center;
+}
+
 .colon {
   font-size: 32px;
 }
@@ -46,4 +69,32 @@
 }
 .space {
   width: 150px;
+}
+
+//テキストcss
+.text{
+  height: 4rem;
+  width: 60%;
+  font-size:  40px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding-left: 30px;
+}
+
+.textwidth{
+  padding-left: 115px;
+}
+
+.textarea{
+  resize: auto;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 100px;
+  min-height: 100px;
+  width:400px;
+  height:300px;
+}
+
+.textareasize{
+  padding-left: 115px;
 }

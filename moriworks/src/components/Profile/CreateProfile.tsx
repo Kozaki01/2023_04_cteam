@@ -55,27 +55,25 @@ const user: React.FC<props> = ({ account_id }) => {
       <div className={styles.div1}>
         <div className={styles.div2}>
           <Title text={'My Profile'} />
-          <table>
-            <tbody>
-              <tr><td><p className={styles.td_name1}>名前</p></td></tr>
-              <tr><td><input type="text" ></input></td></tr>
+            <div>
+              <p className={styles.td1}>名前</p>
+              <div className={styles.textwidth}><input type="text" placeholder='山田太郎' className={styles.text}></input></div>
 
-              <tr><td><div className={styles.td_name1}>生年月日</div></td></tr>
+              <div className={styles.td2}>生年月日</div>
               {/* <tr><td>生年月日のコンポーネント</td></tr> */}
 
-              <tr><td><div className={styles.td_name1}>住所</div></td></tr>
-              <tr><td><input type="text" ></input></td></tr>
+              <div className={styles.td1}>住所</div>
+              <div className={styles.textwidth}><input type="text" placeholder='岩手県盛岡市中央通り3丁目' className={styles.text}></input></div>
 
-              <tr><td><div className={styles.td_name1}>希望業種</div></td></tr>
-              {/* <tr><td>希望業種のコンポーネント</td></tr> */}
+              <div className={styles.td2}>希望業種</div>
+              {/* 希望業種のコンポーネント */}
 
-              <tr><td><div className={styles.td_name1}>希望地域</div></td></tr>
-              {/* <tr><td>希望地域のコンポーネント</td></tr> */}
+              <div className={styles.td2}>希望地域</div>
+              {/* 希望地域のコンポーネント */}
 
-              <tr><td><div className={styles.td_name1}>自己PR</div></td></tr>
-              <tr><td><textarea></textarea></td></tr> 
-            </tbody>
-          </table>
+              <div className={styles.td3}>自己PR</div>
+              <div className={styles.textareasize}><textarea placeholder='例:私の強みは〇〇です。' className={styles.textarea}></textarea></div>
+            </div>
           <div className={styles.flex_btn}>
             <Btn {...btn1Props} />
             <span className={styles.space}></span>
