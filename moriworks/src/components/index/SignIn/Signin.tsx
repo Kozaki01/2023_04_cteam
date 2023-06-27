@@ -3,6 +3,7 @@ import styles from './Signin.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../../index/TopButton/TopButton';
 import {fetch_id, loginAccount} from '../../Function/DBAccount';
+import stylesup from "../Signup/Signup.module.scss";
 
 type btnItem = {
   title: string;
@@ -25,9 +26,9 @@ const Signin: React.FC<props> = ({ select_user }) => {
   const [password, setPassword] = useState('');
   const btns: btnItem[] = [
     {
-      title: 'Sign in',
+      title: 'サインイン',
       bgcolor: '#0095F6',
-      font: 'Roboto',
+      font: 'Kosugi Maru',
       wide: 484.51,
       height: 58.3,
       color: 'white',
@@ -73,21 +74,27 @@ const Signin: React.FC<props> = ({ select_user }) => {
     <>
       <div className={styles.div1}>
         <h1 className={styles.h1}>Moriworks</h1>
+        <p className={stylesup.label}>
+          メールアドレスを入力してください
+        </p>
         <input
-          type="email"
+        type="email"
           name="email"
           id="email"
           placeholder="Email"
-          className={styles.input}
+          className={stylesup.input}
           onChange={onChangeEmail}
           required
         />
+        <p className={stylesup.label}>
+          パスワードを入力してください
+        </p>
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Password"
-          className={styles.input}
+          className={stylesup.input}
           onChange={ChangePass}
           required
         />
