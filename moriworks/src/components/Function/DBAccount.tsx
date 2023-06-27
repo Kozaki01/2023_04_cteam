@@ -1,4 +1,3 @@
-import { isSet } from 'util/types';
 import { supabase } from '../../../client/supabase';
 
 export const signupAccount = async (
@@ -12,20 +11,15 @@ export const signupAccount = async (
     const crypto = require('crypto');
     const salt = crypto.randomBytes(4).toString('hex');
     const saltedPassword = password + salt;
-    const hashedPassword = crypto
-      .createHash('sha256')
-      .update(saltedPassword)
-      .digest('hex');
+    const hashedPassword = crypto.createHash('sha256').update(saltedPassword).digest('hex');
 
     /* アカウント作成のエラー処理 */
     // 値がすべてnullの時
-    if (email == '' && password == '' && repassword == '')
-      throw new Error('値が入っていません。');
+    if (email == '' && password == '' && repassword == '') throw new Error('値が入っていません。');
 
     // メールのvalidation
-    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]]+/;
-    if (email.match(email_validate) == null)
-      throw new Error('メールの形式が一致していません。');
+    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]+/;
+    if (email.match(email_validate) == null) throw new Error('メールの形式が一致していません。');
     // メールのUniqueかどうか調べる
     var mail_flg = false;
     await uniqueEmail(email).then((result) => {
@@ -41,8 +35,7 @@ export const signupAccount = async (
       throw new Error('パスワードの形式が一致していません');
 
     // パスワードと確認用が一致しているか
-    if (password != repassword)
-      throw new Error('パスワードが一致していません。');
+    if (password != repassword) throw new Error('パスワードが一致していません。');
 
     // アカウント作成部分
     const { error } = await supabase.from('account').insert({
@@ -54,6 +47,8 @@ export const signupAccount = async (
     });
     if (error) {
       throw error;
+    } else {
+      return { error: false };
     }
     return { error: null };
   } catch (error) {
@@ -63,12 +58,35 @@ export const signupAccount = async (
   }
 };
 
-export const loginAccount = async (
-  email: string,
-  password: string,
-  select_user: number
-) => {
+export const fetch_id = async (email: string) => {
   try {
+    const { data, error } = await supabase.from('account').select('account_id').eq('email', email);
+
+    if (data && data.length > 0) {
+      const account_id = data[0].account_id;
+      return { account_id, error: null };
+    } else {
+      throw new Error('アカウントが見つかりません。');
+    }
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
+    return { error };
+  }
+};
+export const loginAccount = async (email: string, password: string, select_user: number) => {
+  try {
+    // 値がすべてnullの時
+    if (email == '' && password == '') throw new Error('値が入っていません。');
+
+    //パスワードバリデーションチェック
+    const pass_validate = /^[a-zA-Z0-9]{8,24}$/;
+    if (password.match(pass_validate) == null)
+      throw new Error('パスワードの形式が一致していません');
+    //メールのバリデーション✔
+    const email_validate = /[a-zA-Z0-9]+@[a-zA-Z0-9]+/;
+    if (email.match(email_validate) == null) throw new Error('メールの形式が一致していません。');
+
     // email,select_userの一致したデータのsalt, hashed_password取得
     const { data, error } = await supabase
       .from('account')
@@ -81,10 +99,7 @@ export const loginAccount = async (
       const crypto = require('crypto');
       const salt = data[0].salt;
       const saltedPassword = password + salt;
-      const hashedPassword = crypto
-        .createHash('sha256')
-        .update(saltedPassword)
-        .digest('hex');
+      const hashedPassword = crypto.createHash('sha256').update(saltedPassword).digest('hex');
       // ログインの処理
       if (data[0].hashed_password == hashedPassword) {
         console.log('isLogin!');
@@ -107,10 +122,7 @@ export const loginAccount = async (
 export const uniqueEmail = async (email: string) => {
   try {
     // メールが一致するデータ取得
-    const { data, error } = await supabase
-      .from('account')
-      .select()
-      .eq('email', email);
+    const { data, error } = await supabase.from('account').select().eq('email', email);
 
     if (data?.length == 0) {
       // dataがない時　true

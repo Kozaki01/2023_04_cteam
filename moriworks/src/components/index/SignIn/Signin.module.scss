@@ -1,12 +1,14 @@
 .div1 {
   box-sizing: border-box;
   margin: 0 auto;
-  width: 634px;
-  height: 739.06px;
+  width: 606px;
+  height: 592px;
   background: #ffffff;
   border: 1.8px solid #dbdbdb;
   border-radius: 1.8px;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .h1 {
   color: rgba(0, 0, 0, 1);
@@ -50,31 +52,4 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
-}
-
-
-/* -- OR --　の部分 */
-.or {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 40px;
-}
-.line {
-  background-color: #dbdbdb;
-  width: 224px;
-  height: 2px;
-}
-
-/* ログインの部分 */
-.login {
-  margin-top: 50px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 25.3796px;
-  line-height: 33px;
-}
-.a1 {
-  color: #0095f6;
 }

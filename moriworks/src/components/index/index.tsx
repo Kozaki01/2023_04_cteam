@@ -2,17 +2,19 @@ import React from 'react';
 // import Layout from "../utility/Layout";
 import HeroBtn from './HeroBtm/HeroBtn';
 import styles from './index.module.scss';
+import Header from '../Header/Header';
 
-interface props {
-  type: void;
-}
+interface props {}
 
 const Index: React.FC<props> = () => {
   return (
-    <div className={styles.Index_root}>
-      {/* <HeroBtn type={true} />
-      <HeroBtn type={false} /> */}
-    </div>
+    <>
+      <Header type={true} />
+      <div className={styles.Index_root}>
+        <HeroBtn type={true} />
+        <HeroBtn type={false} />
+      </div>
+    </>
   );
 };
 

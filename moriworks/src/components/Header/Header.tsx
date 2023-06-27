@@ -31,7 +31,7 @@ const Header: React.FC<props> = ({ type }) => {
       color: 'black',
       border: 'solid',
       shadow: '10px 5px 5px black;',
-      hovercolor:'red'
+      hovercolor:'#E5E5E5'
     }, //トップ
     {
       title: 'ログアウト',
@@ -52,6 +52,16 @@ const Header: React.FC<props> = ({ type }) => {
 
   const btn2Props: btnItem = {
     ...btns[1],
+  }
+  // Topに遷移
+  const moveTop = async () => {
+    router.push('/').then((_) => {});
+  };
+  // ログアウトを押したとき
+  const moveLogout = async () => {
+    // ログイン状態の破棄
+    localStorage.removeItem('account_id');
+    router.push('/').then((_) => {});
   };
 
   return (
@@ -62,7 +72,9 @@ const Header: React.FC<props> = ({ type }) => {
           <div className={styles.div_2}>
             <div className={styles.div_3}>
               <div className={styles.column}>
-                <div className={styles.div_4}>moriworks</div>
+                <div className={styles.div_4} onClick={moveTop}>
+                  moriworks
+                </div>
               </div>
             </div>
           </div>
@@ -70,12 +82,11 @@ const Header: React.FC<props> = ({ type }) => {
       ) : (
         // ログイン済み表示
         <div className={styles.header_div2}>
-          <div className={styles.div_4}>moriworks</div>
-          <div className={styles.top}>
-            <Btn {...btn1Props} />
+          <div className={styles.div_4} onClick={moveTop}>
+            moriworks
           </div>
-          <div className={styles.logout} >
-            <Btn {...btn2Props} />
+          <div className={styles.logout} onClick={moveLogout}>
+            <Btn {...btn1Props} />
           </div>
         </div>
       )}
