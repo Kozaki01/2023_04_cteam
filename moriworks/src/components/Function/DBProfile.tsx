@@ -7,7 +7,7 @@ export const checkProfileExistence = async (account_id: number) => {
       .from('profile')
       .select('profile_id')
       .eq('account_id', account_id);
-
+    // エラーが発生したときcatchに移動
     if (error) {
       throw error;
     }
@@ -105,8 +105,8 @@ export const desired_job_type = async (
   try {
     // 希望業種にデータを複数行追加
     for (const element of job_type_id) {
-      const { data, error } = await supabase.from('desired_area').insert({
-        area_id: job_type_id,
+      const { error } = await supabase.from('desired_area').insert({
+        job_type_id: element,
         profile_id: profile_id,
       });
       // エラー時
