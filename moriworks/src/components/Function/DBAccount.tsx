@@ -57,7 +57,6 @@ export const signupAccount = async (
     } else {
       return { error: false };
     }
-    return { error: null };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
@@ -96,7 +95,7 @@ export const loginAccount = async (
     // 値がすべてnullの時
     if (email == '' && password == '') throw new Error('値が入っていません。');
 
-    //パスワードバリデーションチェック
+    //パスワードバリデーション✓
     const pass_validate = /^[a-zA-Z0-9]{8,24}$/;
     if (password.match(pass_validate) == null)
       throw new Error('パスワードの形式が一致していません');
@@ -156,26 +155,6 @@ export const uniqueEmail = async (email: string) => {
       return false;
     }
   } catch (error) {
-    console.error(error);
-    return { error };
-  }
-};
-
-// データベースを表示
-export const displayAccount = async (select_user: number) => {
-  try {
-    // email,select_userの一致したデータのsalt, hashed_password取得
-    const { data, error } = await supabase
-      .from('account')
-      .select('*')
-      .eq('select_user', select_user);
-
-    if (error) {
-      throw error;
-    }
-    return data;
-  } catch (error) {
-    // エラーハンドリング
     console.error(error);
     return { error };
   }
