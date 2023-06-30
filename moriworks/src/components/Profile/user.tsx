@@ -14,6 +14,8 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
+  hovercolor: string;
+  hover: string;
 };
 
 interface props {
@@ -61,6 +63,8 @@ const user: React.FC<props> = ({ account_id }) => {
       color: 'black',
       border: '',
       shadow: '',
+      hover: '',
+      hovercolor: '#E5E5E5',
     }, //戻る
     {
       title: '編集する',
@@ -71,6 +75,8 @@ const user: React.FC<props> = ({ account_id }) => {
       color: 'black',
       border: '',
       shadow: '',
+      hover: '',
+      hovercolor: '#E5E5E5',
     }, //編集する
   ];
   const btn1Props: btnItem = {
@@ -93,7 +99,9 @@ const user: React.FC<props> = ({ account_id }) => {
                 <td className={styles.td_name2}></td>
               </tr>
               <tr className={styles.tr1}>
-                <td className={`${styles.td_birth1} ${styles.td1}`}>生年月日</td>
+                <td className={`${styles.td_birth1} ${styles.td1}`}>
+                  生年月日
+                </td>
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_birth2}></td>
               </tr>
