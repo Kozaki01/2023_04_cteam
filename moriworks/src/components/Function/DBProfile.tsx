@@ -72,31 +72,6 @@ export const fetch_id = async (account_id: number) => {
   }
 };
 
-// 希望地域の登録
-export const createDesiredArea = async (
-  area_id: Array<number>,
-  profile_id: number
-) => {
-  try {
-    // 希望地域にデータを登録
-    for (const element of area_id) {
-      const { error } = await supabase.from('desired_area').insert({
-        area_id: element,
-        profile_id: profile_id,
-      });
-      // エラー時
-      if (error) {
-        throw error;
-      }
-    }
-    return { error: false };
-  } catch (error) {
-    // エラーハンドリング
-    console.error(error);
-    return { error };
-  }
-};
-
 // 希望業種の登録
 export const desired_job_type = async (
   job_type_id: Array<number>,
