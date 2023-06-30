@@ -49,6 +49,15 @@ const user: React.FC<props> = ({ account_id }) => {
     Profile();
   }, []);
 
+  // ユーザTopに遷移
+  const moveTop = async () => {
+    router.push('/top_users').then((_) => {});
+  };
+  // ユーザ編集画面に遷移
+  const moveEdit = async () => {
+    router.push('/edit_users').then((_) => {});
+  };
+
   // data取得
   console.log('UserProfile');
   console.log(UserProfile);
@@ -128,9 +137,13 @@ const user: React.FC<props> = ({ account_id }) => {
             </tbody>
           </table>
           <div className={styles.flex_btn}>
-            <Btn {...btn1Props} />
+            <div onClick={moveTop}>
+              <Btn {...btn1Props} />
+            </div>
             <span className={styles.space}></span>
-            <Btn {...btn2props} />
+            <div onClick={moveEdit}>
+              <Btn {...btn2props} />
+            </div>
           </div>
         </div>
       </div>
