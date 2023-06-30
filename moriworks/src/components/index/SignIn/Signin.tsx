@@ -101,6 +101,19 @@ const Signin: React.FC<props> = ({ select_user }) => {
         <div className={styles.btn} onClick={doAction} > 
           <Btn {...btn1Props} />
         </div>
+
+      {/* - or - */}
+      <div className={styles.or}>
+          <div className={styles.line}></div>
+          <span className={styles.or}>または</span>
+          <div className={styles.line}></div>
+        </div>
+        <p className={styles.login}>
+          アカウントをお持ちですか?{' '}
+          <a href="/signin" className={styles.a1}>
+            ログイン
+          </a>
+        </p>
       </div>
     </>
   );
