@@ -5,9 +5,11 @@
   padding-bottom: 100px;
   padding-left: 170px;
   padding-right: 170px;
-  background: #5ed8f2;
+  background: #FE7373;
 }
 .div2 {
+  height: 1724px;
+  width: 718;
   margin-left: 173px;
   margin-right: 173px;
   padding-left: 95px;
@@ -17,7 +19,10 @@
   background: #ffffff;
   border: solid 4px #000000;
   border-radius: 25px;
+  text-align: center;
+
 }
+
 
 .table1 {
   margin-top: 65px;
@@ -25,33 +30,32 @@
   border-spacing: 0px 95px;
 }
 .td1 {
-  width: 300px;
+  width: 39%;
   font-family: 'Kosugi Maru';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 32px;
   letter-spacing: 0.04em;
   color: #000000;
   text-align: center;
 }
 .td2{
-  width: 367px;
+  width: 42.3%;
   font-family: 'Kosugi Maru';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 32px;
   letter-spacing: 0.04em;
   color: #000000;
-  text-align: center;
 }
 .td3{
-  width: 345px;
+  width: 41.2%;
   font-family: 'Kosugi Maru';
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 32px;
   letter-spacing: 0.04em;
   color: #000000;
@@ -73,28 +77,36 @@
 
 //テキストcss
 .text{
-  height: 4rem;
-  width: 60%;
-  font-size:  40px;
+  height: 3rem;
+  width: 70%;
+  font-size:  16px;
   border: 2px solid black;
   border-radius: 1rem;
   padding-left: 30px;
 }
-
-.textwidth{
-  padding-left: 115px;
+//テキストの横幅調整
+.text_width{
+  padding-left:3%;
+  width:100%;
 }
-
-.textarea{
+//テキストエリアの幅
+.text_area{
   resize: auto;
-  max-width: 500px;
-  max-height: 500px;
   min-width: 100px;
   min-height: 100px;
-  width:400px;
-  height:300px;
+  height: 10rem ;
+  width: 50rem;
 }
-
-.textareasize{
-  padding-left: 115px;
+//テキストエリアの横幅調整
+.textarea_width{
+  padding-left: 18%;
+  width: 50%;
+}
+//生年月日の横幅調整
+.date_width{
+  padding-right: 55.7%;
+}
+//上余白
+.padding_top{
+  padding-top: 2%;
 }
