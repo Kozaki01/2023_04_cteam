@@ -45,6 +45,7 @@
 
 }
 
+
 .HeroBtn_img {
     transform: translate3d(0, -24px, 0) scale(1.0);
     transition: .4s cubic-bezier(0.54, 1.5, 0.45, 1.2);
@@ -55,8 +56,6 @@
     display: flex;
     position:  relative;
 }
-
-
 
 @keyframes easeInOutImage {
 

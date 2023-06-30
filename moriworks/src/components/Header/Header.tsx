@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styles from './Header.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../index/TopButton/TopButton';
@@ -16,25 +16,43 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
+  hovercolor:string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
   const router = useRouter();
   const btns: btnItem[] = [
     {
-      title: 'ログアウト',
-      bgcolor: '',
+      title: 'トップ',
+      bgcolor: 'white',
       font: 'MS Gothic',
+      wide: 130,
+      height: 70,
+      color: 'black',
+      border: 'solid',
+      shadow: '10px 5px 5px black;',
+      hovercolor:'#E5E5E5'
+    }, //トップ
+    {
+      title: 'ログアウト',
+      font: 'Kosugi Maru',
+      bgcolor: 'white',
       wide: 170,
       height: 70,
       color: 'black',
-      border: '',
-      shadow: '',
+      border: 'solid',
+      shadow: '10px 5px 5px black',
+      hovercolor:'blue'
     }, //ログアウト
   ];
+
   const btn1Props: btnItem = {
     ...btns[0],
   };
+
+  const btn2Props: btnItem = {
+    ...btns[1],
+  }
   // Topに遷移
   const moveTop = async () => {
     router.push('/').then((_) => {});
@@ -75,5 +93,4 @@ const Header: React.FC<props> = ({ type }) => {
     </>
   );
 };
-
 export default Header;
