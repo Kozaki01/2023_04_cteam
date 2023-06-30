@@ -1,14 +1,18 @@
+
+
+// 大枠の作成
 .div1 {
   box-sizing: border-box;
   margin: 0 auto;
   width: 634px;
-  height: 739.06px;
+  height: fit-content;
   background: #ffffff;
   border: 1.8px solid #dbdbdb;
   border-radius: 1.8px;
   text-align: center;
-  margin-top: 38px;
+  margin-top: 25px;
 }
+
 .h1 {
   color: rgba(0, 0, 0, 1);
   font-size: 85.84609985351562px;
@@ -16,12 +20,12 @@
   text-align: center;
   font-family: 'Righteous', sans-serif;
 
-  margin-top: 30px;
-  margin-bottom: 35px;
 }
 .input {
   box-sizing: border-box;
   padding: 2px 16px 2px 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   position: relative;
   width: 485.46px;
@@ -53,12 +57,13 @@
   margin-top: 50px;
 }
 
+
 /* -- OR --　の部分 */
 .or {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .line {
   background-color: #dbdbdb;
@@ -68,13 +73,27 @@
 
 /* ログインの部分 */
 .login {
-  margin-top: 50px;
-  font-family: 'Roboto';
+  font-family: 'Kosugi Maru';
   font-style: normal;
-  font-weight: 400;
-  font-size: 25.3796px;
+  font-weight: normal;
+  font-size: 20px;
   line-height: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .a1 {
   color: #0095f6;
+}
+
+// ラベルのフォントサイズ
+.label {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(50, 50, 50, 0.99);
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.or{
+  font-family: "Kosugi Maru",sans-serif;
+  line-height: unset;
 }

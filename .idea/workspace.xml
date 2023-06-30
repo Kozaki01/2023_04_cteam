@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/SignIn/Signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/SignIn/Signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/signin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/signup.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2RS10JvhpO0zAqcxvx690vobAxE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dounomaetoshiki/Documents/GitHub/2023_04_cteam&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dounomaetoshiki/Documents/GitHub/2023_04_cteam/moriworks/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="localhost:3000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript デバッグ.localhost:3000" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="デフォルトタスク">
+      <changelist id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="" />
+      <created>1687228443749</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687228443749</updated>
+      <workItem from="1687228444819" duration="2687000" />
+      <workItem from="1687435831040" duration="1079000" />
+      <workItem from="1687480972256" duration="5128000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

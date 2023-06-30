@@ -21,7 +21,7 @@ const HeroBtn:React.FC<props> = ({type}) => {
     <>
       {type ? (
         <div className={styles.HeroBtn_root} onClick={RedirectToCreateAccountHandler}>
-          <h2 className={styles.HeroBtn_title} data-el={"h2_small"}>Create Account</h2>
+          <h2 className={styles.HeroBtn_title}>アカウント作成</h2>
           <Image
             src={"/Charco Hi.png"} alt={""} className={styles.HeroBtn_img}
             width={280} height={430}
@@ -29,7 +29,7 @@ const HeroBtn:React.FC<props> = ({type}) => {
         </div>
       ) : (
         <div className={styles.HeroBtn_root} onClick={RedirectToLoginHandler}>
-          <h2 className={styles.HeroBtn_title}>Login</h2>
+          <h2 className={styles.HeroBtn_title}>ログイン</h2>
           <Image
             src={"/Charco High Five.png"} alt={""} className={styles.HeroBtn_img}
             width={280} height={430}
