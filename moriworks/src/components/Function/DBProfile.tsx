@@ -1,6 +1,6 @@
 import { supabase } from '../../../client/supabase';
 
-// プロフィールがあるかどうかの確認
+// プロフィールが存在しているかどうか
 export const checkProfileExistence = async (account_id: number) => {
   try {
     const { data, error } = await supabase
@@ -11,8 +11,6 @@ export const checkProfileExistence = async (account_id: number) => {
     if (error) {
       throw error;
     }
-
-    console.log(data);
     return data.length > 0;
   } catch (error) {
     console.error('Error checking profile existence:', error);
