@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 interface Tableprops {
   id: number[];
   searchUser: boolean;
-  isAdmin: boolean;
+  select_user: number;
 }
 
 const Table: React.FC<Tableprops> = (props) => {
@@ -19,7 +19,7 @@ const Table: React.FC<Tableprops> = (props) => {
   // 詳細ページに遷移
   const DetailProfile = (num: number) => {
     if (props.searchUser) {
-      if (props.isAdmin) {
+      if (props.select_user == 3) {
         // ユーザプロフィール（管理者側）
         router.push(`/user_profile_admin/${num}`);
       } else {
@@ -27,7 +27,7 @@ const Table: React.FC<Tableprops> = (props) => {
         router.push(`/user_profile_company/${num}`);
       }
     } else {
-      if (props.isAdmin) {
+      if (props.select_user == 3) {
         // 企業プロフィール（管理者側）
         router.push(`company_profile_admin/${num}`);
       } else {
