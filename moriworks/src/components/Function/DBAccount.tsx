@@ -50,7 +50,6 @@ export const signupAccount = async (
     } else {
       return { error: false };
     }
-    return { error: null };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
