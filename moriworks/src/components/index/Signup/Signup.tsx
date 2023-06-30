@@ -12,7 +12,7 @@ type btnItem = {
   height: number;
   color: string;
   border: string;
-  shadow: string;
+  hovercolor:string;
 };
 
 interface props {
@@ -26,14 +26,14 @@ const Signup: React.FC<props> = ({ select_user }) => {
   const [repassword, setRepassword] = useState('');
   const btns: btnItem[] = [
     {
-      title: 'Sign Up',
+      title: 'サインアップ',
       bgcolor: '#0095F6',
-      font: 'Roboto',
+      font: 'Kosugi Maru',
       wide: 484.51,
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      shadow: '',
+      hovercolor:"#256f9f"
     }, //トップ
   ];
   const btn1Props: btnItem = {
@@ -79,8 +79,17 @@ const Signup: React.FC<props> = ({ select_user }) => {
     <>
       <div className={styles.div1}>
         <h1 className={styles.h1}>Moriworks</h1>
+        <p className={styles.label}>
+          メールアドレスを入力してください
+        </p>
         <input type="email" name="email" id="email" placeholder="Email" className={styles.input} onChange={onChangeEmail} required />
+        <p className={styles.label}>
+          英数字を含めた8字以上のパスワードを入力してください
+        </p>
         <input type="password" name="password" id="password" placeholder="Password" className={styles.input} onChange={ChangePass} required />
+        <p className={styles.label}>
+          確認のため、同じパスワードを入力してください
+        </p>
         <input type="password" name="rePassword" id="rePassword" placeholder="rePassword" className={styles.input} onChange={ChangeRepass} required />
         {/* Sign up */}
         <div className={styles.btn} onClick={doAction}>
@@ -89,13 +98,13 @@ const Signup: React.FC<props> = ({ select_user }) => {
         {/* - or - */}
         <div className={styles.or}>
           <div className={styles.line}></div>
-          <p>OR</p>
+          <span className={styles.or}>または</span>
           <div className={styles.line}></div>
         </div>
         <p className={styles.login}>
-          Have an account?{' '}
+          アカウントをお持ちですか?{' '}
           <a href="/signin" className={styles.a1}>
-            Log in
+            ログイン
           </a>
         </p>
       </div>

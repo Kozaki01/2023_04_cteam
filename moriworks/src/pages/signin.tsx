@@ -7,7 +7,7 @@ const sigunin = () => {
 
   return (
     <>
-      <Header type={false} />
+      <Header type={true} />
       <PageComponent select_user={user_flg} />
     </>
   );

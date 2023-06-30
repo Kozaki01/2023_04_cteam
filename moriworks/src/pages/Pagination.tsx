@@ -1,6 +1,7 @@
 import React from 'react';
-import PageComponent from './../components/index/Signup/Signup';
+import PageComponent from './../components/index/index';
 import Header from './../components/Header/Header';
+import Pagination from '@/components/Pagination/Pagination';
 
 const sigunup = () => {
   var user_flg = 1;
@@ -8,8 +9,9 @@ const sigunup = () => {
   // else if (isCompany) user_flg = 2;
   return (
     <>
-      <Header type={true} />
-      <PageComponent select_user={user_flg} />
+      <Header type={false} />
+      <PageComponent />
+      <Pagination  />
     </>
   );
 };
