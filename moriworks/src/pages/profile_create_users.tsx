@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <>
       <Header type={false} />
-      <PageComponent />
+      <PageComponent account_id={1}/>
     </>
   );
 };

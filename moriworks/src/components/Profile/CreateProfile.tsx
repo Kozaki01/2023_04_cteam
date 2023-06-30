@@ -6,13 +6,15 @@ import Btn from './../index/TopButton/TopButton';
 
 type btnItem = {
   title: string;
-  bgcolor: string;
   font: string;
   wide: number;
   height: number;
+  bgcolor: string;
   color: string;
   border: string;
   shadow: string;
+  hovercolor:string
+  hover:string;
 };
 
 interface props {
@@ -31,6 +33,8 @@ const user: React.FC<props> = ({ account_id }) => {
       color: 'black',
       border: '',
       shadow: '',
+      hovercolor:'E5E5E5',
+      hover:'',
     }, //戻る
     {
       title: '編集する',
@@ -41,6 +45,8 @@ const user: React.FC<props> = ({ account_id }) => {
       color: 'black',
       border: '',
       shadow: '',
+      hovercolor:'E5E5E5',
+      hover:'',
     }, //編集する
   ];
   const btn1Props: btnItem = {
