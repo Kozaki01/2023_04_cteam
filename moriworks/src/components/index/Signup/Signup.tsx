@@ -6,13 +6,15 @@ import { signupAccount, fetch_id } from '../../Function/DBAccount';
 
 type btnItem = {
   title: string;
-  bgcolor: string;
   font: string;
   wide: number;
   height: number;
+  bgcolor: string;
   color: string;
   border: string;
-  hovercolor:string;
+  shadow: string;
+  hovercolor:string
+  hover:string;
 };
 
 interface props {
@@ -33,6 +35,8 @@ const Signup: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
+      shadow:'',
+      hover:'',
       hovercolor:"#256f9f"
     }, //トップ
   ];

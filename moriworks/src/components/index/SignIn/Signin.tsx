@@ -7,13 +7,15 @@ import stylesup from "../Signup/Signup.module.scss";
 
 type btnItem = {
   title: string;
-  bgcolor: string;
   font: string;
   wide: number;
   height: number;
+  bgcolor: string;
   color: string;
   border: string;
-  hovercolor:string;
+  shadow: string;
+  hovercolor:string
+  hover:string;
 };
 
 interface props {
@@ -33,7 +35,10 @@ const Signin: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
+      shadow: '',
+      hover:'',
       hovercolor:"#256f9f"
+
     }, //トップ
   ];
   const btn1Props: btnItem = {
@@ -97,10 +102,23 @@ const Signin: React.FC<props> = ({ select_user }) => {
           onChange={ChangePass}
           required
         />
-        {/* Sign up */}
+        {/* Sign in */}
         <div className={styles.btn} onClick={doAction} > 
           <Btn {...btn1Props} />
         </div>
+
+      {/* - or - */}
+      <div className={styles.or}>
+          <div className={styles.line}></div>
+          <span className={styles.or}>または</span>
+          <div className={styles.line}></div>
+        </div>
+        <p className={styles.login}>
+          アカウントをお持ちではないですか?{' '}
+          <a href="/signup" className={styles.a1}>
+            アカウント登録
+          </a>
+        </p>
       </div>
     </>
   );
