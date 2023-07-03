@@ -3,6 +3,7 @@ import styles from './CreateProfile.module.scss';
 import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from './../index/TopButton/TopButton';
+import MultiSelect from './MultiSelect';
 
 type btnItem = {
   title: string;
@@ -21,7 +22,7 @@ interface props {
   account_id: number;
 }
 
-const user: React.FC<props> = ({ account_id }) => {
+const CreateProfile: React.FC<props> = ({ account_id }) => {
   const router = useRouter();
   const btns: btnItem[] = [
     {
@@ -95,6 +96,7 @@ const user: React.FC<props> = ({ account_id }) => {
             <div className={`${styles.td2} ${styles.padding_top}`}>
               希望地域
             </div>
+            <MultiSelect />
             {/* 希望地域のコンポーネント */}
 
             <div className={`${styles.td3} ${styles.padding_top}`}>自己PR</div>
@@ -116,4 +118,4 @@ const user: React.FC<props> = ({ account_id }) => {
   );
 };
 
-export default user;
+export default CreateProfile;
