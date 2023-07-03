@@ -5,7 +5,7 @@
   padding-bottom: 100px;
   padding-left: 170px;
   padding-right: 170px;
-  background: #FE7373;
+  background: #fe7373;
 }
 .div2 {
   height: 1724px;
@@ -20,9 +20,7 @@
   border: solid 4px #000000;
   border-radius: 25px;
   text-align: center;
-
 }
-
 
 .table1 {
   margin-top: 65px;
@@ -40,7 +38,7 @@
   color: #000000;
   text-align: center;
 }
-.td2{
+.td2 {
   width: 42.3%;
   font-family: 'Kosugi Maru';
   font-style: normal;
@@ -50,7 +48,7 @@
   letter-spacing: 0.04em;
   color: #000000;
 }
-.td3{
+.td3 {
   width: 41.2%;
   font-family: 'Kosugi Maru';
   font-style: normal;
@@ -76,37 +74,37 @@
 }
 
 //テキストのcss
-.text{
+.text {
   height: 3rem;
   width: 70%;
-  font-size:  16px;
+  font-size: 16px;
   border: 2px solid black;
   border-radius: 1rem;
   padding-left: 30px;
 }
 //テキストの横幅調整
-.text_width{
-  padding-left:3%;
-  width:100%;
+.text_width {
+  padding-left: 3%;
+  width: 100%;
 }
 //テキストエリアの幅
-.text_area{
+.text_area {
   resize: auto;
   min-width: 100px;
   min-height: 100px;
-  height: 10rem ;
+  height: 10rem;
   width: 50rem;
 }
 //テキストエリアの横幅調整
-.textarea_width{
+.textarea_width {
   padding-left: 18%;
   width: 50%;
 }
 //生年月日の横幅調整
-.date_width{
+.date_width {
   padding-right: 55.7%;
 }
 //上余白の調整
-.padding_top{
+.padding_top {
   padding-top: 2%;
 }
