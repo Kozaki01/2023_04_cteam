@@ -102,7 +102,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
           onChange={ChangePass}
           required
         />
-        {/* Sign up */}
+        {/* Sign in */}
         <div className={styles.btn} onClick={doAction} > 
           <Btn {...btn1Props} />
         </div>
