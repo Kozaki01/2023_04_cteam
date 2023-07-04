@@ -90,14 +90,15 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
 
             <div className={`${styles.td2} ${styles.padding_top}`}>
               希望業種
+              {/* 希望業種のコンポーネント */}
+              <MultiSelect isArea={false} />
             </div>
-            {/* 希望業種のコンポーネント */}
 
             <div className={`${styles.td2} ${styles.padding_top}`}>
               希望地域
+              {/* 希望地域のコンポーネント */}
+              <MultiSelect isArea={true} />
             </div>
-            <MultiSelect />
-            {/* 希望地域のコンポーネント */}
 
             <div className={`${styles.td3} ${styles.padding_top}`}>自己PR</div>
             <div className={styles.textarea_size}>
