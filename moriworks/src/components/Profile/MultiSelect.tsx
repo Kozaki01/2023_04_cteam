@@ -1,37 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 import Select from 'react-select';
+import styles from "./MultiSelect.module.scss";
 
-interface props {}
+interface props {
+  isArea: boolean
+}
 
-const MultiSelect: React.FC<props> = ({}) => {
+const MultiSelect: React.FC<props> = ({isArea}) => {
   const [warna, setWarna] = useState([]);
   const [ukuran, setUkuran] = useState([]);
-  const optionsWarna = [
-    { value: 'biru', label: 'Biru' },
-    { value: 'kuning', label: 'Kuning' },
-    { value: 'hijau', label: 'Hijau' },
-    { value: 'cokelat', label: 'Cokelat' },
-    { value: 'merah', label: 'Merah' },
-    { value: 'biru1', label: 'Biru1' },
-    { value: 'kuning1', label: 'Kuning1' },
-    { value: 'hijau1', label: 'Hijau1' },
-    { value: 'cokelat1', label: 'Cokelat1' },
-    { value: 'merah1', label: 'Merah1' },
-    { value: 'biru2', label: 'Biru2' },
-    { value: 'kuning2', label: 'Kuning2' },
-    { value: 'hijau2', label: 'Hijau2' },
-    { value: 'cokelat2', label: 'Cokelat2' },
-    { value: 'merah2', label: 'Merah2' },
-  ];
-
-  const optionsUkuran = [
-    { value: 'S', label: 'S' },
-    { value: 'M', label: 'M' },
-    { value: 'L', label: 'L' },
-    { value: 'XL', label: 'XL' },
-    { value: 'XXL', label: 'XXL' },
-  ];
+  const options = [{ value: 'biru', label: 'Biru' }];
+  if (isArea) {
+    // 地域一覧を取得してoptionに追加する
+    
+  }
+  
 
   const handleWarnaChange = async (selected: any, selectaction: any) => {
     const { action } = selectaction;
@@ -56,22 +40,12 @@ const MultiSelect: React.FC<props> = ({}) => {
         instanceId="selectWarna"
         isMulti
         name="colors"
-        className="basic-multi-select"
+        className={styles.select}
         classNamePrefix="select"
-        options={optionsWarna}
+        options={options}
         onChange={handleWarnaChange}
         placeholder="希望の地域を選択してください。"
       />
-      {/* <Select
-        id="selectUkuran"
-        instanceId="selectUkuran"
-        isMulti
-        name="colors"
-        className="basic-multi-select"
-        classNamePrefix="select"
-        options={optionsUkuran}
-        onChange={handleUkuranChange}
-      /> */}
     </div>
   );
 };
