@@ -5,9 +5,9 @@ export const getJobType = async () => {
   try {
     // 業種取得
     const { data, error } = await supabase.from('job_type').select();
-    
+
     if (error) {
-      throw error
+      throw error;
     }
     if (data && data.length > 0) {
       // console.log(data);
@@ -17,6 +17,6 @@ export const getJobType = async () => {
     }
   } catch (error) {
     console.error(error);
-    return {error};
+    return { error };
   }
-}
+};
