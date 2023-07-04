@@ -12,6 +12,8 @@ type btnItem = {
   height: number;
   color: string;
   border: string;
+  shadow:string;
+  hover:string;
   hovercolor:string;
 };
 
@@ -26,14 +28,16 @@ const Signup: React.FC<props> = ({ select_user }) => {
   const [repassword, setRepassword] = useState('');
   const btns: btnItem[] = [
     {
-      title: 'サインアップ',
+      title: 'サインイン',
       bgcolor: '#0095F6',
       font: 'Kosugi Maru',
       wide: 484.51,
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      hovercolor:"#256f9f"
+      hovercolor:"#256f9f",
+      shadow:'',
+      hover:'',
     }, //トップ
   ];
   const btn1Props: btnItem = {
