@@ -38,28 +38,15 @@
   color: #000000;
   text-align: center;
 }
-.td2 {
-  width: 42.3%;
-  font-family: 'Kosugi Maru';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 32px;
-  letter-spacing: 0.04em;
-  color: #000000;
-}
-.td3 {
-  width: 41.2%;
-  font-family: 'Kosugi Maru';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 32px;
-  letter-spacing: 0.04em;
-  color: #000000;
-  text-align: center;
+
+.td_birth2 {
+  padding-right: 12rem;
 }
 
+.td_area2,
+.td_job2 {
+  padding-left: 6rem;
+}
 .colon {
   font-size: 32px;
 }
@@ -73,14 +60,50 @@
   width: 150px;
 }
 
+// 日付
+.date {
+  position: relative;
+  display: inline-block;
+  width: 25rem;
+  min-width: 200px;
+  height: 36px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+.date:focus-within {
+  border: 2px solid #2684ff;
+  outline: 0;
+}
+.input_birth {
+  position: relative;
+  padding: 0 10px;
+  width: 25rem;
+  min-width: 200px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+.input_birth:focus {
+  border: 0;
+  outline: none;
+}
+
 //テキストのcss
 .text {
   height: 3rem;
   width: 70%;
   font-size: 16px;
-  border: 2px solid black;
+  border: 1px solid #999;
   border-radius: 1rem;
   padding-left: 30px;
+}
+.text:focus {
+  border: 2px solid #2684ff;
+  outline: 0;
 }
 //テキストの横幅調整
 .text_width {
@@ -90,6 +113,8 @@
 //テキストエリアの幅
 .text_area {
   resize: auto;
+  font-size: 16px;
+  padding: 5px;
   min-width: 100px;
   min-height: 100px;
   height: 10rem;

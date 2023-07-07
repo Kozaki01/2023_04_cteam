@@ -82,7 +82,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                     type="text"
                     placeholder="山田太郎"
                     className={styles.text}
-                  ></input>
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
@@ -91,7 +91,9 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                 </td>
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_birth2}>
-                  <input type="date"></input>
+                  <label className={styles.date}>
+                    <input type="date" className={styles.input_birth} />
+                  </label>
                 </td>
               </tr>
               <tr className={styles.tr1}>
@@ -102,18 +104,24 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                     type="text"
                     placeholder="岩手県盛岡市中央通り3丁目"
                     className={styles.text}
-                  ></input>
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_area1} ${styles.td1}`}>希望地域</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_area2}></td>
+                <td className={styles.td_area2}>
+                  {/* 希望地域のコンポーネント */}
+                  <MultiSelect isArea={true} />
+                </td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_job2}></td>
+                <td className={styles.td_job2}>
+                  {/* 希望業種のコンポーネント */}
+                  <MultiSelect isArea={false} />
+                </td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_pr1} ${styles.td1}`}>自己PR</td>
@@ -127,52 +135,6 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
               </tr>
             </tbody>
           </table>
-          <div>
-            <p className={`${styles.td1} ${styles.padding_top}`}>名前</p>
-            <div className={styles.text_width}>
-              <input
-                type="text"
-                placeholder="山田太郎"
-                className={styles.text}
-              ></input>
-            </div>
-
-            <div className={`${styles.td2} ${styles.padding_top}`}>
-              生年月日
-            </div>
-            <div className={styles.date_width}>
-              <input type="date"></input>
-            </div>
-
-            <div className={`${styles.td1} ${styles.padding_top}`}>住所</div>
-            <div className={styles.text_width}>
-              <input
-                type="text"
-                placeholder="岩手県盛岡市中央通り3丁目"
-                className={styles.text}
-              ></input>
-            </div>
-
-            <div className={`${styles.td2} ${styles.padding_top}`}>
-              希望業種
-              {/* 希望業種のコンポーネント */}
-              <MultiSelect isArea={false} />
-            </div>
-
-            <div className={`${styles.td2} ${styles.padding_top}`}>
-              希望地域
-              {/* 希望地域のコンポーネント */}
-              <MultiSelect isArea={true} />
-            </div>
-
-            <div className={`${styles.td3} ${styles.padding_top}`}>自己PR</div>
-            <div className={styles.textarea_size}>
-              <textarea
-                placeholder="例:私の強みは〇〇です。"
-                className={styles.text_area}
-              ></textarea>
-            </div>
-          </div>
           <div className={styles.flex_btn}>
             <div onClick={moveTop}>
               <Btn {...btn1Props} />
