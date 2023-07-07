@@ -5,10 +5,10 @@
   padding-bottom: 100px;
   padding-left: 170px;
   padding-right: 170px;
-  background: #FE7373;
+  background: #fe7373;
 }
 .div2 {
-  height: 1724px;
+  height: 100%;
   width: 718;
   margin-left: 173px;
   margin-right: 173px;
@@ -20,9 +20,7 @@
   border: solid 4px #000000;
   border-radius: 25px;
   text-align: center;
-
 }
-
 
 .table1 {
   margin-top: 65px;
@@ -40,28 +38,15 @@
   color: #000000;
   text-align: center;
 }
-.td2{
-  width: 42.3%;
-  font-family: 'Kosugi Maru';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 32px;
-  letter-spacing: 0.04em;
-  color: #000000;
-}
-.td3{
-  width: 41.2%;
-  font-family: 'Kosugi Maru';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 32px;
-  letter-spacing: 0.04em;
-  color: #000000;
-  text-align: center;
+
+.td_birth2 {
+  padding-right: 12rem;
 }
 
+.td_area2,
+.td_job2 {
+  padding-left: 6rem;
+}
 .colon {
   font-size: 32px;
 }
@@ -75,38 +60,77 @@
   width: 150px;
 }
 
+// 日付
+.date {
+  position: relative;
+  display: inline-block;
+  width: 25rem;
+  min-width: 200px;
+  height: 36px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+}
+.date:focus-within {
+  border: 2px solid #2684ff;
+  outline: 0;
+}
+.input_birth {
+  position: relative;
+  padding: 0 10px;
+  width: 25rem;
+  min-width: 200px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+.input_birth:focus {
+  border: 0;
+  outline: none;
+}
+
 //テキストのcss
-.text{
+.text {
   height: 3rem;
   width: 70%;
-  font-size:  16px;
-  border: 2px solid black;
+  font-size: 16px;
+  border: 1px solid #999;
   border-radius: 1rem;
   padding-left: 30px;
 }
+.text:focus {
+  border: 2px solid #2684ff;
+  outline: 0;
+}
 //テキストの横幅調整
-.text_width{
-  padding-left:3%;
-  width:100%;
+.text_width {
+  padding-left: 3%;
+  width: 100%;
 }
 //テキストエリアの幅
-.text_area{
+.text_area {
   resize: auto;
+  font-size: 16px;
+  padding: 0.7rem;
   min-width: 100px;
   min-height: 100px;
-  height: 10rem ;
+  height: 10rem;
   width: 50rem;
+  margin-left: 50px;
+  border: 1px solid #999;
 }
-//テキストエリアの横幅調整
-.textarea_width{
-  padding-left: 18%;
-  width: 50%;
+.text_area:focus {
+  border: 2px solid #2684ff;
+  outline: 0;
 }
 //生年月日の横幅調整
-.date_width{
+.date_width {
   padding-right: 55.7%;
 }
 //上余白の調整
-.padding_top{
+.padding_top {
   padding-top: 2%;
 }
