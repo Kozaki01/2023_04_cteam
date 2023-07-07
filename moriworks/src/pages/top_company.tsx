@@ -1,5 +1,5 @@
 import React from 'react';
-import PageComponent from '../components/top/top_users';
+import PageComponent from '../components/top/top_company';
 import Header from '../components/Header/Header';
 import Btn from "../components/Btn";
 import { useRouter } from 'next/router';
