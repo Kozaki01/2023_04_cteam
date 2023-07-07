@@ -13,8 +13,8 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
-  hovercolor:string
-  hover:string;
+  hover: string;
+  hovercolor: string;
 };
 
 interface props {
@@ -28,16 +28,16 @@ const Signup: React.FC<props> = ({ select_user }) => {
   const [repassword, setRepassword] = useState('');
   const btns: btnItem[] = [
     {
-      title: 'サインアップ',
+      title: 'サインイン',
       bgcolor: '#0095F6',
       font: 'Kosugi Maru',
       wide: 484.51,
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
-      shadow:'',
-      hover:'',
-      hovercolor:"#256f9f"
+      hovercolor: '#256f9f',
+      shadow: '',
+      hover: '',
     }, //トップ
   ];
   const btn1Props: btnItem = {
@@ -58,7 +58,12 @@ const Signup: React.FC<props> = ({ select_user }) => {
   // signup押下時　アカウント作成呼び出し
   const doAction = async () => {
     if (email !== '' && password !== '' && repassword !== '') {
-      const result = await signupAccount(email, password, repassword, select_user);
+      const result = await signupAccount(
+        email,
+        password,
+        repassword,
+        select_user
+      );
       if (!result.error) {
         const accountIdResult = await fetch_id(email);
         if (!accountIdResult.error) {
@@ -83,18 +88,40 @@ const Signup: React.FC<props> = ({ select_user }) => {
     <>
       <div className={styles.div1}>
         <h1 className={styles.h1}>Moriworks</h1>
-        <p className={styles.label}>
-          メールアドレスを入力してください
-        </p>
-        <input type="email" name="email" id="email" placeholder="Email" className={styles.input} onChange={onChangeEmail} required />
+        <p className={styles.label}>メールアドレスを入力してください</p>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          className={styles.input}
+          onChange={onChangeEmail}
+          required
+        />
         <p className={styles.label}>
           英数字を含めた8字以上のパスワードを入力してください
         </p>
-        <input type="password" name="password" id="password" placeholder="Password" className={styles.input} onChange={ChangePass} required />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          className={styles.input}
+          onChange={ChangePass}
+          required
+        />
         <p className={styles.label}>
           確認のため、同じパスワードを入力してください
         </p>
-        <input type="password" name="rePassword" id="rePassword" placeholder="rePassword" className={styles.input} onChange={ChangeRepass} required />
+        <input
+          type="password"
+          name="rePassword"
+          id="rePassword"
+          placeholder="rePassword"
+          className={styles.input}
+          onChange={ChangeRepass}
+          required
+        />
         {/* Sign up */}
         <div className={styles.btn} onClick={doAction}>
           <Btn {...btn1Props} />

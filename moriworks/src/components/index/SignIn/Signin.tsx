@@ -2,8 +2,9 @@ import React, { ReactNode, useState } from 'react';
 import styles from './Signin.module.scss';
 import { useRouter } from 'next/router';
 import Btn from '../../index/TopButton/TopButton';
-import {fetch_id, loginAccount} from '../../Function/DBAccount';
-import stylesup from "../Signup/Signup.module.scss";
+import { fetch_id, loginAccount } from '../../Function/DBAccount';
+import stylesup from '../Signup/Signup.module.scss';
+import { brotliCompress } from 'zlib';
 
 type btnItem = {
   title: string;
@@ -14,8 +15,8 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
-  hovercolor:string
-  hover:string;
+  hovercolor: string;
+  hover: string;
 };
 
 interface props {
@@ -35,10 +36,9 @@ const Signin: React.FC<props> = ({ select_user }) => {
       height: 58.3,
       color: 'white',
       border: '1px solid transparent',
+      hovercolor: '#256f9f',
       shadow: '',
-      hover:'',
-      hovercolor:"#256f9f"
-
+      hover: '',
     }, //トップ
   ];
   const btn1Props: btnItem = {
@@ -48,7 +48,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
   // 値の変更 メール、パスワード 、確認用パスワード
   const onChangeEmail = (e: any) => {
     setEmail(e.target.value);
-  }
+  };
   const ChangePass = (e: any) => {
     setPassword(e.target.value);
   };
@@ -57,8 +57,8 @@ const Signin: React.FC<props> = ({ select_user }) => {
   const doAction = async () => {
     if (email != '' && password != '') {
       //loginAccountでエラー
-      loginAccount(email, password,  select_user);
-      console.log(email,password,select_user);
+      loginAccount(email, password, select_user);
+      console.log(email, password, select_user);
       const accountIdResult = await fetch_id(email);
       if (!accountIdResult.error) {
         const account_id = accountIdResult.account_id;
@@ -70,7 +70,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
         // fetch_idエラー処理
         console.error(accountIdResult.error);
       }
-      router.push("/top_users").then(_ => {});
+      router.push('/top_users').then((_) => {});
     }
   };
 
@@ -78,11 +78,9 @@ const Signin: React.FC<props> = ({ select_user }) => {
     <>
       <div className={styles.div1}>
         <h1 className={styles.h1}>Moriworks</h1>
-        <p className={stylesup.label}>
-          メールアドレスを入力してください
-        </p>
+        <p className={stylesup.label}>メールアドレスを入力してください</p>
         <input
-        type="email"
+          type="email"
           name="email"
           id="email"
           placeholder="Email"
@@ -90,9 +88,7 @@ const Signin: React.FC<props> = ({ select_user }) => {
           onChange={onChangeEmail}
           required
         />
-        <p className={stylesup.label}>
-          パスワードを入力してください
-        </p>
+        <p className={stylesup.label}>パスワードを入力してください</p>
         <input
           type="password"
           name="password"
@@ -103,12 +99,12 @@ const Signin: React.FC<props> = ({ select_user }) => {
           required
         />
         {/* Sign in */}
-        <div className={styles.btn} onClick={doAction} > 
+        <div className={styles.btn} onClick={doAction}>
           <Btn {...btn1Props} />
         </div>
 
-      {/* - or - */}
-      <div className={styles.or}>
+        {/* - or - */}
+        <div className={styles.or}>
           <div className={styles.line}></div>
           <span className={styles.or}>または</span>
           <div className={styles.line}></div>
