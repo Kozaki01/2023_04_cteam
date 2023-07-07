@@ -114,17 +114,17 @@
 .text_area {
   resize: auto;
   font-size: 16px;
-  padding: 5px;
+  padding: 0.7rem;
   min-width: 100px;
   min-height: 100px;
   height: 10rem;
   width: 50rem;
   margin-left: 50px;
+  border: 1px solid #999;
 }
-//テキストエリアの横幅調整
-.textarea_width {
-  padding-left: 18%;
-  width: 50%;
+.text_area:focus {
+  border: 2px solid #2684ff;
+  outline: 0;
 }
 //生年月日の横幅調整
 .date_width {
