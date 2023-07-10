@@ -4,6 +4,11 @@ import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from './../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
+import { createProfile } from '../Function/DBProfile';
+import { fetch_id } from '../Function/DBProfile';
+import { createDesiredArea } from '../Function/DBDesiredArea';
+import { createDesiredJobType } from './../Function/DBDesiredJobType';
+import { checkProfileExistence } from '../Function/DBProfile';
 
 type btnItem = {
   title: string;
@@ -24,18 +29,39 @@ interface props {
 
 const CreateProfile: React.FC<props> = ({ account_id }) => {
   const router = useRouter();
-  const [name, setName] = useState(); // 名前
-  const [birthday, setBirthday] = useState(); // 生年月日
-  const [address, setAddress] = useState(); // 住所
+  const [name, setName] = useState(String); // 名前
+  const [birthday, setBirthday] = useState(new Date()); // 生年月日
+  const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState([]); // 希望地域
   const [job, setJob] = useState([]); // 希望業種
-  const [pr, setPr] = useState(); // 自己PR
+  const [pr, setPr] = useState(String); // 自己PR
+
+  // リダイレクトの処理
+  React.useEffect(() => {
+    const checkProfile = async () => {
+      const account_id = localStorage.getItem('account_id');
+      console.log('account_id: ' + account_id);
+      if (account_id) {
+        // プロフィールが作成されているか調べる
+        const profileExists = await checkProfileExistence(Number(account_id));
+        console.log('profileExists： ' + profileExists);
+        // プロフィールが作成されているとき プロフィール作成ページに飛ぶ
+        if (profileExists) {
+          router.push('/profile_users');
+        }
+      }
+    };
+    checkProfile();
+  }, []);
 
   // ユーザTopに遷移
   const moveTop = async () => {
     router.push('/top_users').then((_) => {});
   };
 
+  /**
+   * input値の取得
+   */
   // nameの取得
   const changeName = (e: any) => {
     setName(e.target.value);
@@ -75,17 +101,23 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
     setPr(e.target.value);
   };
 
-  // ユーザ編集画面に遷移
+  // プロフィール作成処理
   const doCreate = async () => {
-    console.log(
-      `名前:${name}、生年月日:${birthday}、住所:${address}、自己ｐｒ:${pr}`
-    );
-    area.forEach((item) => {
-      console.log(item['value']);
-    });
-    job.forEach((item) => {
-      console.log(item['value']);
-    });
+    const result = await createProfile(account_id, name, birthday, address, pr);
+    // 作成出来た時
+    if (!result.error) {
+      const profile_id = await fetch_id(account_id);
+      if (!profile_id.error) {
+        area.forEach((item) => {
+          createDesiredArea(item['value'], profile_id);
+        });
+        console.log('createArea');
+        job.forEach((item) => {
+          createDesiredJobType(item['value'], profile_id);
+        });
+        console.log('createJob');
+      }
+    }
   };
 
   const btns: btnItem[] = [
@@ -125,7 +157,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
     <>
       <div className={styles.div1}>
         <div className={styles.div2}>
-          <Title text={'My Profile'} />
+          <Title text={'アカウント作成'} />
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>

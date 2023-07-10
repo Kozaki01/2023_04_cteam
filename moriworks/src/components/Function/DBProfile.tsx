@@ -64,8 +64,17 @@ export const createProfile = async (
   self_publicity: string
 ) => {
   try {
+    // すべての値が空の時
+    if (
+      account_id == undefined ||
+      name_user == '' ||
+      address == '' ||
+      self_publicity == ''
+    ) {
+      throw new Error();
+    }
     // Profileテーブルにデータを挿入
-    const { data, error } = await supabase.from('profile').insert({
+    const { error } = await supabase.from('profile').insert({
       account_id: account_id,
       name_user: name_user,
       birthday: birthday,
@@ -75,8 +84,8 @@ export const createProfile = async (
     if (error) {
       throw error;
     }
-    console.log('createProfile:', data);
-    return data;
+    // 成功時trueを送る
+    return { error: false };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
@@ -98,8 +107,7 @@ export const fetch_id = async (account_id: number) => {
       throw error;
     }
     // dataを返す
-    console.log('fetch_id', data);
-    return data;
+    return data.profile_id;
   } catch (error) {
     // エラーハンドリング
     console.error(error);
