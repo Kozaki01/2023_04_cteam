@@ -27,6 +27,8 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
   const [name, setName] = useState(); // 名前
   const [birthday, setBirthday] = useState(); // 生年月日
   const [address, setAddress] = useState(); // 住所
+  const [area, setArea] = useState([]); // 希望地域
+  const [job, setJob] = useState([]); // 希望業種
   const [pr, setPr] = useState(); // 自己PR
 
   // ユーザTopに遷移
@@ -46,6 +48,28 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
   const changeAddress = (e: any) => {
     setAddress(e.target.value);
   };
+  // 希望地域の取得
+  const changeArea = async (selected: any, selectaction: any) => {
+    const { action } = selectaction;
+    // console.log(`action ${action}`);
+    if (action === 'clear') {
+    } else if (action === 'select-option') {
+    } else if (action === 'remove-value') {
+      console.log('remove');
+    }
+    setArea(selected);
+  };
+  // 希望職種の取得
+  const changeJob = async (selected: any, selectaction: any) => {
+    const { action } = selectaction;
+    // console.log(`action ${action}`);
+    if (action === 'clear') {
+    } else if (action === 'select-option') {
+    } else if (action === 'remove-value') {
+      console.log('remove');
+    }
+    setJob(selected);
+  };
   // 自己ｐｒの取得
   const changePr = (e: any) => {
     setPr(e.target.value);
@@ -54,8 +78,14 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
   // ユーザ編集画面に遷移
   const doCreate = async () => {
     console.log(
-      `名前:${name}、生年月日:${birthday}、住所:${address}、地域:${area}、職種:${job}、自己ｐｒ:${pr}`
+      `名前:${name}、生年月日:${birthday}、住所:${address}、自己ｐｒ:${pr}`
     );
+    area.forEach((item) => {
+      console.log(item['value']);
+    });
+    job.forEach((item) => {
+      console.log(item['value']);
+    });
   };
 
   const btns: btnItem[] = [
@@ -142,7 +172,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_area2}>
                   {/* 希望地域のコンポーネント */}
-                  <MultiSelect isArea={true} />
+                  <MultiSelect isArea={true} changeEvent={changeArea} />
                 </td>
               </tr>
               <tr className={styles.tr1}>
@@ -150,7 +180,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_job2}>
                   {/* 希望業種のコンポーネント */}
-                  <MultiSelect isArea={false} />
+                  <MultiSelect isArea={false} changeEvent={changeJob} />
                 </td>
               </tr>
               <tr className={styles.tr1}>

@@ -4,15 +4,14 @@ import Select from 'react-select';
 import styles from './MultiSelect.module.scss';
 import { getArea } from '../Function/DBArea';
 import { getJobType } from '../Function/DBJobType';
-import { error } from 'console';
 
 interface props {
   isArea: boolean;
+  changeEvent: any;
 }
 
-const MultiSelect: React.FC<props> = ({ isArea }) => {
+const MultiSelect: React.FC<props> = ({ isArea, changeEvent }) => {
   const [warna, setWarna] = useState([]);
-  const [ukuran, setUkuran] = useState([]);
   const options: any = [];
 
   // optionsの中身を取得
@@ -54,22 +53,6 @@ const MultiSelect: React.FC<props> = ({ isArea }) => {
   };
   getOptions();
 
-  const handleWarnaChange = async (selected: any, selectaction: any) => {
-    const { action } = selectaction;
-    // console.log(`action ${action}`);
-    if (action === 'clear') {
-    } else if (action === 'select-option') {
-    } else if (action === 'remove-value') {
-      console.log('remove');
-    }
-    setWarna(selected);
-  };
-
-  const handleUkuranChange = async (selected: any, selectaction: any) => {
-    // const { action } = selectaction;
-    setUkuran(selected);
-  };
-
   return (
     <div>
       <Select
@@ -80,7 +63,7 @@ const MultiSelect: React.FC<props> = ({ isArea }) => {
         className={styles.select}
         classNamePrefix="select"
         options={options}
-        onChange={handleWarnaChange}
+        onChange={changeEvent}
         placeholder="希望の地域を選択してください。"
       />
     </div>
