@@ -24,11 +24,33 @@ interface props {
 
 const CreateProfile: React.FC<props> = ({ account_id }) => {
   const router = useRouter();
+  const [name, setName] = useState(); // 名前
+  const [birthday, setBirthday] = useState(); // 生年月日
+  const [address, setAddress] = useState(); // 住所
+  const [pr, setPr] = useState(); // 自己PR
 
   // ユーザTopに遷移
   const moveTop = async () => {
     router.push('/top_users').then((_) => {});
   };
+
+  // nameの取得
+  const changeName = (e: any) => {
+    setName(e.target.value);
+  };
+  // 生年月日の取得
+  const changeBirthday = (e: any) => {
+    setBirthday(e.target.value);
+  };
+  // 住所の取得
+  const changeAddress = (e: any) => {
+    setAddress(e.target.value);
+  };
+  // 自己ｐｒの取得
+  const changePr = (e: any) => {
+    setPr(e.target.value);
+  };
+
   // ユーザ編集画面に遷移
   const doCreate = async () => {
     console.log(
@@ -84,6 +106,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                     type="text"
                     placeholder="山田太郎"
                     className={styles.text}
+                    onChange={changeName}
                   />
                 </td>
               </tr>
@@ -94,7 +117,11 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_birth2}>
                   <label className={styles.date}>
-                    <input type="date" className={styles.input_birth} />
+                    <input
+                      type="date"
+                      className={styles.input_birth}
+                      onChange={changeBirthday}
+                    />
                   </label>
                 </td>
               </tr>
@@ -106,6 +133,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                     type="text"
                     placeholder="岩手県盛岡市中央通り3丁目"
                     className={styles.text}
+                    onChange={changeAddress}
                   />
                 </td>
               </tr>
@@ -132,6 +160,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
                   <textarea
                     placeholder="例:私の強みは〇〇です。"
                     className={styles.text_area}
+                    onChange={changePr}
                   ></textarea>
                 </td>
               </tr>
