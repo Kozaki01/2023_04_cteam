@@ -30,8 +30,10 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
     router.push('/top_users').then((_) => {});
   };
   // ユーザ編集画面に遷移
-  const moveEdit = async () => {
-    router.push('/edit_users').then((_) => {});
+  const doCreate = async () => {
+    console.log(
+      `名前:${name}、生年月日:${birthday}、住所:${address}、地域:${area}、職種:${job}、自己ｐｒ:${pr}`
+    );
   };
 
   const btns: btnItem[] = [
@@ -48,7 +50,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
       hover: '',
     }, //戻る
     {
-      title: '編集する',
+      title: '作成する',
       bgcolor: '',
       font: 'Kosugi Maru',
       wide: 170,
@@ -140,7 +142,7 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
               <Btn {...btn1Props} />
             </div>
             <span className={styles.space}></span>
-            <div onClick={moveEdit}>
+            <div onClick={doCreate}>
               <Btn {...btn2props} />
             </div>
           </div>
