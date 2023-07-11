@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/SignIn/Signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/SignIn/Signin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/index/Signup/Signup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/signin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/signin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/signup.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/components/top/top_users.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/pages/top_company.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Function/DBAccount.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Function/DBAccount.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/top/top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/top/top_company.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/top_users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/top_users.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +18,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -36,17 +38,23 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dounomaetoshiki/Documents/GitHub/2023_04_cteam&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;top__company&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/src/pages&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/dounomaetoshiki/Documents/GitHub/2023_04_cteam/moriworks/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/moriworks/src/pages" />
+      <recent name="$PROJECT_DIR$/moriworks/src/components/top" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="localhost:3000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3000">
       <method v="2" />
@@ -68,6 +76,10 @@
       <workItem from="1687228444819" duration="2687000" />
       <workItem from="1687435831040" duration="1079000" />
       <workItem from="1687480972256" duration="5128000" />
+      <workItem from="1688360612332" duration="183000" />
+      <workItem from="1688360811384" duration="3655000" />
+      <workItem from="1688437316466" duration="648000" />
+      <workItem from="1688690321043" duration="453000" />
     </task>
     <servers />
   </component>
