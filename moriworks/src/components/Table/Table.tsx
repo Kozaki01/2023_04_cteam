@@ -3,14 +3,14 @@ import styles from './Table.module.scss';
 import { useRouter } from 'next/router';
 
 interface Tableprops {
-  id: number[];
+  data: number[];
   searchUser: boolean;
   select_user: number;
 }
 
 const Table: React.FC<Tableprops> = (props) => {
   // データがない時
-  if (props.id.length == 0) {
+  if (props.data.length == 0) {
     return null;
   }
 
@@ -51,7 +51,7 @@ const Table: React.FC<Tableprops> = (props) => {
               </tr>
             </thead>
             <tbody>
-              {props.id.map((item) => {
+              {props.data.map((item) => {
                 return (
                   <tr className={styles.tr1} key={item}>
                     <td className={`${styles.td1} ${styles.name_col}`}>
@@ -93,7 +93,7 @@ const Table: React.FC<Tableprops> = (props) => {
               </tr>
             </thead>
             <tbody>
-              {props.id.map((item) => {
+              {props.data.map((item) => {
                 return (
                   <tr className={styles.tr1}>
                     <td className={`${styles.td1} ${styles.name_col1}`}>

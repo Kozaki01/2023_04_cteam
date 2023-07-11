@@ -5,13 +5,15 @@ import styles from './index.module.scss';
 import Table from '../Table/Table';
 
 interface props {}
-const num = [1, 2, 3];
+
 const Index: React.FC<props> = () => {
+  const profileData = [1, 2, 3]; // profileの配列
+
   return (
     <>
       ここはテストページです
       {/*  ここに処理を追加してください*/}
-      <Table id={num} searchUser={false} isAdmin={false} />
+      <Table data={profileData} searchUser={false} select_user={1} />
     </>
   );
 };
