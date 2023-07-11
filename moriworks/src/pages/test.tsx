@@ -1,14 +1,12 @@
 import React from 'react';
-import PageComponent from '../components/index/test';
-import Header from '../components/Header/Header';
+import PageComponent from '../components/Title';
 
-const Index = () => {
+const text = () => {
   return (
     <>
-      <Header type={false} />
-      <PageComponent />
+      <PageComponent text={"Edit Profile"} />
     </>
   );
 };
 
-export default Index;
+export default text;
