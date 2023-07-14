@@ -128,7 +128,7 @@ const EditProfile: React.FC<props> = ({}) => {
       border: '',
       shadow: '',
       hover: '',
-      hovercolor: 'E5E5E5',
+      hovercolor: '#E5E5E5',
     }, //戻る
     {
       title: '編集する',
@@ -139,8 +139,8 @@ const EditProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: 'E5E5E5',
       hover: '',
+      hovercolor: '#E5E5E5',
     }, //編集する
   ];
   const btn1Props: btnItem = {

@@ -136,7 +136,7 @@ const CreateProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: 'E5E5E5',
+      hovercolor: '#E5E5E5',
       hover: '',
     }, //戻る
     {
@@ -148,7 +148,7 @@ const CreateProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: 'E5E5E5',
+      hovercolor: '#E5E5E5',
       hover: '',
     }, //編集する
   ];
