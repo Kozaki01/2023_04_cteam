@@ -32,12 +32,12 @@ const user: React.FC<props> = ({}) => {
       if (accountId) {
         setAccountID(Number(accountId));
         // プロフィールが作成されているか調べる
-        const profileExists = await checkProfileExistence(Number(account_id));
+        const profileExists = await checkProfileExistence(account_id);
         console.log('profileExists： ' + profileExists);
         // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-        // if (!profileExists) {
-        //   router.push('/profile_create_users');
-        // }
+        if (profileExists) {
+          router.push('/profile_create_users');
+        }
       }
     };
     const Profile = async () => {
