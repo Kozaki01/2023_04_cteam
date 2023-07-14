@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <>
       <Header type={false} />
-      <PageComponent account_id={1} />
+      <PageComponent />
     </>
   );
 };
