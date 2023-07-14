@@ -18,19 +18,19 @@ type btnItem = {
   hover: string;
 };
 
-interface props {
-  account_id: number;
-}
+interface props {}
 
-const user: React.FC<props> = ({ account_id }) => {
+const user: React.FC<props> = ({}) => {
   const router = useRouter();
+  const [account_id, setAccountID] = useState(Number);
   const [UserProfile, setProfile] = useState(Object);
   // リダイレクトの処理
   React.useEffect(() => {
     const checkProfile = async () => {
-      const account_id = localStorage.getItem('account_id');
-      console.log('account_id: ' + account_id);
-      if (account_id) {
+      const accountId = localStorage.getItem('account_id');
+      console.log('account_id: ' + accountId);
+      if (accountId) {
+        setAccountID(Number(accountId));
         // プロフィールが作成されているか調べる
         const profileExists = await checkProfileExistence(Number(account_id));
         console.log('profileExists： ' + profileExists);
