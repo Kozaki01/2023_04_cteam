@@ -25,24 +25,27 @@ interface props {}
 
 const EditProfile: React.FC<props> = ({}) => {
   const router = useRouter();
+  const [account_id, setAccountID] = useState(Number); // アカウントID
   const [name, setName] = useState(String); // 名前
   const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState([]); // 希望地域
   const [job, setJob] = useState([]); // 希望業種
   const [pr, setPr] = useState(String); // 自己PR
-  // リダイレクトの処理
+  // アカウントID取得の処理
   React.useEffect(() => {
     const checkProfile = async () => {
-      const account_id = localStorage.getItem('account_id');
-      console.log('account_id: ' + account_id);
-      if (account_id) {
+      const accountId = localStorage.getItem('account_id');
+      console.log('account_id: ' + accountId);
+      if (accountId) {
+        // アカウントID取得
+        setAccountID(Number(accountId));
         // プロフィールが作成されているか調べる
         const profileExists = await checkProfileExistence(Number(account_id));
         console.log('profileExists： ' + profileExists);
-        // プロフィールが作成されているとき プロフィール作成ページに飛ぶ
+        // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
         if (profileExists) {
-          router.push('/profile_users');
+          router.push('/profile_create_users');
         }
       }
     };
@@ -96,7 +99,7 @@ const EditProfile: React.FC<props> = ({}) => {
   };
 
   // プロフィール作成処理
-  const doCreate = async () => {
+  const doEdit = async () => {
     // const result = await EditProfile(account_id, name, birthday, address, pr);
     // 作成出来た時
     // if (!result.error) {
@@ -124,11 +127,11 @@ const EditProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: 'E5E5E5',
       hover: '',
+      hovercolor: 'E5E5E5',
     }, //戻る
     {
-      title: '作成する',
+      title: '編集する',
       bgcolor: '',
       font: 'Kosugi Maru',
       wide: 170,
@@ -151,7 +154,7 @@ const EditProfile: React.FC<props> = ({}) => {
     <>
       <div className={styles.div1}>
         <div className={styles.div2}>
-          <Title text={'アカウント作成'} />
+          <Title text={'アカウント編集'} />
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>
@@ -227,7 +230,7 @@ const EditProfile: React.FC<props> = ({}) => {
               <Btn {...btn1Props} />
             </div>
             <span className={styles.space}></span>
-            <div onClick={doCreate}>
+            <div onClick={doEdit}>
               <Btn {...btn2props} />
             </div>
           </div>
