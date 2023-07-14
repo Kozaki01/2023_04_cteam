@@ -7,7 +7,7 @@ export const checkProfileExistence = async (account_id: number) => {
       .from('profile')
       .select('profile_id')
       .eq('account_id', account_id);
-
+    // エラーが発生したときcatchに移動
     if (error) {
       throw error;
     }
@@ -51,6 +51,66 @@ export const getProfile = async (account_id: number) => {
   } catch (error) {
     // エラーハンドリング
     console.error('Error get profile:', error);
+    return { error };
+  }
+};
+
+// プロフィールの作成
+export const createProfile = async (
+  account_id: number,
+  name_user: string,
+  birthday: Date,
+  address: string,
+  self_publicity: string
+) => {
+  try {
+    // すべての値が空の時
+    if (
+      account_id == undefined ||
+      name_user == '' ||
+      address == '' ||
+      self_publicity == ''
+    ) {
+      throw new Error();
+    }
+    // Profileテーブルにデータを挿入
+    const { error } = await supabase.from('profile').insert({
+      account_id: account_id,
+      name_user: name_user,
+      birthday: birthday,
+      address: address,
+      self_publicity: self_publicity,
+    });
+    if (error) {
+      throw error;
+    }
+    // 成功時trueを送る
+    return { error: false };
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
+    return { error };
+  }
+};
+
+// profile_idの取得
+export const fetch_id = async (account_id: number) => {
+  try {
+    // アカウントIDが一致するデータを一個取得
+    const { data, error } = await supabase
+      .from('profile')
+      .select('profile_id')
+      .eq('account_id', account_id)
+      .single();
+    // エラーが発生したときcatchに移動
+    if (error) {
+      throw error;
+    }
+    // dataを返す
+    return data.profile_id;
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
     return { error };
   }
 };
