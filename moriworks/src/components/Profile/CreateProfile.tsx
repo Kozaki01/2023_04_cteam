@@ -4,11 +4,13 @@ import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from './../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
-import { createProfile } from '../Function/DBProfile';
-import { fetch_id } from '../Function/DBProfile';
+import {
+  createProfile,
+  fetch_id,
+  checkProfileExistence,
+} from '../Function/DBProfile';
 import { createDesiredArea } from '../Function/DBDesiredArea';
 import { createDesiredJobType } from './../Function/DBDesiredJobType';
-import { checkProfileExistence } from '../Function/DBProfile';
 
 type btnItem = {
   title: string;
@@ -23,12 +25,11 @@ type btnItem = {
   hover: string;
 };
 
-interface props {
-  account_id: number;
-}
+interface props {}
 
-const CreateProfile: React.FC<props> = ({ account_id }) => {
+const CreateProfile: React.FC<props> = ({}) => {
   const router = useRouter();
+  const [account_id, setAccountID] = useState(Number);
   const [name, setName] = useState(String); // 名前
   const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
@@ -39,9 +40,10 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
   // リダイレクトの処理
   React.useEffect(() => {
     const checkProfile = async () => {
-      const account_id = localStorage.getItem('account_id');
-      console.log('account_id: ' + account_id);
-      if (account_id) {
+      const accountId = localStorage.getItem('account_id');
+      console.log('account_id: ' + accountId);
+      if (accountId) {
+        setAccountID(Number(accountId));
         // プロフィールが作成されているか調べる
         const profileExists = await checkProfileExistence(Number(account_id));
         console.log('profileExists： ' + profileExists);
@@ -108,14 +110,18 @@ const CreateProfile: React.FC<props> = ({ account_id }) => {
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
       if (!profile_id.error) {
+        // エリアの登録
         area.forEach((item) => {
           createDesiredArea(item['value'], profile_id);
         });
         console.log('createArea');
+        // 業種の登録
         job.forEach((item) => {
           createDesiredJobType(item['value'], profile_id);
         });
         console.log('createJob');
+        // 画面遷移 Myprofileに
+        router.push('/profile_users');
       }
     }
   };
