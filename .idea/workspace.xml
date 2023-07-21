@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/moriworks/src/components/top/top_users.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/moriworks/src/pages/top_company.tsx" afterDir="false" />
+    <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="[feat] top_companyの追加">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Function/DBAccount.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Function/DBAccount.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/top/top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/top/top_company.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/pages/top_users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/pages/top_users.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +17,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="67-pagesのaccount_idの修正" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,22 +30,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;top__company&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/src/pages&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "48-CreateProfile",
+    "last_opened_file_path": "/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/src/pages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/moriworks/src/pages" />
@@ -79,14 +76,57 @@
       <workItem from="1688360612332" duration="183000" />
       <workItem from="1688360811384" duration="3655000" />
       <workItem from="1688437316466" duration="648000" />
-      <workItem from="1688690321043" duration="453000" />
+      <workItem from="1688690321043" duration="3281000" />
+      <workItem from="1689042140117" duration="6657000" />
     </task>
+    <task id="LOCAL-00001" summary="[feat] top_companyの追加">
+      <created>1688690957464</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688690957464</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[feat] top_companyの追加">
+      <created>1688691031990</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688691031990</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[feat] top_companyの追加">
+      <created>1688691080898</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688691080898</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="top_company_fixed" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="top_company" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -97,7 +137,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="top_company_fixed" />
                       </list>
                     </value>
                   </entry>
@@ -108,5 +148,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[feat] top_companyの追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat] top_companyの追加" />
   </component>
 </project>
