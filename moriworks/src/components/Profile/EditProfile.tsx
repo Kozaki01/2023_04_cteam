@@ -31,9 +31,10 @@ const EditProfile: React.FC<props> = ({}) => {
   const [name, setName] = useState(String); // 名前
   const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
-  const [area, setArea] = useState([]); // 希望地域
-  const [job, setJob] = useState([]); // 希望業種
+  const [area, setArea] = useState<string[]>([]); // 希望地域
+  const [job, setJob] = useState<string[]>([]); // 希望業種
   const [pr, setPr] = useState(String); // 自己PR
+
   // アカウントID取得の処理
   React.useEffect(() => {
     const checkProfile = async () => {
@@ -51,33 +52,46 @@ const EditProfile: React.FC<props> = ({}) => {
         // }
       }
     };
+    // プロフィール取得
+    const fetchData = async () => {
+      try {
+        const accountId = localStorage.getItem('account_id');
+        console.log(accountId);
+        if (accountId) {
+          const result = await getProfile(Number(accountId));
+          console.log(result);
+          if ('error' in result) {
+            console.error('Error getting profile:', result.error);
+          } else {
+            setName(result.name_user);
+            setBirthday(result.birthday);
+            setAddress(result.address);
+            setPr(result.self_publicity);
+            const _area: string[] = [];
+            result.desired_area.forEach((item: any) => {
+              _area.push(`・${item['area']['area_name']}　`);
+              setArea(_area);
+            });
+            const _job: string[] = [];
+            result.desired_job_type.forEach((item: any) => {
+              _job.push(`・${item['job_type']['job_type_name']}　`);
+              setJob(_job);
+            });
+            console.log('_area', _area);
+            console.log('_job', _job);
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
     checkProfile();
+    fetchData();
   }, []);
   // ユーザTopに遷移
   const moveTop = async () => {
     router.push('/top_users').then((_) => {});
   };
-
-  // Profileの値を取得
-  React.useEffect(() => {
-    try {
-      const result = getProfile(account_id);
-      result
-        .then((value: any | { error: unknown }) => {
-          setName(value.name_user);
-          setBirthday(value.birthday);
-          setAddress(value.address);
-          setPr(value.self_publicity);
-          // setArea(value.desired_area);
-          // setJob(value.desired_job_type);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  });
 
   /**
    * input値の取得
@@ -103,7 +117,7 @@ const EditProfile: React.FC<props> = ({}) => {
     } else if (action === 'remove-value') {
       console.log('remove');
     }
-    console.log(area);
+    console.log(selected);
     setArea(selected);
   };
   // 希望職種の取得
@@ -115,6 +129,7 @@ const EditProfile: React.FC<props> = ({}) => {
     } else if (action === 'remove-value') {
       console.log('remove');
     }
+    console.log(selected);
     setJob(selected);
   };
   // 自己ｐｒの取得
@@ -204,7 +219,7 @@ const EditProfile: React.FC<props> = ({}) => {
                       type="date"
                       className={styles.input_birth}
                       onChange={changeBirthday}
-                      value={birthday}
+                      value={String(birthday)}
                     />
                   </label>
                 </td>
