@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from '../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
-import { fetch_id, checkProfileExistence } from '../Function/DBProfile';
-import { createDesiredArea } from '../Function/DBDesiredArea';
-import { createDesiredJobType } from '../Function/DBDesiredJobType';
+import {
+  fetch_id,
+  checkProfileExistence,
+  getProfile,
+} from '../Function/DBProfile';
 
 type btnItem = {
   title: string;
@@ -44,9 +46,9 @@ const EditProfile: React.FC<props> = ({}) => {
         const profileExists = await checkProfileExistence(Number(account_id));
         console.log('profileExists： ' + profileExists);
         // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-        if (profileExists) {
-          router.push('/profile_create_users');
-        }
+        // if (profileExists) {
+        //   router.push('/profile_create_users');
+        // }
       }
     };
     checkProfile();
@@ -55,6 +57,27 @@ const EditProfile: React.FC<props> = ({}) => {
   const moveTop = async () => {
     router.push('/top_users').then((_) => {});
   };
+
+  // Profileの値を取得
+  React.useEffect(() => {
+    try {
+      const result = getProfile(account_id);
+      result
+        .then((value: any | { error: unknown }) => {
+          setName(value.name_user);
+          setBirthday(value.birthday);
+          setAddress(value.address);
+          setPr(value.self_publicity);
+          // setArea(value.desired_area);
+          // setJob(value.desired_job_type);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
   /**
    * input値の取得
@@ -80,6 +103,7 @@ const EditProfile: React.FC<props> = ({}) => {
     } else if (action === 'remove-value') {
       console.log('remove');
     }
+    console.log(area);
     setArea(selected);
   };
   // 希望職種の取得
@@ -163,9 +187,9 @@ const EditProfile: React.FC<props> = ({}) => {
                 <td className={styles.td_name2}>
                   <input
                     type="text"
-                    placeholder="山田太郎"
                     className={styles.text}
                     onChange={changeName}
+                    value={name}
                   />
                 </td>
               </tr>
@@ -180,6 +204,7 @@ const EditProfile: React.FC<props> = ({}) => {
                       type="date"
                       className={styles.input_birth}
                       onChange={changeBirthday}
+                      value={birthday}
                     />
                   </label>
                 </td>
@@ -193,6 +218,7 @@ const EditProfile: React.FC<props> = ({}) => {
                     placeholder="岩手県盛岡市中央通り3丁目"
                     className={styles.text}
                     onChange={changeAddress}
+                    value={address}
                   />
                 </td>
               </tr>
@@ -220,6 +246,7 @@ const EditProfile: React.FC<props> = ({}) => {
                     placeholder="例:私の強みは〇〇です。"
                     className={styles.text_area}
                     onChange={changePr}
+                    value={pr}
                   ></textarea>
                 </td>
               </tr>
