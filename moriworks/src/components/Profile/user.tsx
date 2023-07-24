@@ -74,8 +74,6 @@ const user: React.FC<props> = ({}) => {
               _job.push(`・${item['job_type']['job_type_name']}　`);
               setJob(_job);
             });
-            console.log(area);
-            console.log(job);
           }
         }
       } catch (e) {

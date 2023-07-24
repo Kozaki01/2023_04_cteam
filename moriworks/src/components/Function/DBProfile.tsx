@@ -32,8 +32,8 @@ export const getProfile = async (account_id: number) => {
         name_user,
         birthday,
         address,
-        desired_area(area:area_id(area_name)),
-        desired_job_type(job_type:job_type_id(job_type_name)),
+        desired_area(area:area_id(area_id,area_name)),
+        desired_job_type(job_type:job_type_id(job_type_id,job_type_name)),
         self_publicity
         `
       )
