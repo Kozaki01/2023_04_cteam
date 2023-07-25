@@ -9,6 +9,7 @@ import {
   checkProfileExistence,
   getProfile,
 } from '../Function/DBProfile';
+import UnmountOnChange from './UnmountOnChange';
 
 type btnItem = {
   title: string;
@@ -33,68 +34,75 @@ const EditProfile: React.FC<props> = ({}) => {
   const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState<string[]>([]); // 希望地域
   const [job, setJob] = useState<string[]>([]); // 希望業種
+  const _area: any = [];
+  const _job: any = [];
   const [pr, setPr] = useState(String); // 自己PR
+
+  // プロフィールが作成されているか調べてリダイレクト
+  const checkProfile = async () => {
+    const accountId = localStorage.getItem('account_id');
+    console.log('account_id: ' + accountId);
+    if (accountId) {
+      // アカウントID取得
+      setAccountID(Number(accountId));
+      // プロフィールが作成されているか調べる
+      const profileExists = await checkProfileExistence(Number(account_id));
+      console.log('profileExists： ' + profileExists);
+      // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
+      // if (profileExists) {
+      //   router.push('/profile_create_users');
+      // }
+    }
+  };
+  // プロフィールの値を取得
+  const fetchData = async () => {
+    try {
+      const accountId = localStorage.getItem('account_id');
+      console.log(accountId);
+      if (accountId) {
+        const result = await getProfile(Number(accountId));
+        console.log(result);
+        if ('error' in result) {
+          console.error('Error getting profile:', result.error);
+        } else {
+          setName(result.name_user);
+          setBirthday(result.birthday);
+          setAddress(result.address);
+          setPr(result.self_publicity);
+          result.desired_area.forEach((item: any) => {
+            _area.push({
+              value: `${item['area']['area_id']}`,
+              label: `${item['area']['area_name']}`,
+            });
+          });
+          console.log('_area', _area);
+          result.desired_job_type.forEach((item: any) => {
+            _job.push({
+              value: `${item['job_type']['job_type_id']}`,
+              label: `${item['job_type']['job_type_name']}`,
+            });
+          });
+          console.log('_job', _job);
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   // アカウントID取得の処理
   React.useEffect(() => {
-    const checkProfile = async () => {
-      const accountId = localStorage.getItem('account_id');
-      console.log('account_id: ' + accountId);
-      if (accountId) {
-        // アカウントID取得
-        setAccountID(Number(accountId));
-        // プロフィールが作成されているか調べる
-        const profileExists = await checkProfileExistence(Number(account_id));
-        console.log('profileExists： ' + profileExists);
-        // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-        // if (profileExists) {
-        //   router.push('/profile_create_users');
-        // }
-      }
-    };
-    // プロフィール取得
-    const fetchData = async () => {
-      try {
-        const accountId = localStorage.getItem('account_id');
-        console.log(accountId);
-        if (accountId) {
-          const result = await getProfile(Number(accountId));
-          console.log(result);
-          if ('error' in result) {
-            console.error('Error getting profile:', result.error);
-          } else {
-            setName(result.name_user);
-            setBirthday(result.birthday);
-            setAddress(result.address);
-            setPr(result.self_publicity);
-            const _area: string[] = [];
-            result.desired_area.forEach((item: any) => {
-              _area.push(`・${item['area']['area_name']}　`);
-              setArea(_area);
-            });
-            const _job: string[] = [];
-            result.desired_job_type.forEach((item: any) => {
-              _job.push(`・${item['job_type']['job_type_name']}　`);
-              setJob(_job);
-            });
-            console.log('_area', _area);
-            console.log('_job', _job);
-          }
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
     checkProfile();
     fetchData();
   }, []);
+
   // ユーザTopに遷移
   const moveTop = async () => {
     router.push('/top_users').then((_) => {});
   };
 
   /**
-   * input値の取得
+   * Change時の値の取得
    */
   // nameの取得
   const changeName = (e: any) => {
@@ -242,15 +250,22 @@ const EditProfile: React.FC<props> = ({}) => {
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_area2}>
                   {/* 希望地域のコンポーネント */}
-                  <MultiSelect isArea={true} changeEvent={changeArea} />
+                  <MultiSelect
+                    isArea={true}
+                    changeEvent={changeArea}
+                    defaultValue={_area}
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_job2}>
-                  {/* 希望業種のコンポーネント */}
-                  <MultiSelect isArea={false} changeEvent={changeJob} />
+                  <MultiSelect
+                    isArea={false}
+                    changeEvent={changeJob}
+                    defaultValue={_job}
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
