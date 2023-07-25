@@ -65,13 +65,13 @@ const user: React.FC<props> = ({}) => {
             const _area: string[] = [];
             result.desired_area.forEach((item: any) => {
               console.log(item['area']['area_name']);
-              _area.push(`・${item['area']['area_name']}　`);
+              _area.push(`・${item['area']['area_name']}`);
               setArea(_area);
             });
             const _job: string[] = [];
             result.desired_job_type.forEach((item: any) => {
               console.log(item['job_type']['job_type_name']);
-              _job.push(`・${item['job_type']['job_type_name']}　`);
+              _job.push(`・${item['job_type']['job_type_name']}`);
               setJob(_job);
             });
           }
@@ -137,34 +137,34 @@ const user: React.FC<props> = ({}) => {
               <tr className={styles.tr1}>
                 <td className={`${styles.td_name1} ${styles.td1}`}>名前</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_name2}>{name}</td>
+                <td className={styles.text}>&emsp;{name}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_birth1} ${styles.td1}`}>
                   生年月日
                 </td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_birth2}>{birthday}</td>
+                <td className={styles.text}>&emsp;{birthday}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_add1} ${styles.td1}`}>住所</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_add2}>{address}</td>
+                <td className={styles.text}>&emsp;{address}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_area1} ${styles.td1}`}>希望地域</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_area2}>{area}</td>
+                <td className={styles.text}>&emsp;{area}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_job2}>{job}</td>
+                <td className={styles.text}>&emsp;{job}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_pr1} ${styles.td1}`}>自己PR</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_pr2}>{pr}</td>
+                <td className={styles.text}>&emsp;{pr}</td>
               </tr>
             </tbody>
           </table>
