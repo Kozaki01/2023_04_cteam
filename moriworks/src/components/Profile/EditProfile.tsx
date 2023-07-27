@@ -9,7 +9,6 @@ import {
   checkProfileExistence,
   getProfile,
 } from '../Function/DBProfile';
-import UnmountOnChange from './UnmountOnChange';
 
 type btnItem = {
   title: string;
