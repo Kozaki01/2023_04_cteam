@@ -11,7 +11,10 @@ export const checkProfileExistence = async (account_id: number) => {
     if (error) {
       throw error;
     }
-    return data.length > 0;
+    if (data.length > 0) {
+      return true;
+    }
+    return false;
   } catch (error) {
     console.error('Error checking profile existence:', error);
     return false;
@@ -29,28 +32,20 @@ export const getProfile = async (account_id: number) => {
         name_user,
         birthday,
         address,
-        desired_area {
-          area {
-            area_name,
-          }
-        },
-        desired_job_type {
-          job_type {
-            job_type_name,
-          }
-        }
-        self_publicity,
+        desired_area(area:area_id(area_id,area_name)),
+        desired_job_type(job_type:job_type_id(job_type_id,job_type_name)),
+        self_publicity
         `
       )
       .eq('account_id', account_id);
     if (error) {
       throw error;
     }
-    console.log(data);
-    return data;
+    if (data.length > 0) {
+      return data[0];
+    }
+    throw error;
   } catch (error) {
-    // エラーハンドリング
-    console.error('Error get profile:', error);
     return { error };
   }
 };
