@@ -31,8 +31,6 @@ interface props {}
 const EditProfile: React.FC<props> = ({}) => {
   const router = useRouter();
   const [account_id, setAccountID] = useState(Number); // アカウントID
-  const [name, setName] = useState(String); // 名前
-  const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState<string[]>([]); // 希望地域
   const [job, setJob] = useState<string[]>([]); // 希望業種
@@ -68,8 +66,6 @@ const EditProfile: React.FC<props> = ({}) => {
         if ('error' in result) {
           console.error('Error getting profile:', result.error);
         } else {
-          setName(result.name_user);
-          setBirthday(result.birthday);
           setAddress(result.address);
           setPr(result.self_publicity);
           result.desired_area.forEach((item: any) => {
@@ -107,14 +103,6 @@ const EditProfile: React.FC<props> = ({}) => {
   /**
    * Change時の値の取得
    */
-  // nameの取得
-  const changeName = (e: any) => {
-    setName(e.target.value);
-  };
-  // 生年月日の取得
-  const changeBirthday = (e: any) => {
-    setBirthday(e.target.value);
-  };
   // 住所の取得
   const changeAddress = (e: any) => {
     setAddress(e.target.value);
