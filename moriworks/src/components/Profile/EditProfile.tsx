@@ -8,7 +8,10 @@ import {
   fetch_id,
   checkProfileExistence,
   getProfile,
+  editProfile,
 } from '../Function/DBProfile';
+import { editDesiredArea } from '../Function/DBDesiredArea';
+import { editDesiredJobType } from '../Function/DBDesiredJobType';
 
 type btnItem = {
   title: string;
@@ -53,6 +56,7 @@ const EditProfile: React.FC<props> = ({}) => {
       // }
     }
   };
+
   // プロフィールの値を取得
   const fetchData = async () => {
     try {
@@ -144,23 +148,23 @@ const EditProfile: React.FC<props> = ({}) => {
     setPr(e.target.value);
   };
 
-  // プロフィール作成処理
+  // プロフィール編集
   const doEdit = async () => {
-    // const result = await EditProfile(account_id, name, birthday, address, pr);
+    const result = await editProfile(account_id, name, birthday, address, pr);
     // 作成出来た時
-    // if (!result.error) {
-    //   const profile_id = await fetch_id(account_id);
-    //   if (!profile_id.error) {
-    //     area.forEach((item) => {
-    //       createDesiredArea(item['value'], profile_id);
-    //     });
-    //     console.log('createArea');
-    //     job.forEach((item) => {
-    //       createDesiredJobType(item['value'], profile_id);
-    //     });
-    //     console.log('createJob');
-    //   }
-    // }
+    if (!result.error) {
+      const profile_id = await fetch_id(account_id);
+      if (!profile_id.error) {
+        area.forEach((item: any) => {
+          editDesiredArea(item['value'], profile_id);
+        });
+        console.log('editArea');
+        job.forEach((item: any) => {
+          editDesiredJobType(item['value'], profile_id);
+        });
+        console.log('editJob');
+      }
+    }
   };
 
   const btns: btnItem[] = [
