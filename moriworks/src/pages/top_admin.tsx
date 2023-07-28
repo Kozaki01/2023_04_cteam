@@ -1,17 +1,17 @@
 import React from 'react';
-import PageComponent from '../components/top/top_users';
+import PageComponent from '../components/top/top_admin';
 import Header from '../components/Header/Header';
-import Btn from '../components/Btn';
+import Btn from "../components/Btn";
 import { useRouter } from 'next/router';
 
 const Index = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    const checkLocalStorage = async () => {
+    const  checkLocalStorage =async () => {
       const accountId = localStorage.getItem('account_id');
       if (!accountId || accountId.trim() === '') {
-        await router.push('/');
+        await router.push("/");
       }
     };
 

@@ -1,136 +1,230 @@
 .div1 {
+  /* 全体の幅 */
   width: 100%;
+  /* 上部のマージン */
   margin-top: 5px;
+  /* 上部のパディング */
   padding-top: 60px;
+  /* 下部のパディング */
   padding-bottom: 100px;
+  /* 左側のパディング */
   padding-left: 170px;
+  /* 右側のパディング */
   padding-right: 170px;
+  /* 背景色 */
   background: #fe7373;
 }
+
 .div2 {
+  /* 高さ */
   height: 100%;
-  width: 718;
-  margin-left: 173px;
-  margin-right: 173px;
+  /* 幅 */
+  width: 80rem;
+  /* 中央配置 */
+  margin: auto;
+  /* 左側のパディング */
   padding-left: 95px;
+  /* 上部のパディング */
   padding-top: 120px;
+  /* 右側のパディング */
   padding-right: 95px;
+  /* 下部のパディング */
   padding-bottom: 55px;
+  /* 背景色 */
   background: #ffffff;
+  /* 境界線 */
   border: solid 4px #000000;
+  /* 角丸 */
   border-radius: 25px;
-  text-align: center;
 }
 
 .table1 {
+  /* 上部のマージン */
   margin-top: 65px;
+  /* テーブルのセルの間隔 */
   border-collapse: separate;
   border-spacing: 0px 95px;
 }
+
 .td1 {
+  /* 幅 */
   width: 39%;
+  /* フォントファミリー */
   font-family: 'Kosugi Maru';
+  /* フォントスタイル */
   font-style: normal;
+  /* フォントの太さ */
   font-weight: 400;
+  /* フォントサイズ */
   font-size: 20px;
+  /* 行の高さ */
   line-height: 32px;
+  /* 文字間の距離 */
   letter-spacing: 0.04em;
+  /* 文字色 */
   color: #000000;
+  /* 文字の配置 */
   text-align: center;
 }
 
 .td_birth2 {
+  /* 右側のパディング */
   padding-right: 12rem;
 }
 
 .td_area2,
 .td_job2 {
+  /* 左側のパディング */
   padding-left: 6rem;
 }
+
 .colon {
+  /* 文字サイズ */
   font-size: 32px;
 }
 
 .flex_btn {
+  /* 上部のマージン */
   margin-top: 30px;
+  /* フレックスコンテナの配置 */
   display: flex;
+  /* 中央配置 */
   justify-content: center;
 }
+
 .space {
+  /* 幅 */
   width: 150px;
 }
 
-// 日付
 .date {
+  /* 相対配置 */
   position: relative;
+  /* インラインブロック */
   display: inline-block;
+  /* 幅 */
   width: 25rem;
+  /* 最小幅 */
   min-width: 200px;
+  /* 高さ */
   height: 36px;
+  /* 境界線 */
   border: 2px solid #ccc;
+  /* 角丸 */
   border-radius: 15px;
+  /* 左側のマージン */
+  margin-left: 5rem;
 }
+
 .date:focus-within {
+  /* 境界線 */
   border: 2px solid #2684ff;
+  /* アウトライン */
   outline: 0;
 }
+
 .input_birth {
+  /* 相対配置 */
   position: relative;
+  /* パディング */
   padding: 0 10px;
+  /* 幅 */
   width: 25rem;
+  /* 最小幅 */
   min-width: 200px;
+  /* 高さ */
   height: 36px;
+  /* 境界線 */
   border: 0;
+  /* 背景色 */
   background: transparent;
+  /* ボックスサイズ */
   box-sizing: border-box;
+  /* フォントサイズ */
   font-size: 20px;
+  /* フォントの太さ */
   font-weight: 500;
+  /* 文字色 */
   color: #000;
+  /* 左側のマージン */
+  margin-left: 1rem;
 }
+
 .input_birth:focus {
+  /* 境界線 */
   border: 0;
+  /* アウトライン */
   outline: none;
 }
 
-//テキストのcss
 .text {
+  /* 高さ */
   height: 3rem;
+  /* 幅 */
   width: 70%;
+  /* フォントサイズ */
   font-size: 16px;
+  /* 境界線 */
   border: 1px solid #999;
+  /* 角丸 */
   border-radius: 1rem;
+  /* 左側のパディング */
   padding-left: 30px;
 }
+
 .text:focus {
+  /* 境界線 */
   border: 2px solid #2684ff;
+  /* アウトライン */
   outline: 0;
 }
-//テキストの横幅調整
+
 .text_width {
+  /* 左側のパディング */
   padding-left: 3%;
+  /* 幅 */
   width: 100%;
 }
-//テキストエリアの幅
+
 .text_area {
-  resize: auto;
+  /* リサイズ禁止 */
+  resize: none;
+  /* フォントサイズ */
   font-size: 16px;
+  /* パディング */
   padding: 0.7rem;
+  /* 最小幅 */
   min-width: 100px;
+  /* 最小高さ */
   min-height: 100px;
+  /* 高さ */
   height: 10rem;
+  /* 幅 */
   width: 50rem;
-  margin-left: 50px;
+  /* 左側のマージン */
+  margin-left: 5rem;
+  /* 境界線 */
   border: 1px solid #999;
 }
+
 .text_area:focus {
+  /* 境界線 */
   border: 2px solid #2684ff;
+  /* アウトライン */
   outline: 0;
 }
-//生年月日の横幅調整
+
 .date_width {
+  /* 右側のパディング */
   padding-right: 55.7%;
 }
-//上余白の調整
+
 .padding_top {
+  /* 上部のパディング */
   padding-top: 2%;
+}
+
+.text_box {
+  /* 右側のパディング */
+  padding-right: 5rem;
 }
