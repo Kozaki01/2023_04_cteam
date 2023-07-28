@@ -150,7 +150,7 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // プロフィール編集
   const doEdit = async () => {
-    const result = await editProfile(account_id, name, birthday, address, pr);
+    const result = await editProfile(account_id, address, pr);
     // 作成出来た時
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
