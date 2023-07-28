@@ -8,10 +8,14 @@ import { getJobType } from '../Function/DBJobType';
 interface props {
   isArea: boolean;
   changeEvent: any;
+  defaultValue: any;
 }
 
-const MultiSelect: React.FC<props> = ({ isArea, changeEvent }) => {
-  const [warna, setWarna] = useState([]);
+const MultiSelect: React.FC<props> = ({
+  isArea,
+  changeEvent,
+  defaultValue,
+}) => {
   const options: any = [];
 
   // optionsの中身を取得
@@ -64,6 +68,7 @@ const MultiSelect: React.FC<props> = ({ isArea, changeEvent }) => {
         classNamePrefix="select"
         options={options}
         onChange={changeEvent}
+        defaultValue={defaultValue}
         placeholder="希望の地域を選択してください。"
       />
     </div>

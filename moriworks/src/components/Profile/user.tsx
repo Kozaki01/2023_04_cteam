@@ -42,9 +42,9 @@ const user: React.FC<props> = ({}) => {
         const profileExists = await checkProfileExistence(account_id);
         console.log('profileExists： ' + profileExists);
         // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-        // if (!profileExists) {
-        //   router.push('/profile_create_users');
-        // }
+        if (profileExists) {
+          router.push('/profile_create_users');
+        }
       }
     };
     // プロフィール取得

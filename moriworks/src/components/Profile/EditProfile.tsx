@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import styles from './CreateProfile.module.scss';
+import styles from './EditProfile.module.scss';
 import { useRouter } from 'next/router';
 import Title from '../Title';
-import Btn from './../index/TopButton/TopButton';
+import Btn from '../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
 import {
-  createProfile,
   fetch_id,
   checkProfileExistence,
+  getProfile,
+  editProfile,
 } from '../Function/DBProfile';
-import { createDesiredArea } from '../Function/DBDesiredArea';
-import { createDesiredJobType } from './../Function/DBDesiredJobType';
+import { editDesiredArea } from '../Function/DBDesiredArea';
+import { editDesiredJobType } from '../Function/DBDesiredJobType';
 
 type btnItem = {
   title: string;
@@ -27,33 +28,75 @@ type btnItem = {
 
 interface props {}
 
-const CreateProfile: React.FC<props> = ({}) => {
+const EditProfile: React.FC<props> = ({}) => {
   const router = useRouter();
-  const [account_id, setAccountID] = useState(Number);
+  const [account_id, setAccountID] = useState(Number); // アカウントID
   const [name, setName] = useState(String); // 名前
   const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
-  const [area, setArea] = useState([]); // 希望地域
-  const [job, setJob] = useState([]); // 希望業種
+  const [area, setArea] = useState<string[]>([]); // 希望地域
+  const [job, setJob] = useState<string[]>([]); // 希望業種
+  const _area: any = [];
+  const _job: any = [];
   const [pr, setPr] = useState(String); // 自己PR
 
-  // リダイレクトの処理
-  React.useEffect(() => {
-    const checkProfile = async () => {
+  // プロフィールが作成されているか調べてリダイレクト
+  const checkProfile = async () => {
+    const accountId = localStorage.getItem('account_id');
+    console.log('account_id: ' + accountId);
+    if (accountId) {
+      // アカウントID取得
+      setAccountID(Number(accountId));
+      // プロフィールが作成されているか調べる
+      const profileExists = await checkProfileExistence(Number(account_id));
+      console.log('profileExists： ' + profileExists);
+      // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
+      // if (profileExists) {
+      //   router.push('/profile_create_users');
+      // }
+    }
+  };
+
+  // プロフィールの値を取得
+  const fetchData = async () => {
+    try {
       const accountId = localStorage.getItem('account_id');
-      console.log('account_id: ' + accountId);
+      console.log(accountId);
       if (accountId) {
-        setAccountID(Number(accountId));
-        // プロフィールが作成されているか調べる
-        const profileExists = await checkProfileExistence(Number(account_id));
-        console.log('profileExists： ' + profileExists);
-        // プロフィールが作成されているとき プロフィール作成ページに飛ぶ
-        if (profileExists) {
-          router.push('/profile_users');
+        const result = await getProfile(Number(accountId));
+        console.log(result);
+        if ('error' in result) {
+          console.error('Error getting profile:', result.error);
+        } else {
+          setName(result.name_user);
+          setBirthday(result.birthday);
+          setAddress(result.address);
+          setPr(result.self_publicity);
+          result.desired_area.forEach((item: any) => {
+            _area.push({
+              value: Number(`${item['area']['area_id']}`),
+              label: `${item['area']['area_name']}`,
+            });
+          });
+          console.log('_area', _area);
+          result.desired_job_type.forEach((item: any) => {
+            _job.push({
+              value: Number(`${item['job_type']['job_type_id']}`),
+              label: `${item['job_type']['job_type_name']}`,
+            });
+          });
+          console.log('_job', _job);
         }
       }
-    };
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // アカウントID取得の処理
+  React.useEffect(() => {
     checkProfile();
+    fetchData();
   }, []);
 
   // ユーザTopに遷移
@@ -62,7 +105,7 @@ const CreateProfile: React.FC<props> = ({}) => {
   };
 
   /**
-   * input値の取得
+   * Change時の値の取得
    */
   // nameの取得
   const changeName = (e: any) => {
@@ -85,6 +128,7 @@ const CreateProfile: React.FC<props> = ({}) => {
     } else if (action === 'remove-value') {
       console.log('remove');
     }
+    console.log(selected);
     setArea(selected);
   };
   // 希望職種の取得
@@ -96,6 +140,7 @@ const CreateProfile: React.FC<props> = ({}) => {
     } else if (action === 'remove-value') {
       console.log('remove');
     }
+    console.log(selected);
     setJob(selected);
   };
   // 自己ｐｒの取得
@@ -103,27 +148,27 @@ const CreateProfile: React.FC<props> = ({}) => {
     setPr(e.target.value);
   };
 
-  // プロフィール作成処理
-  const doCreate = async () => {
-    const result = await createProfile(account_id, name, birthday, address, pr);
+  // プロフィール編集
+  const doEdit = async () => {
+    /*
+    const result = await editProfile(account_id, name, birthday, address, pr);
     // 作成出来た時
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
       if (!profile_id.error) {
-        // エリアの登録
-        area.forEach((item) => {
-          createDesiredArea(item['value'], profile_id);
+        console.log(area);
+        area.forEach((item: any) => {
+          editDesiredArea(item['value'], profile_id);
         });
-        console.log('createArea');
-        // 業種の登録
-        job.forEach((item) => {
-          createDesiredJobType(item['value'], profile_id);
+        console.log('editArea');
+        console.log(job);
+        job.forEach((item: any) => {
+          editDesiredJobType(item['value'], profile_id);
         });
-        console.log('createJob');
-        // 画面遷移 Myprofileに
-        router.push('/profile_users');
+        console.log('editJob');
       }
     }
+    */
   };
 
   const btns: btnItem[] = [
@@ -136,11 +181,11 @@ const CreateProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: '#E5E5E5',
       hover: '',
+      hovercolor: '#E5E5E5',
     }, //戻る
     {
-      title: '作成する',
+      title: '編集する',
       bgcolor: '',
       font: 'Kosugi Maru',
       wide: 170,
@@ -148,8 +193,8 @@ const CreateProfile: React.FC<props> = ({}) => {
       color: 'black',
       border: '',
       shadow: '',
-      hovercolor: '#E5E5E5',
       hover: '',
+      hovercolor: '#E5E5E5',
     }, //編集する
   ];
   const btn1Props: btnItem = {
@@ -163,7 +208,7 @@ const CreateProfile: React.FC<props> = ({}) => {
     <>
       <div className={styles.div1}>
         <div className={styles.div2}>
-          <Title text={'プロフィール作成'} />
+          <Title text={'アカウント編集'} />
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>
@@ -172,9 +217,9 @@ const CreateProfile: React.FC<props> = ({}) => {
                 <td className={styles.td_name2}>
                   <input
                     type="text"
-                    placeholder="山田太郎"
                     className={styles.text}
                     onChange={changeName}
+                    value={name}
                   />
                 </td>
               </tr>
@@ -189,6 +234,7 @@ const CreateProfile: React.FC<props> = ({}) => {
                       type="date"
                       className={styles.input_birth}
                       onChange={changeBirthday}
+                      value={String(birthday)}
                     />
                   </label>
                 </td>
@@ -202,6 +248,7 @@ const CreateProfile: React.FC<props> = ({}) => {
                     placeholder="岩手県盛岡市中央通り3丁目"
                     className={styles.text}
                     onChange={changeAddress}
+                    value={address}
                   />
                 </td>
               </tr>
@@ -210,15 +257,22 @@ const CreateProfile: React.FC<props> = ({}) => {
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_area2}>
                   {/* 希望地域のコンポーネント */}
-                  <MultiSelect isArea={true} changeEvent={changeArea} />
+                  <MultiSelect
+                    isArea={true}
+                    changeEvent={changeArea}
+                    defaultValue={_area}
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_job2}>
-                  {/* 希望業種のコンポーネント */}
-                  <MultiSelect isArea={false} changeEvent={changeJob} />
+                  <MultiSelect
+                    isArea={false}
+                    changeEvent={changeJob}
+                    defaultValue={_job}
+                  />
                 </td>
               </tr>
               <tr className={styles.tr1}>
@@ -229,6 +283,7 @@ const CreateProfile: React.FC<props> = ({}) => {
                     placeholder="例:私の強みは〇〇です。"
                     className={styles.text_area}
                     onChange={changePr}
+                    value={pr}
                   ></textarea>
                 </td>
               </tr>
@@ -239,7 +294,7 @@ const CreateProfile: React.FC<props> = ({}) => {
               <Btn {...btn1Props} />
             </div>
             <span className={styles.space}></span>
-            <div onClick={doCreate}>
+            <div onClick={doEdit}>
               <Btn {...btn2props} />
             </div>
           </div>
@@ -249,4 +304,4 @@ const CreateProfile: React.FC<props> = ({}) => {
   );
 };
 
-export default CreateProfile;
+export default EditProfile;
