@@ -150,7 +150,6 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // プロフィール編集
   const doEdit = async () => {
-    /*
     const result = await editProfile(account_id, name, birthday, address, pr);
     // 作成出来た時
     if (!result.error) {
@@ -168,7 +167,6 @@ const EditProfile: React.FC<props> = ({}) => {
         console.log('editJob');
       }
     }
-    */
   };
 
   const btns: btnItem[] = [
@@ -211,34 +209,6 @@ const EditProfile: React.FC<props> = ({}) => {
           <Title text={'アカウント編集'} />
           <table className={styles.table1}>
             <tbody>
-              <tr className={styles.tr1}>
-                <td className={`${styles.td_name1} ${styles.td1}`}>名前</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.td_name2}>
-                  <input
-                    type="text"
-                    className={styles.text}
-                    onChange={changeName}
-                    value={name}
-                  />
-                </td>
-              </tr>
-              <tr className={styles.tr1}>
-                <td className={`${styles.td_birth1} ${styles.td1}`}>
-                  生年月日
-                </td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.td_birth2}>
-                  <label className={styles.date}>
-                    <input
-                      type="date"
-                      className={styles.input_birth}
-                      onChange={changeBirthday}
-                      value={String(birthday)}
-                    />
-                  </label>
-                </td>
-              </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_add1} ${styles.td1}`}>住所</td>
                 <td className={styles.colon}>:</td>

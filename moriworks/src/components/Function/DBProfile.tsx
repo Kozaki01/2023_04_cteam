@@ -91,8 +91,6 @@ export const createProfile = async (
 // プロフィール編集
 export const editProfile = async (
   account_id: number,
-  name_user: string,
-  birthday: Date,
   address: string,
   self_publicity: string
 ) => {
@@ -100,8 +98,6 @@ export const editProfile = async (
     const { error } = await supabase
       .from('profile')
       .update({
-        name_user: name_user,
-        birthday: birthday,
         address: address,
         self_publicity: self_publicity,
       })
