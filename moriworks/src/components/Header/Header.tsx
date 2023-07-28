@@ -17,6 +17,7 @@ type btnItem = {
   border: string;
   shadow: string;
   hovercolor:string;
+  hover:string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
@@ -31,7 +32,8 @@ const Header: React.FC<props> = ({ type }) => {
       color: 'black',
       border: 'solid',
       shadow: '10px 5px 5px black;',
-      hovercolor:'#E5E5E5'
+      hovercolor:'#E5E5E5',
+      hover:'',
     }, //トップ
     {
       title: 'ログアウト',
@@ -42,7 +44,8 @@ const Header: React.FC<props> = ({ type }) => {
       color: 'black',
       border: 'solid',
       shadow: '10px 5px 5px black',
-      hovercolor:'blue'
+      hovercolor:'#E5E5E5',
+      hover:'',
     }, //ログアウト
   ];
 
@@ -84,10 +87,14 @@ const Header: React.FC<props> = ({ type }) => {
         <div className={styles.header_div2}>
           <div className={styles.div_4} onClick={moveTop}>
             moriworks
+          </div> 
+          <div className={`${styles.logout} ${styles.button}`}onClick={moveLogout}>
+            <Btn {...btn1Props} />            
+            {/* このようにしないと表示されない */}
+            <div className={styles.button}></div>
+            <Btn {...btn2Props} />            
           </div>
-          <div className={styles.logout} onClick={moveLogout}>
-            <Btn {...btn1Props} />
-          </div>
+
         </div>
       )}
     </>
