@@ -16,34 +16,37 @@ type btnItem = {
   color: string;
   border: string;
   shadow: string;
-  hovercolor:string;
+  hovercolor: string;
+  hover: string;
 };
 
 const Header: React.FC<props> = ({ type }) => {
   const router = useRouter();
   const btns: btnItem[] = [
     {
-      title: 'トップ',
-      bgcolor: 'white',
-      font: 'MS Gothic',
-      wide: 130,
-      height: 70,
-      color: 'black',
-      border: 'solid',
-      shadow: '10px 5px 5px black;',
-      hovercolor:'#E5E5E5'
-    }, //トップ
-    {
       title: 'ログアウト',
-      font: 'Kosugi Maru',
       bgcolor: 'white',
+      font: 'Kosugi Maru',
       wide: 170,
       height: 70,
       color: 'black',
       border: 'solid',
-      shadow: '10px 5px 5px black',
-      hovercolor:'blue'
-    }, //ログアウト
+      shadow: '10px 5px 5px black;',
+      hovercolor: '#E5E5E5',
+      hover: '',
+    }, //トップ
+    {
+      title: 'トップ',
+      bgcolor: 'white',
+      font: 'Kosugi Maru',
+      wide: 170,
+      height: 70,
+      color: 'black',
+      border: 'solid',
+      shadow: '10px 5px 5px black;',
+      hovercolor: '#E5E5E5',
+      hover: '',
+    }, //トップ
   ];
 
   const btn1Props: btnItem = {
@@ -52,7 +55,8 @@ const Header: React.FC<props> = ({ type }) => {
 
   const btn2Props: btnItem = {
     ...btns[1],
-  }
+  };
+
   // Topに遷移
   const moveTop = async () => {
     router.push('/').then((_) => {});
