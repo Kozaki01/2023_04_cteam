@@ -74,14 +74,14 @@ const EditProfile: React.FC<props> = ({}) => {
           setPr(result.self_publicity);
           result.desired_area.forEach((item: any) => {
             _area.push({
-              value: `${item['area']['area_id']}`,
+              value: Number(`${item['area']['area_id']}`),
               label: `${item['area']['area_name']}`,
             });
           });
           console.log('_area', _area);
           result.desired_job_type.forEach((item: any) => {
             _job.push({
-              value: `${item['job_type']['job_type_id']}`,
+              value: Number(`${item['job_type']['job_type_id']}`),
               label: `${item['job_type']['job_type_name']}`,
             });
           });
@@ -150,21 +150,25 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // プロフィール編集
   const doEdit = async () => {
+    /*
     const result = await editProfile(account_id, name, birthday, address, pr);
     // 作成出来た時
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
       if (!profile_id.error) {
+        console.log(area);
         area.forEach((item: any) => {
           editDesiredArea(item['value'], profile_id);
         });
         console.log('editArea');
+        console.log(job);
         job.forEach((item: any) => {
           editDesiredJobType(item['value'], profile_id);
         });
         console.log('editJob');
       }
     }
+    */
   };
 
   const btns: btnItem[] = [

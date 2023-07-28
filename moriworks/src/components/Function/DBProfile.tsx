@@ -88,6 +88,31 @@ export const createProfile = async (
   }
 };
 
+// プロフィール編集
+export const editProfile = async (
+  account_id: number,
+  name_user: string,
+  birthday: Date,
+  address: string,
+  self_publicity: string
+) => {
+  try {
+    const { error } = await supabase
+      .from('profile')
+      .update({
+        name_user: name_user,
+        birthday: birthday,
+        address: address,
+        self_publicity: self_publicity,
+      })
+      .eq('account_id', account_id);
+    return { error };
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
+};
+
 // profile_idの取得
 export const fetch_id = async (account_id: number) => {
   try {
