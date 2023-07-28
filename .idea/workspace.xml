@@ -4,23 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="[feat] top_companyの追加">
+    <list default="true" id="d7690c5f-88d1-4914-b678-051b1527d586" name="変更" comment="[feat] タイトルの修正">
+      <change afterPath="$PROJECT_DIR$/moriworks/src/components/Function/DBCompany.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/components/Function/DBOpenings_industry.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/components/company/userlist_company.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/components/company/userlist_company.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moriworks/src/pages/userlist_company.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/moriworks/src/components/Profile/CreateProfile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="67-pagesのaccount_idの修正" />
+        <entry key="$PROJECT_DIR$" value="48-CreateProfile" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/moriworks/src/components/company/userlist_company.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,26 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "48-CreateProfile",
-    "last_opened_file_path": "/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/src/pages",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;すべての場所&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;71-create-admin-top&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/src/components/top&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/dounomaetoshiki/WebstormProjects/2023_04_cteam/moriworks/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/moriworks/src/pages" />
       <recent name="$PROJECT_DIR$/moriworks/src/components/top" />
+      <recent name="$PROJECT_DIR$/moriworks/src/pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -78,6 +95,8 @@
       <workItem from="1688437316466" duration="648000" />
       <workItem from="1688690321043" duration="3281000" />
       <workItem from="1689042140117" duration="6657000" />
+      <workItem from="1689295251671" duration="9372000" />
+      <workItem from="1689734032350" duration="45917000" />
     </task>
     <task id="LOCAL-00001" summary="[feat] top_companyの追加">
       <created>1688690957464</created>
@@ -100,7 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688691080898</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[feat] top_adminの追加">
+      <created>1689299580419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689299580419</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[feat] タイトルの修正">
+      <created>1689902617921</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689902617921</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +145,21 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="71-create-admin-top" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="top_admin" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="top_admi" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="top_company_fixed" />
@@ -137,7 +185,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="top_company_fixed" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
@@ -151,6 +199,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[feat] top_companyの追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat] top_companyの追加" />
+    <MESSAGE value="[feat] top_adminの追加" />
+    <MESSAGE value="[feat] タイトルの修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat] タイトルの修正" />
   </component>
 </project>
