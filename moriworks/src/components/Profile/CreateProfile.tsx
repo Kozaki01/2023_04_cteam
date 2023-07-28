@@ -163,7 +163,7 @@ const CreateProfile: React.FC<props> = ({}) => {
     <>
       <div className={styles.div1}>
         <div className={styles.div2}>
-          <Title text={'アカウント作成'} />
+          <Title text={'プロフィール作成'} />
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>
