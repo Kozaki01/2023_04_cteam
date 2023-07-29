@@ -4,14 +4,17 @@ import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from '../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
+import { fetch_id, getProfile, editProfile } from '../Function/DBProfile';
 import {
-  fetch_id,
-  checkProfileExistence,
-  getProfile,
-  editProfile,
-} from '../Function/DBProfile';
-import { editDesiredArea } from '../Function/DBDesiredArea';
-import { editDesiredJobType } from '../Function/DBDesiredJobType';
+  createDesiredArea,
+  editDesiredArea,
+  deleteDesiredArea,
+} from '../Function/DBDesiredArea';
+import {
+  createDesiredJobType,
+  editDesiredJobType,
+  deleteDesiredJob,
+} from '../Function/DBDesiredJobType';
 
 type btnItem = {
   title: string;
