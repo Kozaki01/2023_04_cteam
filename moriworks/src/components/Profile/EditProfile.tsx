@@ -37,8 +37,10 @@ const EditProfile: React.FC<props> = ({}) => {
   const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState<string[]>([]); // 希望地域
   const [job, setJob] = useState<string[]>([]); // 希望業種
-  const _area: any = [];
-  const _job: any = [];
+  const default_area: any = []; // 希望地域のデフォルト表示
+  const default_job: any = []; // 希望業種のデフォルト表示
+  const [area_delflg, setAreaflg] = useState(false); // 希望地域を消したフラグ
+  const [job_delflg, setJobflg] = useState(false); // 希望業種を消したフラグ
   const [pr, setPr] = useState(String); // 自己PR
 
   // プロフィールが作成されているか調べてリダイレクト
