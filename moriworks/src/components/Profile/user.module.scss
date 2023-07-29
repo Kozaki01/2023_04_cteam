@@ -1,26 +1,44 @@
 .div1 {
+  /* 全体の幅 */
   width: 100%;
+  /* 上部のマージン */
   margin-top: 5px;
+  /* 上部のパディング */
   padding-top: 60px;
+  /* 下部のパディング */
   padding-bottom: 100px;
+  /* 左側のパディング */
   padding-left: 170px;
+  /* 右側のパディング */
   padding-right: 170px;
+  /* 背景色 */
   background: #5ed8f2;
 }
 .div2 {
-  margin-left: 173px;
-  margin-right: 173px;
+  /* 高さ */
+  height: 100%;
+  /* 幅 */
+  width: 80rem;
+  /* 中央配置 */
+  margin: auto;
+  /* 左側のパディング */
   padding-left: 95px;
+  /* 上部のパディング */
   padding-top: 120px;
+  /* 右側のパディング */
   padding-right: 95px;
+  /* 下部のパディング */
   padding-bottom: 55px;
+  /* 背景色 */
   background: #ffffff;
+  /* 境界線 */
   border: solid 4px #000000;
+  /* 角丸 */
   border-radius: 25px;
 }
 
 .table1 {
-  margin-top: 65px;
+  margin: 1.5rem 0px;
   border-collapse: separate;
   border-spacing: 0px 95px;
 }
@@ -47,12 +65,12 @@
 .space {
   width: 150px;
 }
-.text{
+.text {
   color: #000;
   font-family: Kosugi Maru;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal; 
+  line-height: normal;
   letter-spacing: 1.28px;
 }

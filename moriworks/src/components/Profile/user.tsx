@@ -65,13 +65,13 @@ const user: React.FC<props> = ({}) => {
             const _area: string[] = [];
             result.desired_area.forEach((item: any) => {
               console.log(item['area']['area_name']);
-              _area.push(`・${item['area']['area_name']}`);
+              _area.push(`${item['area']['area_name']}　`);
               setArea(_area);
             });
             const _job: string[] = [];
             result.desired_job_type.forEach((item: any) => {
               console.log(item['job_type']['job_type_name']);
-              _job.push(`・${item['job_type']['job_type_name']}`);
+              _job.push(`${item['job_type']['job_type_name']}　`);
               setJob(_job);
             });
           }
