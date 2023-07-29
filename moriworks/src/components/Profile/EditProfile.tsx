@@ -47,29 +47,28 @@ const EditProfile: React.FC<props> = ({}) => {
   const fetchData = async () => {
     try {
       const accountId = localStorage.getItem('account_id');
-      console.log(accountId);
+      setAccountID(Number(accountId));
       if (accountId) {
         const result = await getProfile(Number(accountId));
-        console.log(result);
         if ('error' in result) {
           console.error('Error getting profile:', result.error);
         } else {
           setAddress(result.address);
           setPr(result.self_publicity);
           result.desired_area.forEach((item: any) => {
-            _area.push({
+            default_area.push({
               value: Number(`${item['area']['area_id']}`),
               label: `${item['area']['area_name']}`,
             });
           });
-          console.log('_area', _area);
+          setArea(default_area);
           result.desired_job_type.forEach((item: any) => {
-            _job.push({
+            default_job.push({
               value: Number(`${item['job_type']['job_type_id']}`),
               label: `${item['job_type']['job_type_name']}`,
             });
           });
-          console.log('_job', _job);
+          setJob(default_job);
         }
       }
     } catch (e) {
@@ -97,25 +96,23 @@ const EditProfile: React.FC<props> = ({}) => {
   // 希望地域の取得
   const changeArea = async (selected: any, selectaction: any) => {
     const { action } = selectaction;
-    // console.log(`action ${action}`);
     if (action === 'clear') {
+      setAreaflg(true);
     } else if (action === 'select-option') {
     } else if (action === 'remove-value') {
-      console.log('remove');
+      setAreaflg(true);
     }
-    console.log(selected);
     setArea(selected);
   };
   // 希望職種の取得
   const changeJob = async (selected: any, selectaction: any) => {
     const { action } = selectaction;
-    // console.log(`action ${action}`);
     if (action === 'clear') {
+      setJobflg(true);
     } else if (action === 'select-option') {
     } else if (action === 'remove-value') {
-      console.log('remove');
+      setJobflg(true);
     }
-    console.log(selected);
     setJob(selected);
   };
   // 自己ｐｒの取得
@@ -130,17 +127,31 @@ const EditProfile: React.FC<props> = ({}) => {
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
       if (!profile_id.error) {
-        console.log(area);
-        area.forEach((item: any) => {
-          editDesiredArea(item['value'], profile_id);
-        });
-        console.log('editArea');
-        console.log(job);
-        job.forEach((item: any) => {
-          editDesiredJobType(item['value'], profile_id);
-        });
-        console.log('editJob');
+        if (area_delflg) {
+          // プロフィールIDが一致する行を削除
+          deleteDesiredArea(profile_id);
+          area.forEach((item: any) => {
+            createDesiredArea(item['value'], profile_id);
+          });
+        } else {
+          area.forEach((item: any) => {
+            editDesiredArea(item['value'], profile_id);
+          });
+        }
+        if (job_delflg) {
+          // プロフィールIDが一致する行を削除
+          deleteDesiredJob(profile_id);
+          job.forEach((item: any) => {
+            createDesiredJobType(item['value'], profile_id);
+          });
+        } else {
+          job.forEach((item: any) => {
+            editDesiredJobType(item['value'], profile_id);
+          });
+        }
       }
+      alert('編集が完了しました。');
+      router.push('/profile_users').then((_) => {});
     }
   };
 
@@ -205,7 +216,7 @@ const EditProfile: React.FC<props> = ({}) => {
                   <MultiSelect
                     isArea={true}
                     changeEvent={changeArea}
-                    defaultValue={_area}
+                    defaultValue={default_area}
                   />
                 </td>
               </tr>
@@ -216,7 +227,7 @@ const EditProfile: React.FC<props> = ({}) => {
                   <MultiSelect
                     isArea={false}
                     changeEvent={changeJob}
-                    defaultValue={_job}
+                    defaultValue={default_job}
                   />
                 </td>
               </tr>
