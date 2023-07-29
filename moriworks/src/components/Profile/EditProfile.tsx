@@ -43,23 +43,6 @@ const EditProfile: React.FC<props> = ({}) => {
   const [job_delflg, setJobflg] = useState(false); // 希望業種を消したフラグ
   const [pr, setPr] = useState(String); // 自己PR
 
-  // プロフィールが作成されているか調べてリダイレクト
-  const checkProfile = async () => {
-    const accountId = localStorage.getItem('account_id');
-    console.log('account_id: ' + accountId);
-    if (accountId) {
-      // アカウントID取得
-      setAccountID(Number(accountId));
-      // プロフィールが作成されているか調べる
-      const profileExists = await checkProfileExistence(Number(account_id));
-      console.log('profileExists： ' + profileExists);
-      // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-      // if (profileExists) {
-      //   router.push('/profile_create_users');
-      // }
-    }
-  };
-
   // プロフィールの値を取得
   const fetchData = async () => {
     try {
@@ -96,7 +79,6 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // アカウントID取得の処理
   React.useEffect(() => {
-    checkProfile();
     fetchData();
   }, []);
 
