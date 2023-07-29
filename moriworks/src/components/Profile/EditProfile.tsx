@@ -82,8 +82,8 @@ const EditProfile: React.FC<props> = ({}) => {
   }, []);
 
   // ユーザTopに遷移
-  const moveTop = async () => {
-    router.push('/top_users').then((_) => {});
+  const moveBack = async () => {
+    router.push('/profile_users').then((_) => {});
   };
 
   /**
@@ -169,7 +169,7 @@ const EditProfile: React.FC<props> = ({}) => {
       hovercolor: '#E5E5E5',
     }, //戻る
     {
-      title: '編集する',
+      title: '編集',
       bgcolor: '',
       font: 'Kosugi Maru',
       wide: 170,
@@ -246,7 +246,7 @@ const EditProfile: React.FC<props> = ({}) => {
             </tbody>
           </table>
           <div className={styles.flex_btn}>
-            <div onClick={moveTop}>
+            <div onClick={moveBack}>
               <Btn {...btn1Props} />
             </div>
             <span className={styles.space}></span>
