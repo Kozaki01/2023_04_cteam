@@ -26,7 +26,7 @@ const Header: React.FC<props> = ({ type }) => {
     {
       title: 'トップ',
       bgcolor: 'white',
-      font: 'MS Gothic',
+      font: 'Kosugi Maru',
       wide: 130,
       height: 70,
       color: 'black',
