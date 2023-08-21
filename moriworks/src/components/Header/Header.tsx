@@ -26,12 +26,12 @@ const Header: React.FC<props> = ({ type }) => {
     {
       title: 'トップ',
       bgcolor: 'white',
-      font: 'MS Gothic',
+      font: 'Kosugi Maru',
       wide: 130,
       height: 70,
       color: 'black',
       border: 'solid',
-      shadow: '10px 5px 5px black;',
+      shadow: '10px 5px 5px black',
       hovercolor:'#E5E5E5',
       hover:'',
     }, //トップ
@@ -43,19 +43,7 @@ const Header: React.FC<props> = ({ type }) => {
       height: 70,
       color: 'black',
       border: 'solid',
-      shadow: '10px 5px 5px black;',
-      hovercolor: '#E5E5E5',
-      hover: '',
-    }, //トップ
-    {
-      title: 'トップ',
-      bgcolor: 'white',
-      font: 'Kosugi Maru',
-      wide: 170,
-      height: 70,
-      color: 'black',
-      border: 'solid',
-      shadow: '10px 5px 5px black;',
+      shadow: '10px 5px 5px black',
       hovercolor: '#E5E5E5',
       hover: '',
     }, //トップ

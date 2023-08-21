@@ -11,7 +11,7 @@ export interface BtnProps {
   color: string;
   border: string;
   shadow: string;
-  hovercolor:string
+  hovercolor:string;
   hover:string;
 }
 
