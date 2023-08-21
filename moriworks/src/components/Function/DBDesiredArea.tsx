@@ -38,7 +38,26 @@ export const editDesiredArea = async (area_id: number, profile_id: number) => {
     if (error) {
       throw error;
     }
+    return { error: false };
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
     return { error };
+  }
+};
+
+// プロフィールIDが一致するデータを削除
+export const deleteDesiredArea = async (profile_id: number) => {
+  try {
+    const { error } = await supabase
+      .from('desired_area')
+      .delete()
+      .eq('profile_id', profile_id);
+    // エラー時
+    if (error) {
+      throw error;
+    }
+    return { error: false };
   } catch (error) {
     // エラーハンドリング
     console.error(error);

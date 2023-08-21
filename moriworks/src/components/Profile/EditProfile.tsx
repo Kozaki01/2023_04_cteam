@@ -4,14 +4,17 @@ import { useRouter } from 'next/router';
 import Title from '../Title';
 import Btn from '../index/TopButton/TopButton';
 import MultiSelect from './MultiSelect';
+import { fetch_id, getProfile, editProfile } from '../Function/DBProfile';
 import {
-  fetch_id,
-  checkProfileExistence,
-  getProfile,
-  editProfile,
-} from '../Function/DBProfile';
-import { editDesiredArea } from '../Function/DBDesiredArea';
-import { editDesiredJobType } from '../Function/DBDesiredJobType';
+  createDesiredArea,
+  editDesiredArea,
+  deleteDesiredArea,
+} from '../Function/DBDesiredArea';
+import {
+  createDesiredJobType,
+  editDesiredJobType,
+  deleteDesiredJob,
+} from '../Function/DBDesiredJobType';
 
 type btnItem = {
   title: string;
@@ -31,61 +34,41 @@ interface props {}
 const EditProfile: React.FC<props> = ({}) => {
   const router = useRouter();
   const [account_id, setAccountID] = useState(Number); // アカウントID
-  const [name, setName] = useState(String); // 名前
-  const [birthday, setBirthday] = useState(new Date()); // 生年月日
   const [address, setAddress] = useState(String); // 住所
   const [area, setArea] = useState<string[]>([]); // 希望地域
   const [job, setJob] = useState<string[]>([]); // 希望業種
-  const _area: any = [];
-  const _job: any = [];
+  const default_area: any = []; // 希望地域のデフォルト表示
+  const default_job: any = []; // 希望業種のデフォルト表示
+  const [area_delflg, setAreaflg] = useState(false); // 希望地域を消したフラグ
+  const [job_delflg, setJobflg] = useState(false); // 希望業種を消したフラグ
   const [pr, setPr] = useState(String); // 自己PR
-
-  // プロフィールが作成されているか調べてリダイレクト
-  const checkProfile = async () => {
-    const accountId = localStorage.getItem('account_id');
-    console.log('account_id: ' + accountId);
-    if (accountId) {
-      // アカウントID取得
-      setAccountID(Number(accountId));
-      // プロフィールが作成されているか調べる
-      const profileExists = await checkProfileExistence(Number(account_id));
-      console.log('profileExists： ' + profileExists);
-      // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-      // if (profileExists) {
-      //   router.push('/profile_create_users');
-      // }
-    }
-  };
 
   // プロフィールの値を取得
   const fetchData = async () => {
     try {
       const accountId = localStorage.getItem('account_id');
-      console.log(accountId);
+      setAccountID(Number(accountId));
       if (accountId) {
         const result = await getProfile(Number(accountId));
-        console.log(result);
         if ('error' in result) {
           console.error('Error getting profile:', result.error);
         } else {
-          setName(result.name_user);
-          setBirthday(result.birthday);
           setAddress(result.address);
           setPr(result.self_publicity);
           result.desired_area.forEach((item: any) => {
-            _area.push({
+            default_area.push({
               value: Number(`${item['area']['area_id']}`),
               label: `${item['area']['area_name']}`,
             });
           });
-          console.log('_area', _area);
+          setArea(default_area);
           result.desired_job_type.forEach((item: any) => {
-            _job.push({
+            default_job.push({
               value: Number(`${item['job_type']['job_type_id']}`),
               label: `${item['job_type']['job_type_name']}`,
             });
           });
-          console.log('_job', _job);
+          setJob(default_job);
         }
       }
     } catch (e) {
@@ -95,26 +78,17 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // アカウントID取得の処理
   React.useEffect(() => {
-    checkProfile();
     fetchData();
   }, []);
 
   // ユーザTopに遷移
-  const moveTop = async () => {
-    router.push('/top_users').then((_) => {});
+  const moveBack = async () => {
+    router.push('/profile_users').then((_) => {});
   };
 
   /**
    * Change時の値の取得
    */
-  // nameの取得
-  const changeName = (e: any) => {
-    setName(e.target.value);
-  };
-  // 生年月日の取得
-  const changeBirthday = (e: any) => {
-    setBirthday(e.target.value);
-  };
   // 住所の取得
   const changeAddress = (e: any) => {
     setAddress(e.target.value);
@@ -122,25 +96,23 @@ const EditProfile: React.FC<props> = ({}) => {
   // 希望地域の取得
   const changeArea = async (selected: any, selectaction: any) => {
     const { action } = selectaction;
-    // console.log(`action ${action}`);
     if (action === 'clear') {
+      setAreaflg(true);
     } else if (action === 'select-option') {
     } else if (action === 'remove-value') {
-      console.log('remove');
+      setAreaflg(true);
     }
-    console.log(selected);
     setArea(selected);
   };
   // 希望職種の取得
   const changeJob = async (selected: any, selectaction: any) => {
     const { action } = selectaction;
-    // console.log(`action ${action}`);
     if (action === 'clear') {
+      setJobflg(true);
     } else if (action === 'select-option') {
     } else if (action === 'remove-value') {
-      console.log('remove');
+      setJobflg(true);
     }
-    console.log(selected);
     setJob(selected);
   };
   // 自己ｐｒの取得
@@ -150,25 +122,37 @@ const EditProfile: React.FC<props> = ({}) => {
 
   // プロフィール編集
   const doEdit = async () => {
-    /*
-    const result = await editProfile(account_id, name, birthday, address, pr);
+    const result = await editProfile(account_id, address, pr);
     // 作成出来た時
     if (!result.error) {
       const profile_id = await fetch_id(account_id);
       if (!profile_id.error) {
-        console.log(area);
-        area.forEach((item: any) => {
-          editDesiredArea(item['value'], profile_id);
-        });
-        console.log('editArea');
-        console.log(job);
-        job.forEach((item: any) => {
-          editDesiredJobType(item['value'], profile_id);
-        });
-        console.log('editJob');
+        if (area_delflg) {
+          // プロフィールIDが一致する行を削除
+          deleteDesiredArea(profile_id);
+          area.forEach((item: any) => {
+            createDesiredArea(item['value'], profile_id);
+          });
+        } else {
+          area.forEach((item: any) => {
+            editDesiredArea(item['value'], profile_id);
+          });
+        }
+        if (job_delflg) {
+          // プロフィールIDが一致する行を削除
+          deleteDesiredJob(profile_id);
+          job.forEach((item: any) => {
+            createDesiredJobType(item['value'], profile_id);
+          });
+        } else {
+          job.forEach((item: any) => {
+            editDesiredJobType(item['value'], profile_id);
+          });
+        }
       }
+      alert('編集が完了しました。');
+      router.push('/profile_users').then((_) => {});
     }
-    */
   };
 
   const btns: btnItem[] = [
@@ -185,7 +169,7 @@ const EditProfile: React.FC<props> = ({}) => {
       hovercolor: '#E5E5E5',
     }, //戻る
     {
-      title: '編集する',
+      title: '編集',
       bgcolor: '',
       font: 'Kosugi Maru',
       wide: 170,
@@ -212,34 +196,6 @@ const EditProfile: React.FC<props> = ({}) => {
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>
-                <td className={`${styles.td_name1} ${styles.td1}`}>名前</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.td_name2}>
-                  <input
-                    type="text"
-                    className={styles.text}
-                    onChange={changeName}
-                    value={name}
-                  />
-                </td>
-              </tr>
-              <tr className={styles.tr1}>
-                <td className={`${styles.td_birth1} ${styles.td1}`}>
-                  生年月日
-                </td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.td_birth2}>
-                  <label className={styles.date}>
-                    <input
-                      type="date"
-                      className={styles.input_birth}
-                      onChange={changeBirthday}
-                      value={String(birthday)}
-                    />
-                  </label>
-                </td>
-              </tr>
-              <tr className={styles.tr1}>
                 <td className={`${styles.td_add1} ${styles.td1}`}>住所</td>
                 <td className={styles.colon}>:</td>
                 <td className={styles.td_add2}>
@@ -260,7 +216,7 @@ const EditProfile: React.FC<props> = ({}) => {
                   <MultiSelect
                     isArea={true}
                     changeEvent={changeArea}
-                    defaultValue={_area}
+                    defaultValue={default_area}
                   />
                 </td>
               </tr>
@@ -271,7 +227,7 @@ const EditProfile: React.FC<props> = ({}) => {
                   <MultiSelect
                     isArea={false}
                     changeEvent={changeJob}
-                    defaultValue={_job}
+                    defaultValue={default_job}
                   />
                 </td>
               </tr>
@@ -290,7 +246,7 @@ const EditProfile: React.FC<props> = ({}) => {
             </tbody>
           </table>
           <div className={styles.flex_btn}>
-            <div onClick={moveTop}>
+            <div onClick={moveBack}>
               <Btn {...btn1Props} />
             </div>
             <span className={styles.space}></span>

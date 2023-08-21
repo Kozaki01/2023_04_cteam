@@ -23,7 +23,7 @@ export const createDesiredJobType = async (
   }
 };
 
-// 希望業種の登録
+// 編集時の作業
 export const editDesiredJobType = async (
   job_type_id: number,
   profile_id: number
@@ -41,7 +41,26 @@ export const editDesiredJobType = async (
     if (error) {
       throw error;
     }
+    return { error: false };
+  } catch (error) {
+    // エラーハンドリング
+    console.error(error);
     return { error };
+  }
+};
+
+// プロフィールIDが一致するデータを削除
+export const deleteDesiredJob = async (profile_id: number) => {
+  try {
+    const { error } = await supabase
+      .from('desired_job_type')
+      .delete()
+      .eq('profile_id', profile_id);
+    // エラー時
+    if (error) {
+      throw error;
+    }
+    return { error: false };
   } catch (error) {
     // エラーハンドリング
     console.error(error);
