@@ -31,7 +31,7 @@ const Header: React.FC<props> = ({ type }) => {
       height: 70,
       color: 'black',
       border: 'solid',
-      shadow: '10px 5px 5px black;',
+      shadow: '10px 5px 5px black',
       hovercolor:'#E5E5E5',
       hover:'',
     }, //トップ
@@ -43,7 +43,7 @@ const Header: React.FC<props> = ({ type }) => {
       height: 70,
       color: 'black',
       border: 'solid',
-      shadow: '10px 5px 5px black;',
+      shadow: '10px 5px 5px black',
       hovercolor: '#E5E5E5',
       hover: '',
     }, //トップ
