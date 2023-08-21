@@ -47,18 +47,6 @@ const Header: React.FC<props> = ({ type }) => {
       hovercolor: '#E5E5E5',
       hover: '',
     }, //トップ
-    {
-      title: 'トップ',
-      bgcolor: 'white',
-      font: 'Kosugi Maru',
-      wide: 170,
-      height: 70,
-      color: 'black',
-      border: 'solid',
-      shadow: '10px 5px 5px black;',
-      hovercolor: '#E5E5E5',
-      hover: '',
-    }, //トップ
   ];
 
   const btn1Props: btnItem = {
