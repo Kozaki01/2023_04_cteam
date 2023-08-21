@@ -22,31 +22,67 @@ interface props {}
 
 const user: React.FC<props> = ({}) => {
   const router = useRouter();
-  const [account_id, setAccountID] = useState(Number);
+  const [account_id, setAccountID] = useState(Number); // アカウントID
+  const [name, setName] = useState(String); // 名前
+  const [birthday, setBirthday] = useState(String); // 生年月日
+  const [address, setAddress] = useState(String); // 住所
+  const [area, setArea] = useState<string[]>([]); // 希望地域
+  const [job, setJob] = useState<string[]>([]); // 希望業種
+  const [pr, setPr] = useState(String); // 自己PR
   const [UserProfile, setProfile] = useState(Object);
-  // リダイレクトの処理
+
   React.useEffect(() => {
+    // プロフィールが作成されているか調べリダイレクト処理する
     const checkProfile = async () => {
       const accountId = localStorage.getItem('account_id');
       console.log('account_id: ' + accountId);
       if (accountId) {
         setAccountID(Number(accountId));
         // プロフィールが作成されているか調べる
-        const profileExists = await checkProfileExistence(Number(account_id));
+        const profileExists = await checkProfileExistence(account_id);
         console.log('profileExists： ' + profileExists);
         // プロフィールが作成されていないとき プロフィール作成ページに飛ぶ
-        // if (!profileExists) {
-        //   router.push('/profile_create_users');
-        // }
+        if (profileExists) {
+          router.push('/profile_create_users');
+        }
       }
     };
-    const Profile = async () => {
-      const data = getProfile(account_id);
-      // useStateでプロフィールを入れる
-      setProfile(data);
+    // プロフィール取得
+    const fetchData = async () => {
+      try {
+        const accountId = localStorage.getItem('account_id');
+        console.log(accountId);
+        if (accountId) {
+          const result = await getProfile(Number(accountId));
+          console.log(result);
+          if ('error' in result) {
+            console.error('Error getting profile:', result.error);
+          } else {
+            setName(result.name_user);
+            setBirthday(result.birthday);
+            setAddress(result.address);
+            setPr(result.self_publicity);
+            const _area: string[] = [];
+            result.desired_area.forEach((item: any) => {
+              console.log(item['area']['area_name']);
+              _area.push(`${item['area']['area_name']}　`);
+              setArea(_area);
+            });
+            const _job: string[] = [];
+            result.desired_job_type.forEach((item: any) => {
+              console.log(item['job_type']['job_type_name']);
+              _job.push(`${item['job_type']['job_type_name']}　`);
+              setJob(_job);
+            });
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
     };
+
     checkProfile();
-    Profile();
+    fetchData();
   }, []);
 
   // ユーザTopに遷移
@@ -57,10 +93,6 @@ const user: React.FC<props> = ({}) => {
   const moveEdit = async () => {
     router.push('/edit_users').then((_) => {});
   };
-
-  // data取得
-  console.log('UserProfile');
-  console.log(UserProfile);
 
   const btns: btnItem[] = [
     {
@@ -99,40 +131,40 @@ const user: React.FC<props> = ({}) => {
     <>
       <div className={styles.div1}>
         <div className={styles.div2}>
-          <Title text={'My Profile'} />
+          <Title text={'マイプロフィール'} />
           <table className={styles.table1}>
             <tbody>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_name1} ${styles.td1}`}>名前</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_name2}></td>
+                <td className={styles.text}>&emsp;{name}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_birth1} ${styles.td1}`}>
                   生年月日
                 </td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_birth2}></td>
+                <td className={styles.text}>&emsp;{birthday}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_add1} ${styles.td1}`}>住所</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_add2}></td>
+                <td className={styles.text}>&emsp;{address}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_area1} ${styles.td1}`}>希望地域</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_area2}></td>
+                <td className={styles.text}>&emsp;{area}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_job2}></td>
+                <td className={styles.text}>&emsp;{job}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_pr1} ${styles.td1}`}>自己PR</td>
                 <td className={styles.colon}>:</td>
-                <td className={styles.td_pr2}></td>
+                <td className={styles.text}>&emsp;{pr}</td>
               </tr>
             </tbody>
           </table>
