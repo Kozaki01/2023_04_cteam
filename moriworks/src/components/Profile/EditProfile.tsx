@@ -150,7 +150,6 @@ const EditProfile: React.FC<props> = ({}) => {
           });
         }
       }
-      alert('編集が完了しました。');
       router.push('/profile_users').then((_) => {});
     }
   };
