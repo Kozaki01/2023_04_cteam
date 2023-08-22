@@ -136,35 +136,35 @@ const user: React.FC<props> = ({}) => {
             <tbody>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_name1} ${styles.td1}`}>名前</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{name}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={styles.text}>{name}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_birth1} ${styles.td1}`}>
                   生年月日
                 </td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{birthday}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={styles.text}>{birthday}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_add1} ${styles.td1}`}>住所</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{address}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={styles.text}>{address}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_area1} ${styles.td1}`}>希望地域</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{area}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={styles.text}>{area}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_job1} ${styles.td1}`}>希望業種</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{job}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={styles.text}>{job}</td>
               </tr>
               <tr className={styles.tr1}>
                 <td className={`${styles.td_pr1} ${styles.td1}`}>自己PR</td>
-                <td className={styles.colon}>:</td>
-                <td className={styles.text}>&emsp;{pr}</td>
+                <td className={styles.colon}>:&emsp;</td>
+                <td className={`${styles.text} ${styles.textarea}`}>{pr}</td>
               </tr>
             </tbody>
           </table>
