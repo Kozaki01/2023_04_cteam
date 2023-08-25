@@ -67,10 +67,18 @@
 }
 .text {
   color: #000;
-  font-family: Kosugi Maru;
+  font-family: 'Kosugi Maru';
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 1.28px;
+}
+.textarea {
+  /* 改行表示 */
+  white-space: pre-wrap;
+  /* 行間 */
+  line-height: 140%;
+  /* フォントサイズ */
+  font-size: 26px;
 }
